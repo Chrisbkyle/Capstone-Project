@@ -1,0 +1,68 @@
+Capstone Project
+
+
+1 Define
+
+1.1   Buisness context, stakeholders and value
+
+Business context
+
+	There is a lack of organization in smaller scale kitchens.
+	The intent of this software is to create an easy to use database for recipe creatation, prep sheets and inventory sheets
+
+Understanding and engagement of stakeholder
+	
+	The software must be quick and simple to use, including all practial information on the sheets.  They must be easy to edit and provide a printable version as well as be able to be 	accessed by multiple parties.  The pages must be simple, open and reactive as many pages will be accessed through tablets and cellphones.
+
+User Needs
+
+	A simple, easy to access list of functions that all integrate with one another.  If I'm adding items to an inventory, it should be able to be accessed by prep sheets, recipe sheets, 	inventory sheets and a costing sheet all the same.
+
+
+2 Design
+
+2.1 Git/README
+
+	README.... this will need to be done after the program is finishedd
+	Open git branch asap.... study use of versioning and releases... maybe info that's already known
+
+2.2 Documentation
+	
+	Problem is simple... lack of software and providing that service
+	Solution will come with a simple straightforward UI and a couple of well-formed databases
+
+2.3 Project Planning
+
+	Well.. this
+	And figma... start with this, then make a good figma page...
+	Log time taken on each aspect.. this will be a good way to measure future growth
+
+2.4 Testing
+
+	This is a big dark spot on my current knowledge...
+	Study unit testing and find how to execute this
+
+3 Delivery
+
+3.1 Quality of Server
+
+	MVC model framework already made somewhere in previous lessons...
+	Using mySQL so need, mysql2...maybe sequelize
+	Use express, cors, body-parser(if form data needed), maybe socket for communication between server/client
+	DON'T FORGET TO COMMENT CODE
+
+3.2 User Interface
+
+	Simple/Straightforward... don't waste time
+	Use MUI as much as is practical
+
+3.3 Functionalities
+
+	This is business software so this should be the focus
+	Good knowledge on how to access a database is needed and the databases need to be well laid out
+
+3.4 Live Demo, Audience Engagement, Poise
+
+	Experience in field good
+	Make an engaging slide show... everyone loves slideshows........
+
