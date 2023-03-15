@@ -10,13 +10,25 @@ Business context
 	There is a lack of organization in smaller scale kitchens.
 	The intent of this software is to create an easy to use database for recipe creatation, prep sheets and inventory sheets
 
+	There is room for and expantion to make this a full menu costing and inventory app, but the focus must be on ease of use
+	i.e. at no point should the menu builder be harder to use then a word processor
+		what I need to be able to offer in this project is
+			1. A reactive menu page that can be accessed via phone/tablet
+			2. A simple way to write, edit and upload recipes
+			3. The ability to print a copy of said recipe
+			4. A well organized database page with enough filters to easily access the recipes needed
+
 Understanding and engagement of stakeholder
 	
-	The software must be quick and simple to use, including all practial information on the sheets.  They must be easy to edit and provide a printable version as well as be able to be 	accessed by multiple parties.  The pages must be simple, open and reactive as many pages will be accessed through tablets and cellphones.
+	The software must be quick and simple to use, including all practial information on the sheets.  
+	They must be easy to edit and provide a printable version as well as be able to be 	accessed by multiple parties.
+	The pages must be simple, open and reactive as many pages will be accessed through tablets and cellphones.
 
 User Needs
 
-	A simple, easy to access list of functions that all integrate with one another.  If I'm adding items to an inventory, it should be able to be accessed by prep sheets, recipe sheets, 	inventory sheets and a costing sheet all the same.
+	A simple, easy to access list of functions that all integrate with one another.
+	If I'm adding items to an inventory, it should be able to be accessed by prep sheets, recipe sheets, 
+	inventory sheets and a costing sheet all the same.
 
 
 2 Design
@@ -24,18 +36,25 @@ User Needs
 2.1 Git/README
 
 	README.... this will need to be done after the program is finishedd
-	Open git branch asap.... study use of versioning and releases... maybe info that's already known
+	Hold 2 frequently used git branches, 'main' and 'dev'.  Every major component finished will necessitate an upload to the 'main' branch
+	work done in between will only be worked off dev.
+	Everytime a full feature has been completed, create a new 'version/stage/etc' branch
+	so that if major issues arise between features I can easily start from scratch without having to sift through git logs.
+
 
 2.2 Documentation
 	
-	Problem is simple... lack of software and providing that service
-	Solution will come with a simple straightforward UI and a couple of well-formed databases
+	Problem is simple... lack of software and providing recipe libraries for small businesses.  Smaller restaurant and catering businesses rarely have designated office hours or executives.
+	Solution will come with a simple straightforward UI and a couple of well-formed databases that communicate with each other.
 
 2.3 Project Planning
 
-	Well.. this
-	And figma... start with this, then make a good figma page...
-	Log time taken on each aspect.. this will be a good way to measure future growth
+	Well.. this planning document
+	Continue using google sheet.
+	Figma, make a good figma page.
+		Include list of features possible.  What will be focused on, how they will interact.
+		Make a simple layout of each page and include the plan for each major component (ex. use MUI, build from scratch, logic behind each)
+		In same figma file, write out layout plan for each database table
 
 2.4 Testing
 
@@ -46,8 +65,8 @@ User Needs
 
 3.1 Quality of Server
 
-	MVC model framework already made somewhere in previous lessons...
-	Using mySQL so need, mysql2...maybe sequelize
+	MVC model framework already made somewhere in previous lessons... not a
+	Using mySQL so need, mysql2, sequelize
 	Use express, cors, body-parser(if form data needed), maybe socket for communication between server/client
 	DON'T FORGET TO COMMENT CODE
 

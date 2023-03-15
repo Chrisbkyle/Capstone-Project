@@ -1,0 +1,27 @@
+I will focus on working off the dev branch
+
+Whenever a major component is done I will then merge with main and push from there
+
+Track here major branch pushes, date them and record what was changed for my own records
+----------------------------------------------------------------------------------------
+March 14th 7pm
+----------------------------------------------------------------------------------------
+dev branch
+
+    First commit.
+    Folders set up
+    React app installed
+
+----------------------------------------------------------------------------------------
+March 15th 1:30am
+----------------------------------------------------------------------------------------
+dev branch
+
+    dbConnect finised
+    Models created
+    Controllers, router, index.js next
+
+
+----------------------------------------------------------------------------------------
+March 15th 3:18pm
+----------------------------------------------------------------------------------------
