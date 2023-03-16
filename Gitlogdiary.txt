@@ -25,3 +25,20 @@ dev branch
 ----------------------------------------------------------------------------------------
 March 15th 3:18pm
 ----------------------------------------------------------------------------------------
+dev and main
+
+    backend finished, not tested still likely has bug
+    controllers will need work may need services folder
+
+----------------------------------------------------------------------------------------
+March 17th 2:23am
+----------------------------------------------------------------------------------------
+dev and main
+
+    backend bug tested, operational
+    Login Page finished
+    Recipe Table started
+    Main Page started
+
+    Next day, finish Main page fully,
+    need to find background solution, how to pass props into React component

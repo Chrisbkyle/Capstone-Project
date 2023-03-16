@@ -10,7 +10,7 @@ ingredients.init({
     price: { type: DataTypes.STRING, allowNull: true, required: false },
     supplier: { type: DataTypes.STRING, allowNull: true, required: false },
     brand: { type: DataTypes.STRING, allowNull: true, required: false },
-    uom: { type: DataTypes.STRING, allowNull, required: false }
+    uom: { type: DataTypes.STRING, allowNull: true, required: false }
 }, {sequelize: sequelizeInstance, modelName: 'ingredients', timestamps: false, freezeTableName: true })
 
 module.exports = ingredients;

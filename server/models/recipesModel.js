@@ -6,8 +6,8 @@ class recipes extends Model {}
 
 recipes.init({
     recipe: { type: DataTypes.STRING, allowNull: false, required: true, primaryKey: true },
-    ingredients: { type: DataTypes.ARRAY, allowNull: false, required: true },
-    directions: { type: DataTypes.ARRAY, allowNull: false, required: true },
+    ingredients: { type: DataTypes.TEXT, allowNull: false, required: true },
+    directions: { type: DataTypes.TEXT, allowNull: false, required: true },
     yield: { type: DataTypes.STRING, allowNull: true, required: false },
     dish: { type: DataTypes.STRING, allowNull: false, required: true },
     station: {type: DataTypes.STRING, allowNull: false, required: true }

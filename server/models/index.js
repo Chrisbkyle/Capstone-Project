@@ -1,6 +1,6 @@
-const Users = require('./models/userModel');
-const Recipes = require('./models/recipesModel');
-const Ingredients = require('./models/ingredientsModel');
+const Users = require('./userModel');
+const Recipes = require('./recipesModel');
+const Ingredients = require('./ingredientsModel');
 
 async function init() {
     await Users.sync();
@@ -14,4 +14,4 @@ module.exports = {
     Users,
     Recipes,
     Ingredients
-}
+};

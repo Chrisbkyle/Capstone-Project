@@ -3,8 +3,7 @@ const cors = require('cors');
 const http = require('http');
 const dbConnect = require('./db/dbConnect')
 const app = express();
-
-
+const PORT = 3001;
 
 const server = http.createServer(app);
 
@@ -26,9 +25,6 @@ app.use(cors());
 
 dbConnect.connectMysql();
 
-const PORT = 3001;
-
-
 let router = require('./router/router')
 
 app.get('/', (req, res) => {
@@ -44,6 +40,8 @@ server.listen(PORT, () => {
 
 
 
+
+//----------------------------------------------------------------------------------------------------------------//
 
 // const { Server } = require('socket.io');
 
