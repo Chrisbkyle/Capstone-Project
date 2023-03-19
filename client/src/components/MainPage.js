@@ -1,7 +1,8 @@
 import React from 'react';
-import HeaderSidenav from './HeaderNavFooter.js/HeaderSideNav';
+import HeaderSidenav from './HeaderSideNav';
 import Footer from './Footer';
 import BackgroundGrid from './LoginBackground';
+import MainPageBox from './MainPage/MainPageBox';
 
 
 
@@ -10,9 +11,13 @@ export default function () {
 
     return(
         <div>
-            <BackgroundGrid />
 
-            <HeaderSidenav position="fixed"/>
+
+            <HeaderSidenav />
+
+            <MainPageBox />
+
+            <BackgroundGrid />
 
             <Footer />
         </div>

@@ -6,7 +6,7 @@ import { Table, TableHeaderRow, TableRow, TableHeaderContent, TableContent, Tabl
 import SortButton from './RecipeTable/SortButton';
 import { TablePagination } from '@mui/material';
 import TableTitle from './RecipeTable/TableTitle';
-import HeaderSidenav from './HeaderNavFooter.js/HeaderSideNav';
+import HeaderSidenav from './HeaderSideNav';
 import Footer from './Footer';
 
 
@@ -59,7 +59,7 @@ const RecipeTable = ({ sortConfig }) => {
 
     return (
         <div>
-            <HeaderSidenav position="static"/>
+            <HeaderSidenav />
             <TableContainer>
                 <TableTitle />
                 <Table>
@@ -94,7 +94,7 @@ const RecipeTable = ({ sortConfig }) => {
 
                                     <TableCell>{item.station}</TableCell>
 
-                                    <TableCell>{item.dateCreated.slice(0, 10)}</TableCell>
+                                    <TableCell>{item.dateCreated}</TableCell>
                                     
                                 </TableRow>
                         )})}

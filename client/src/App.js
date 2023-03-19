@@ -3,6 +3,8 @@ import LoginPage from './components/LoginPage';
 import Footer from './components/Footer'
 import MainPage from './components/MainPage'
 import RecipeTable from './components/RecipeTable';
+import RecipeBuilder from './components/RecipeBuilder';
+import RecipeForm from './components/RecipeForm';
 
 function App() {
   return (
@@ -12,7 +14,11 @@ function App() {
 
       {/* <MainPage /> */}
 
-      <RecipeTable sortConfig={{ sortBy: 'recipe', direction: 'ascending' }} />
+      {/* <RecipeTable sortConfig={{ sortBy: 'recipe', direction: 'ascending' }} /> */}
+
+      <RecipeBuilder />
+
+      {/* <RecipeForm /> */}
 
       {/* <Footer /> */}
 

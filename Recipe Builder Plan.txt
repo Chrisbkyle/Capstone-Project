@@ -1,0 +1,40 @@
+----------------------------------------------------------------------------------------------
+
+HAS TO BE AS EASY AS A WORD PROCESSOR!!!
+
+-----------------------------------------------------------------------------------------------
+
+Database Structure is as Follows
+    -Recipe
+    -Ingredients
+    -Directions
+    -Yield   (not required)
+    -Station (not required)
+    -Dish/es (not required)
+
+
+-----------------------------------------------------------------------------------------------
+
+1.  Recipe Needs an input field only
+
+2.  Ingredients needs
+        2 Input Fields
+            1 for Ingredient Name
+            2 for Quantity
+        1 Select field
+            For Unit of Measure (g, kg, lbs, ml, etc)
+            This should NOT be required, give flexibility for manual input in second input field
+        1 Button
+            There should be a '+' button to add input fields as needed that will turn into a '-' to remove it if needed ()
+
+3.  Directions need
+        1 Input Field
+            For the numbering of the ingredients
+        1 Text Area Field
+            For the actual Directions
+        1 Button
+            Same as Above, a '+' that will become a '-' for 
+
+4. Yield, Station, Dish
+        1 Input field for each
+            Optional information to enter

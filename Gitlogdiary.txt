@@ -1,8 +1,3 @@
-I will focus on working off the dev branch
-
-Whenever a major component is done I will then merge with main and push from there
-
-Track here major branch pushes, date them and record what was changed for my own records
 ----------------------------------------------------------------------------------------
 March 14th 7pm
 ----------------------------------------------------------------------------------------
@@ -42,3 +37,15 @@ dev and main
 
     Next day, finish Main page fully,
     need to find background solution, how to pass props into React component
+
+----------------------------------------------------------------------------------------
+March 20th 5:32am
+----------------------------------------------------------------------------------------
+main
+
+    Main Page finished
+    Recipe Builder 95%
+        Next add remove ingredient/direction button
+        rename everything  'direction' to 'step' for clairity
+        Add header and tweak styling
+    POST to database next

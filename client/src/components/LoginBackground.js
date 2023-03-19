@@ -9,7 +9,7 @@ const Grid = styled.div`
     width 100vw;
     grid-template-columns: auto auto;
     grid-template-rows: auto auto;
-    z-index: -100;
+    z-index: -1;
 `
 
 

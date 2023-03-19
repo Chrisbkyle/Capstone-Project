@@ -33,7 +33,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 //   font-size: 2.5rem;
 //   `
 
-export default function HeaderSidenav(position) {
+export default function HeaderSidenav() {
     const theme = useTheme();
 
     const [open, setOpen] = React.useState(false);
@@ -47,7 +47,7 @@ export default function HeaderSidenav(position) {
     };
   return (
     <Box sx={{ flexGrow: 1,  }} >
-      <AppBar position={position} sx={{backgroundColor:"#C36A2D", color:"black"}}>
+      <AppBar position="static" sx={{backgroundColor:"#C36A2D", color:"black"}}>
         <Toolbar>
         <IconButton
             color="inherit"

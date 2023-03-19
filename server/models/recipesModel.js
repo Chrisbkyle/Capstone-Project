@@ -11,6 +11,6 @@ recipes.init({
     yield: { type: DataTypes.STRING, allowNull: true, required: false },
     dish: { type: DataTypes.STRING, allowNull: false, required: true },
     station: {type: DataTypes.STRING, allowNull: false, required: true }
-}, {sequelize: sequelizeInstance, modelName: 'recipes', timestamps: true, freezeTableName: true })
+}, {sequelize: sequelizeInstance, modelName: 'recipes', timestamps: false, freezeTableName: true })
 
 module.exports = recipes;
