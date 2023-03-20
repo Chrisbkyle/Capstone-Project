@@ -24,10 +24,18 @@ export default function RecipeForm() {
     const [station, setStation] = React.useState('');
     const [dish, setDish] = React.useState('');
 
+    const data = {
+        recipe: recipe,
+        ingredients: ingredients.toString(),
+        directions: directions.toString(),
+        yield: recipeYield,
+        station: station,
+        dish: dish
+    }
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        alert('Recipe Logged' + ingredients.map((e) => Object.values(e)))
+        alert('Recipe Logged' + data)
     }
 
     const handleIngredientChange = (index,event) => {
