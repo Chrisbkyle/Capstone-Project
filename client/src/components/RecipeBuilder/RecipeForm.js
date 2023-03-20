@@ -1,42 +1,33 @@
-import React from 'react';
-import { Button, FormGroup, Grid, TextField, Stack, MenuItem, InputLabel, Select } from '@mui/material';
-import { createTheme } from '@mui/material/styles'
-import '../App.css'
-import { BlankButton } from './styledComponents';
+import React, { useEffect, useState} from 'react';
+import {TextField, Stack, MenuItem, Select } from '@mui/material';
+import { BlankButton } from '../styledComponents';
+import axios from 'axios';
 
 
-const theme = createTheme
 export default function RecipeForm() {
 
-    const [recipe, setRecipe] = React.useState('');
-    const [ingredients, setIngredients] = React.useState([{
-                                                        ingredient: '',
-                                                        quantity: '',
-                                                        unitOfMeasure: ''
-                                                        }]);
+    const [recipe, setRecipe] = useState('');
+    const [ingredients, setIngredients] = useState([{ingredient: '', quantity: '', unitOfMeasure: ''}]);
+    const [directions, setDirections] = useState([{step:'', direction: ''}]);
+    const [recipeYield, setRecipeYield] = useState('');
+    const [station, setStation] = useState('');
+    const [dish, setDish] = useState('');
 
-    const [directions, setDirections] = React.useState([{
-                                                        step:'',
-                                                        direction: ''
-                                                        }]);
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const userData = {
+            recipe: recipe,
+            ingredients: JSON.stringify(ingredients),
+            directions: JSON.stringify(directions),
+            yield: recipeYield,
+            station: station,
+            dish: dish
+        };
+        axios.post("http://localhost:3001/officechef/recipebuilder", userData).then((response) => {
+        });
+      };
 
-    const [recipeYield, setRecipeYield] = React.useState('');
-    const [station, setStation] = React.useState('');
-    const [dish, setDish] = React.useState('');
 
-    const data = {
-        recipe: recipe,
-        ingredients: ingredients.toString(),
-        directions: directions.toString(),
-        yield: recipeYield,
-        station: station,
-        dish: dish
-    }
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        alert('Recipe Logged' + data)
-    }
 
     const handleIngredientChange = (index,event) => {
         let data = [...ingredients];
@@ -82,7 +73,6 @@ export default function RecipeForm() {
                 <Stack direction="column" spacing={2}>
 
                     <TextField
-                    className='test'
                     variant='filled'
                     label='Recipe Name'
                     value={recipe}
@@ -146,18 +136,33 @@ export default function RecipeForm() {
                         <Select
                             labelId="uom"
                             id="uom"
-                            value={ingredients.unitOfMeasure}
+                            value={''}
                             name='unitOfMeasure'
                             label="Unit of Measure"
-                            onChange={event => handleIngredientChange(index, event)}
+                            // onChange={event => handleIngredientUomChange(index, event)}
                             sx={{
                                 "& .MuiOutlinedInput-notchedOutline": {
                                     border: '1px solid black!important'
                                 }
                             }}>
-                            <MenuItem value='ml'>mL</MenuItem>
-                            <MenuItem value='g'>g</MenuItem>
-                            <MenuItem value='lbs'>lbs</MenuItem>
+                            <MenuItem 
+                            // onChange={event => handleIngredientChange(index, event)}
+                            name='unitOfMeasure'
+                            value={'mL'}>
+                                mL
+                            </MenuItem>
+                            <MenuItem 
+                            // onChange={event => handleIngredientChange(index, event)}
+                            name='unitOfMeasure'
+                            value={'g'}>
+                                g
+                            </MenuItem>
+                            <MenuItem 
+                            // onChange={event => handleIngredientChange(index, event)}
+                            name='unitOfMeasure'
+                            value={'lbs'}>
+                                lbs
+                            </MenuItem>
                         </Select>
                         <BlankButton type='button' onClick={removeIngredient}>-</BlankButton>
                     </Stack>

@@ -33,7 +33,3 @@ body {
   z-index: -1;
 }
 
-
-::after.test {
-  border: 5px solid black;
-}

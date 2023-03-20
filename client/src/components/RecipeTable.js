@@ -54,8 +54,8 @@ const RecipeTable = ({ sortConfig }) => {
         setPage(0);
     };
 
-    console.log(items)
-    console.log(sortedItems)
+    // console.log(items)
+    // console.log(sortedItems)
 
     return (
         <div>
@@ -94,7 +94,7 @@ const RecipeTable = ({ sortConfig }) => {
 
                                     <TableCell>{item.station}</TableCell>
 
-                                    <TableCell>{item.dateCreated}</TableCell>
+                                    <TableCell>{item.createdAt.slice(0, 10)}</TableCell>
                                     
                                 </TableRow>
                         )})}

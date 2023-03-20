@@ -2,8 +2,10 @@ const express = require('express');
 const cors = require('cors');
 const http = require('http');
 const dbConnect = require('./db/dbConnect')
+const bodyParser = require('body-parser')
 const app = express();
 const PORT = 3001;
+
 
 const server = http.createServer(app);
 
@@ -20,6 +22,8 @@ const corsOptions = {
 }
 
 app.use(cors(corsOptions));
+
+app.use(bodyParser.json());
 
 app.use(cors());
 
