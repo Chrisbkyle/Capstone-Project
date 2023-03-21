@@ -35,9 +35,9 @@ User Needs
 
 2.1 Git/README
 
-	README.... this will need to be done after the program is finishedd
-	Hold 2 frequently used git branches, 'main' and 'dev'.  Every major component finished will necessitate an upload to the 'main' branch
-	work done in between will only be worked off dev.
+	README.... this will need to be done after the program is finished to walk through how to use the program, include prewritten INSERT to db table to help
+	Hold 2 frequently used git branches, 'main' and 'dev'.  Every major component finished or major change will necessitate an upload to the 'main' branch
+	work done in between, (tweaks, etc.) will only be pushed to dev.
 	Everytime a full feature has been completed, create a new 'version/stage/etc' branch
 	so that if major issues arise between features I can easily start from scratch without having to sift through git logs.
 
@@ -46,15 +46,21 @@ User Needs
 	
 	Problem is simple... lack of software and providing recipe libraries for small businesses.  Smaller restaurant and catering businesses rarely have designated office hours or executives.
 	Solution will come with a simple straightforward UI and a couple of well-formed databases that communicate with each other.
+	Don't reinvent the wheel, 
+		When or if you implement an inventory database it cannot be manditory, this will destroy the premise of the software
+			Once the recipe builder becomes harder to use than a word processor it will lose some of it's customer base.
+			Business model could offer a tier of usage, i.e only using a recipe builder will be a cheaper option, full features will cost more
 
 2.3 Project Planning
 
 	Well.. this planning document
-	Continue using google sheet.
+	Continue using google sheet checklist as a basic progess tracker.
 	Figma, make a good figma page.
 		Include list of features possible.  What will be focused on, how they will interact.
 		Make a simple layout of each page and include the plan for each major component (ex. use MUI, build from scratch, logic behind each)
-		In same figma file, write out layout plan for each database table
+		In same figma file, write out layout plan for each database table, use this as a visual guide
+			If something's not working, change it in Figma first, then code
+		Record colors used to save the hex or rgba so you don't lose them
 
 2.4 Testing
 

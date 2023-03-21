@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { MainPageButton } from "../styledComponents";
+import { Link } from "react-router-dom";
 
 
 const MainBox = styled.span`
@@ -28,7 +29,7 @@ export default function MainPageBox() {
             <MainBox>
                 <div style={{padding: '15%'}}>
                     <h1>Welcome to your Kitchen organization assisant</h1>
-                    <MainPageButton>Get your Recipes</MainPageButton><MainPageButton>Add a Recipe</MainPageButton>
+                    <Link to='/recipe_select'><MainPageButton>Get your Recipes</MainPageButton></Link><Link to='recipe_builder'><MainPageButton>Add a Recipe</MainPageButton></Link>
                 </div>
             </MainBox>
         </div>

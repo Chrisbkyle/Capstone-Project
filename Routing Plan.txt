@@ -1,0 +1,28 @@
+1.
+    At the base level there will be three routes
+        1. Login Route
+        2. Sign up Route
+        3. App Route
+
+2.
+    Nested within the App route will be everything that is the program
+        1. Main Page
+        2. Recipe Select
+        3. Recipe Builder
+
+3.
+    Nested within the Recipe Select we will have a ':id' that will link to the Recipe page
+    This page will format a recipe being pulled from a database, using the recipe's name is it's id
+
+
+Next to implement
+
+    Inventory control that will be nested in the App route
+    Inventory list that will be populated from the inventory list and populated from the app route
+
+
+
+
+<Outlet />
+    learn how to use this 
+    Apparently it's useful for nav information

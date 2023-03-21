@@ -7,12 +7,26 @@ const getRecipes = (req, res) => {
         throw err
     })
 }
- 
-//get info on req from front end, leave for now
+
+const getSpecificRecipe = (req, res) => {
+    Models.Recipes.findOne().then(function (data) {
+        res.send(data)
+    }).catch(err => {
+        throw err
+    })
+}
+
 const addRecipes = (req, res) => {
-    // console.log(req.body.recipe)
-    // Models.Recipes.create({})
-    Models.Recipes.create({recipe: req.body.recipe, ingredients: req.body.ingredients, directions:req.body.directions, yield: req.body.yield, dish: req.body.dish, station: req.body.station});
+    Models.Recipes.create({
+        recipe: req.body.recipe, 
+        ingredients: req.body.ingredients, 
+        directions:req.body.directions, 
+        yield: req.body.yield, dish: 
+        req.body.dish, station: 
+        req.body.station
+    }).catch(err => {
+        throw err
+    })
 }
 
 module.exports = {

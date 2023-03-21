@@ -14,6 +14,10 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import List from '@mui/material/List';
+import { Route, Link } from 'react-router-dom'
+import MainPage from './MainPage';
+import RecipeBuilder from './RecipeBuilder';
+import RecipeTable from './RecipeTable';
 // import styled from 'styled-components';
 
 
@@ -47,7 +51,7 @@ export default function HeaderSidenav() {
     };
   return (
     <Box sx={{ flexGrow: 1,  }} >
-      <AppBar position="static" sx={{backgroundColor:"#C36A2D", color:"black"}}>
+      <AppBar position="fixed" sx={{backgroundColor:"#C36A2D", color:"black"}}>
         <Toolbar>
         <IconButton
             color="inherit"
@@ -88,10 +92,16 @@ export default function HeaderSidenav() {
         </DrawerHeader>
         <Divider />
         <List>
-          {['Home', 'Recipe Builder', 'Recipes', 'Prep Sheets', 'Inventory Sheets'].map((text, index) => (
+          {[{linkName: 'Home Page', linkRoute: '/'},
+            {linkName: 'Recipe Builder', linkRoute: '/recipe_builder'},
+            {linkName: 'Recipe List', linkRoute: '/recipe_select'},
+            {linkName: 'Prep Sheets', linkRoute: '/home'},
+            {linkName: 'Inventory Sheets', linkRoute: '/home'}].map((text, index) => (
             <ListItem key={text} disablePadding>
               <ListItemButton>
-                <ListItemText primary={text} />
+                <Link to={text.linkRoute} style={{textDecoration:'none', color:'black'}}>
+                  <ListItemText primary={text.linkName} />
+                </Link>
               </ListItemButton>
             </ListItem>
           ))}

@@ -8,6 +8,7 @@ import { TablePagination } from '@mui/material';
 import TableTitle from './RecipeTable/TableTitle';
 import HeaderSidenav from './HeaderSideNav';
 import Footer from './Footer';
+import { Link } from 'react-router-dom';
 
 
 
@@ -86,8 +87,11 @@ const RecipeTable = ({ sortConfig }) => {
                         {items.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                         .map((item) => {
                             return (
-                                <TableRow>
-                                    
+
+                                <Link to={'/recipe_page/' + item.recipe} style={{display:'table-row', width: '100%', color:'black', textDecoration: 'none'}}>
+
+                                {/* <TableRow> */}
+
                                     <TableCell>{item.recipe}</TableCell>
 
                                     <TableCell>{item.dish}</TableCell>
@@ -96,7 +100,9 @@ const RecipeTable = ({ sortConfig }) => {
 
                                     <TableCell>{item.createdAt.slice(0, 10)}</TableCell>
                                     
-                                </TableRow>
+                                {/* </TableRow> */}
+
+                                </Link>
                         )})}
                     </TableContent>
                 </Table>

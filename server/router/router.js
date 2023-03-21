@@ -6,6 +6,10 @@ router.get('/recipes', (req, res) => {
     controller.recipeController.getRecipes(req, res);
 });
 
+router.get('/recipepage', (req, res) => {
+    controller.recipeController.getRecipes(req, res);
+});
+
 router.post('/recipebuilder', (req, res) => {
     controller.recipeController.addRecipes(req, res);
 })

@@ -49,3 +49,20 @@ main
         rename everything  'direction' to 'step' for clairity
         Add header and tweak styling
     POST to database next
+
+----------------------------------------------------------------------------------------
+March 20th 9pm
+----------------------------------------------------------------------------------------
+dev
+
+    for data tweak
+
+----------------------------------------------------------------------------------------
+March 21st 2am 
+----------------------------------------------------------------------------------------
+dev
+
+    Recipe builder post working
+    select error still occuring, get help in class
+    need to add remove ingredient/direction button
+

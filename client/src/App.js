@@ -4,25 +4,29 @@ import Footer from './components/Footer'
 import MainPage from './components/MainPage'
 import RecipeTable from './components/RecipeTable';
 import RecipeBuilder from './components/RecipeBuilder';
+import RecipePage from './components/RecipePage';
 import RecipeForm from './components/RecipeBuilder/RecipeForm';
+import { Route, Routes } from 'react-router-dom'
 
 function App() {
   return (
-    <div className="App">
+    <Routes className="App">
 
-      {/* <LoginPage /> */}
+      <Route path='/login' element={<LoginPage />} />
 
-      {/* <MainPage /> */}
+      <Route path='/' element={<MainPage />} />
 
-      <RecipeTable sortConfig={{ sortBy: 'recipe', direction: 'ascending' }} />
+      <Route path='/recipe_select' element={<RecipeTable sortConfig={{ sortBy: 'recipe', direction: 'ascending' }} />} />
 
-      <RecipeBuilder />
+      <Route path='/recipe_builder' element={<RecipeBuilder />} />
 
-      {/* <RecipeForm /> */}
+      <Route path='/recipe_page/:id' element={<RecipePage />} />
+
+      <Route path='*' element={<LoginPage />}/>
 
       {/* <Footer /> */}
 
-    </div>
+    </Routes>
   );
 }
 

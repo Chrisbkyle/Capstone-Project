@@ -58,12 +58,16 @@ export default function RecipeForm() {
         setDirections([...directions, newDirectionField])
     }
 
-    const removeIngredient = () => {
-        
+    const removeIngredient = (index) => {
+        let data = [...ingredients];
+        data.splice(index, 1)
+        setIngredients(data)
     }
 
-    const removeDirection = () => {
-        
+    const removeDirection = (index) => {
+        let data = [...directions];
+        data.splice(index, 1)
+        setDirections(data);
     }
 
     return (
@@ -136,35 +140,32 @@ export default function RecipeForm() {
                         <Select
                             labelId="uom"
                             id="uom"
-                            value={''}
+                            value={ingredients.unitOfMeasure}
                             name='unitOfMeasure'
                             label="Unit of Measure"
-                            // onChange={event => handleIngredientUomChange(index, event)}
+                            onChange={event => handleIngredientChange(index, event)}
                             sx={{
                                 "& .MuiOutlinedInput-notchedOutline": {
                                     border: '1px solid black!important'
                                 }
                             }}>
                             <MenuItem 
-                            // onChange={event => handleIngredientChange(index, event)}
                             name='unitOfMeasure'
                             value={'mL'}>
                                 mL
                             </MenuItem>
                             <MenuItem 
-                            // onChange={event => handleIngredientChange(index, event)}
                             name='unitOfMeasure'
                             value={'g'}>
                                 g
                             </MenuItem>
                             <MenuItem 
-                            // onChange={event => handleIngredientChange(index, event)}
                             name='unitOfMeasure'
                             value={'lbs'}>
                                 lbs
                             </MenuItem>
                         </Select>
-                        <BlankButton type='button' onClick={removeIngredient}>-</BlankButton>
+                        <BlankButton type='button' onClick={() => removeIngredient(index)}>-</BlankButton>
                     </Stack>
                     )
                 })}
@@ -216,7 +217,7 @@ export default function RecipeForm() {
                                 }
                                 }}> 
                         </TextField> 
-                        <BlankButton type='button' onClick={removeDirection}>-</BlankButton> 
+                        <BlankButton type='button' onClick={() => removeDirection(index)}>-</BlankButton> 
                     </Stack>
                     )
                 })}
