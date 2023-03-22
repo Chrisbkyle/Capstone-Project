@@ -9,7 +9,8 @@ const getRecipes = (req, res) => {
 }
 
 const getSpecificRecipe = (req, res) => {
-    Models.Recipes.findOne().then(function (data) {
+    console.log(req.headers.recipename)
+    Models.Recipes.findByPk(req.headers.recipename).then(function (data) {
         res.send(data)
     }).catch(err => {
         throw err
@@ -31,5 +32,6 @@ const addRecipes = (req, res) => {
 
 module.exports = {
     getRecipes,
-    addRecipes
+    addRecipes,
+    getSpecificRecipe
 }

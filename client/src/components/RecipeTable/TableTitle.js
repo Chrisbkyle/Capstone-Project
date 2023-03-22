@@ -1,4 +1,4 @@
-import { RecipeTableTopBar } from './tableStyles'
+import { RecipeTableTopBar } from '../styledComponents'
 import React from 'react';
 
 

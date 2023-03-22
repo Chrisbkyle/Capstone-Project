@@ -7,7 +7,7 @@ router.get('/recipes', (req, res) => {
 });
 
 router.get('/recipepage', (req, res) => {
-    controller.recipeController.getRecipes(req, res);
+    controller.recipeController.getSpecificRecipe(req, res);
 });
 
 router.post('/recipebuilder', (req, res) => {

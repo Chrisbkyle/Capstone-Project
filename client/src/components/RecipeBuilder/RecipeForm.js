@@ -165,7 +165,12 @@ export default function RecipeForm() {
                                 lbs
                             </MenuItem>
                         </Select>
-                        <BlankButton type='button' onClick={() => removeIngredient(index)}>-</BlankButton>
+                        <BlankButton style={{height: '2rem', width:'2rem', borderRadius:'100%', margin:'auto 8px'}}
+                        type='button'
+
+                        onClick={() => removeIngredient(index)}>
+                            -
+                        </BlankButton>
                     </Stack>
                     )
                 })}
@@ -217,7 +222,12 @@ export default function RecipeForm() {
                                 }
                                 }}> 
                         </TextField> 
-                        <BlankButton type='button' onClick={() => removeDirection(index)}>-</BlankButton> 
+                        <BlankButton 
+                        style={{height: '2rem', width:'2rem', borderRadius:'100%', marginTop:'1rem'}}
+                        type='button' 
+                        onClick={() => removeDirection(index)}>
+                            -
+                            </BlankButton> 
                     </Stack>
                     )
                 })}
@@ -284,7 +294,7 @@ export default function RecipeForm() {
                 }}>
                     </TextField>
 
-                    <BlankButton type="submit">Submit Recipe</BlankButton> 
+                    <BlankButton type="submit" style={{width: '15%', margin:'auto'}}>Submit Recipe</BlankButton> 
                 </Stack>    
             </form>
         </div>

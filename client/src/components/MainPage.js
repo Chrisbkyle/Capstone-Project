@@ -13,13 +13,13 @@ export default function () {
         <div>
 
 
-            <HeaderSidenav />
+            {/* <HeaderSidenav /> */}
 
             <MainPageBox />
 
             <BackgroundGrid />
 
-            <Footer />
+            {/* <Footer /> */}
         </div>
     )
 }

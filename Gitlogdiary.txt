@@ -55,7 +55,7 @@ March 20th 9pm
 ----------------------------------------------------------------------------------------
 dev
 
-    for data tweak
+    form data tweak
 
 ----------------------------------------------------------------------------------------
 March 21st 2am 
@@ -66,3 +66,32 @@ dev
     select error still occuring, get help in class
     need to add remove ingredient/direction button
 
+----------------------------------------------------------------------------------------
+March 21st 6pm 
+----------------------------------------------------------------------------------------
+main
+
+    react-router-dom implemented
+    recipe pages linked from recipe select table
+    remove buttons done
+
+    next: build recipe page
+    bugs existing:
+        recipe builder uom select     #working but error still occuring
+        MUI header positioning issue  #fixed with a dummy header beneath nav/header to solve page positioning issue
+            ...get help, I'm stuck
+
+-----------------------------------------------------------------------------------------
+March 22nd 11pm
+-----------------------------------------------------------------------------------------
+main
+
+    basic version complete
+    app can add, store and read recipes
+    bugs spotted:   dropdown error in recipe builder
+                    sorting error, datecreated column in recipe list
+
+    next features to implement
+        edit page for recipe page that routes back to recipe builder for the recipe(or the ability to edit features piece by piece)
+        delete recipe on both recipe page and recipe list
+        filter recipes with both search function and possible a station filter list

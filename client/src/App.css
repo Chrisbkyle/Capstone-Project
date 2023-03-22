@@ -3,6 +3,7 @@
 body {
   margin: 0px;
   font-family: 'PT Serif', serif!important;
+  box-sizing: border-box;
 }
 
 .App {
@@ -33,3 +34,21 @@ body {
   z-index: -1;
 }
 
+.recipeTableLink {
+  color: black;
+  text-decoration: none;
+  display: table-row;
+  margin: 0px;
+  height: 3rem;
+  border-top: 2px outset #EADCA6!important;
+  border-bottom: 2px outset #EADCA6!important;
+}
+
+.recipeTableLink:hover{
+    background-color: #EADCA6;
+};
+
+.recipeTableLink:active{
+    border-top: 2px inset black!important;
+    border-bottom: 2px inset black!important;
+};

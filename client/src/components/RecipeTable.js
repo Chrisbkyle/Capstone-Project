@@ -2,13 +2,12 @@ import '../App.css'
 import React, { useState, useEffect } from 'react';
 import sortTableData from './RecipeTable/SortTableData';
 import { headCells } from './RecipeTable/testObjects';
-import { Table, TableHeaderRow, TableRow, TableHeaderContent, TableContent, TableCell, TableContainer, TableCellHeader } from './RecipeTable/tableStyles';
+import { Table, TableHeaderRow, TableHeaderContent, TableContent, TableCell, TableContainer, TableCellHeader } from './styledComponents';
 import SortButton from './RecipeTable/SortButton';
 import { TablePagination } from '@mui/material';
 import TableTitle from './RecipeTable/TableTitle';
-import HeaderSidenav from './HeaderSideNav';
-import Footer from './Footer';
 import { Link } from 'react-router-dom';
+import { FalseHeader } from './styledComponents';
 
 
 
@@ -55,12 +54,11 @@ const RecipeTable = ({ sortConfig }) => {
         setPage(0);
     };
 
-    // console.log(items)
-    // console.log(sortedItems)
+
 
     return (
         <div>
-            <HeaderSidenav />
+            <FalseHeader />
             <TableContainer>
                 <TableTitle />
                 <Table>
@@ -70,7 +68,6 @@ const RecipeTable = ({ sortConfig }) => {
                                 <TableCellHeader 
                                     key={headCell.id}
                                 >
-                                    
                                     <SortButton
                                     direction={direction}
                                     id={headCell.id}
@@ -82,13 +79,12 @@ const RecipeTable = ({ sortConfig }) => {
                             ))}
                         </TableHeaderRow>
                     </TableHeaderContent>
-
                     <TableContent>
                         {items.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                         .map((item) => {
                             return (
 
-                                <Link to={'/recipe_page/' + item.recipe} style={{display:'table-row', width: '100%', color:'black', textDecoration: 'none'}}>
+                                <Link className='recipeTableLink'to={'/recipe_page/' + item.recipe}>
 
                                 {/* <TableRow> */}
 
@@ -115,7 +111,7 @@ const RecipeTable = ({ sortConfig }) => {
                         onPageChange={handleChangePage}
                         onRowsPerPageChange={handleChangeRowsPerPage} />
             </TableContainer>
-            <Footer />
+            {/* <Footer /> */}
         </div>
     )
 }

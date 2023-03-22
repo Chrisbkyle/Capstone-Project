@@ -7,22 +7,33 @@ import RecipeBuilder from './components/RecipeBuilder';
 import RecipePage from './components/RecipePage';
 import RecipeForm from './components/RecipeBuilder/RecipeForm';
 import { Route, Routes } from 'react-router-dom'
+import HeaderSidenav from './components/HeaderSideNav';
+import NotFound from './components/NotFound';
 
 function App() {
   return (
     <Routes className="App">
 
+
       <Route path='/login' element={<LoginPage />} />
 
-      <Route path='/' element={<MainPage />} />
+      {/* <HeaderSidenav /> */}
 
-      <Route path='/recipe_select' element={<RecipeTable sortConfig={{ sortBy: 'recipe', direction: 'ascending' }} />} />
+      <Route path='/' element={<HeaderSidenav />}>
+  
+          <Route path='/' element={<MainPage />} />
+          
+          <Route path='/recipe_select' element={<RecipeTable sortConfig={{ sortBy: 'recipe', direction: 'ascending' }} />} />
+            
+          <Route path='/recipe_page/:id' element={<RecipePage />} />
 
-      <Route path='/recipe_builder' element={<RecipeBuilder />} />
+          <Route path='/recipe_builder' element={<RecipeBuilder />} />
+          
 
-      <Route path='/recipe_page/:id' element={<RecipePage />} />
+        </Route>
+      {/* </Route> */}
 
-      <Route path='*' element={<LoginPage />}/>
+      <Route path='*' element={<NotFound />}/>
 
       {/* <Footer /> */}
 

@@ -3,16 +3,9 @@ import Footer from './Footer';
 import HeaderSidenav from './HeaderSideNav';
 import RecipeForm from './RecipeBuilder/RecipeForm';
 import styled from 'styled-components';
+import { FalseHeader, RecipeFormContainer, RecipeBuilderTitle } from './styledComponents';
 
-const RecipeFormContainer = styled.div`
-    background-color: #FFFBEA;
-    margin: 5%;
-    padding: 5%;
-    border-radius: 5px;
-    box-shadow: 4px 4px lightgrey;
-    border: 1px solid lightgrey;
 
-`
 
 
 export default function RecipeBuilder() {
@@ -21,11 +14,12 @@ export default function RecipeBuilder() {
     return (
 
         <div style={{backgroundColor: '#FFFBEA'}}>
-            <HeaderSidenav />
+            <FalseHeader />
+            <RecipeBuilderTitle>Recipe Builder</RecipeBuilderTitle>
             <RecipeFormContainer>
-            <RecipeForm />
+                <RecipeForm />
             </RecipeFormContainer>
-            <Footer />
+
         </div>
     )
 }

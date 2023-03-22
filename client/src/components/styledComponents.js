@@ -1,6 +1,15 @@
+import styled from "styled-components";
+//Shared components
+
+const FalseHeader = styled.div`
+    height: 85px;
+    width: 100%;
+`
+
+
 // 1. Login Page Styles 
 
-import styled from "styled-components";
+
 
 const LoginBoxStyle = styled.div`
     width: 350px;
@@ -88,20 +97,6 @@ const Table = styled.div`
 `
 const TableRowGroup = styled.div`
     display: table-row-group;
-    `
-const TableRow = styled.div`
-    display: table-row;
-    margin: 0px;
-    height: 3rem;
-    border-top: 2px outset #EADCA6!important;
-    border-bottom: 2px outset #EADCA6!important;
-    &:hover{
-        background-color: #EADCA6;
-    };
-    &:active{
-        border-top: 2px inset black!important;
-        border-bottom: 2px inset black!important;
-    };
 `
 const TableLink = styled.a`
     width: 100%;
@@ -116,12 +111,12 @@ const TableHeaderContent = styled.div`
     display: table-header-group;
     padding: .6rem;
     height: 3rem;
-    `
+`
 const TableContent = styled.div`
     display: table-row-group;
     padding: .6rem; 
     height: 3rem;
-    `
+`
 const TableCell = styled.div`
     display: table-cell;
     width: 25%;
@@ -129,7 +124,7 @@ const TableCell = styled.div`
     padding-left: 5%;
     padding: 1rem;
     font-size: 1rem;    
-    `
+`
 const TableCellHeader = styled.div`
     display: table-cell;
     border-bottom: 1px solid #EADCA6;
@@ -138,10 +133,11 @@ const TableCellHeader = styled.div`
     padding-left: 5%;
     padding: 1rem;
     font-size: 1.25rem;    
-    `
+`
 const RecipeTableTopBar = styled.div`
     font-size: 2rem;
     padding: 1rem;
+    text-align: center;
 `
 
 const BlankButton = styled.button`
@@ -164,7 +160,7 @@ const BlankButton = styled.button`
     }
   `
 
-  //4 Menu Builder Styles
+  //4 Recipe Builder Styles
 
 
 
@@ -177,12 +173,41 @@ const RecipeBuilderHolder = styled.div`
     grid-template-rows: auto auto auto auto auto auto;
     
 `
+const RecipeFormContainer = styled.div`
+    background-color: #FFFBEA;
+    margin: 2% 5% 5% 5%;
+    padding: 5%;
+    border-radius: 5px;
+    box-shadow: 4px 4px lightgrey;
+    border: 1px solid lightgrey;
+
+`
+
+const RecipeBuilderTitle = styled.div`
+    font-size: 3rem;
+    text-align: center;
+    padding-top: 1%;
+`
+
+//5 Recipe Display styles
 
 
 
+//6 Footer styles
+
+const FooterStyled = styled.div`
+    background-color: #C36A2D;
+    width: 100%;
+    position: static;
+    bottom: 0;
+    padding: .5rem;
+    box-shadow: 2px 0 10px 5px rgba(0, 0, 0, 20%);
+    text-align: center;
+`
 
 
 export {
+    FalseHeader,
     LoginBoxStyle,
     LoginBoxTitle,
     LoginFormContainer,
@@ -194,12 +219,14 @@ export {
     TableLink,
     TableRowGroup,
     TableHeaderRow,
-    TableRow,
     TableHeaderContent,
     TableContent,
     TableCell,
     TableCellHeader,
     BlankButton,
     RecipeTableTopBar,
-    RecipeBuilderHolder
+    RecipeBuilderHolder,
+    RecipeFormContainer,
+    RecipeBuilderTitle,
+    FooterStyled
 }
