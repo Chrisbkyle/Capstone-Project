@@ -15,15 +15,24 @@ export default function RecipeForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const userData = {
+        // const userData = {
+        //     recipe: recipe,
+        //     ingredients: JSON.stringify(ingredients),
+        //     directions: JSON.stringify(directions),
+        //     yield: recipeYield,
+        //     station: station,
+        //     dish: dish
+        // };
+        axios.post("http://localhost:3001/officechef/recipebuilder", {
             recipe: recipe,
             ingredients: JSON.stringify(ingredients),
             directions: JSON.stringify(directions),
             yield: recipeYield,
             station: station,
             dish: dish
-        };
-        axios.post("http://localhost:3001/officechef/recipebuilder", userData).then((response) => {
+        })
+        .then((response) => {
+            console.log(response)
         });
       };
 

@@ -1,14 +1,13 @@
 import './App.css';
 import LoginPage from './components/LoginPage';
-import Footer from './components/Footer'
 import MainPage from './components/MainPage'
 import RecipeTable from './components/RecipeTable';
 import RecipeBuilder from './components/RecipeBuilder';
 import RecipePage from './components/RecipePage';
-import RecipeForm from './components/RecipeBuilder/RecipeForm';
 import { Route, Routes } from 'react-router-dom'
 import HeaderSidenav from './components/HeaderSideNav';
 import NotFound from './components/NotFound';
+import SignupPage from './components/SignupPage';
 
 function App() {
   return (
@@ -16,8 +15,8 @@ function App() {
 
 
       <Route path='/login' element={<LoginPage />} />
-
-      {/* <HeaderSidenav /> */}
+      
+      <Route path='/signup' element={<SignupPage />} />
 
       <Route path='/' element={<HeaderSidenav />}>
   

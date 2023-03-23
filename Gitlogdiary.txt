@@ -104,3 +104,20 @@ dev
     filter options working, just need styling
     edit page button for recipe page that routes back to recipe builder for the recipe(or the ability to edit features piece by piece)
     delete recipe on both recipe page and recipe list
+
+------------------------------------------------------------------------------------------
+March 23rd 4:04pm
+------------------------------------------------------------------------------------------
+main
+
+    signup page done, submitting to database
+    delete button put on recipe page, not working yet
+    not sure how to implement delete button on recipe list yet
+
+    next tasks
+
+        form validation!
+        Start with login page, now you can submit it should be easier
+        then signup page, make sure only approved information is submitted
+        then recipe builder, same as above.... plan out what requirements are and what information you think you need in a seperate document
+        

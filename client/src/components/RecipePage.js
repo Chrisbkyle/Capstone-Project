@@ -2,7 +2,9 @@ import React, { useState, useEffect} from "react";
 import { useParams } from "react-router-dom";
 import axios from 'axios';
 import styled from "styled-components";
-import { FalseHeader } from "./styledComponents";
+import { FalseHeader, BlankButton } from "./styledComponents";
+import DeleteIcon from '@mui/icons-material/Delete';
+import { Stack } from "@mui/material";
 
 const RecipeDisplayHolder = styled.div`
     margin: 3rem;
@@ -14,8 +16,9 @@ const RecipeDisplayHolder = styled.div`
 const RecipePageName = styled.div`
     font-size: 3rem;
     border: 3px outset lightgrey;
-    margin: 1rem 1rem 0 1rem;
+    margin: 1rem 0 0 1rem;
     padding-left: 1rem;
+    width: 92%;
 `
 const RecipePageYield = styled.div`
     font-size: 1.5rem;
@@ -79,7 +82,10 @@ useEffect(() => {
             <FalseHeader />
             
             <RecipeDisplayHolder>
-                <RecipePageName>{state.recipe}</RecipePageName>
+                <Stack direction='row'>
+                    <RecipePageName>{state.recipe}</RecipePageName>
+                    <BlankButton style={{margin:'1rem 1rem 0 0', width: '6.5%', border:'3px outset lightgrey', boxShadow:'none'}}><DeleteIcon></DeleteIcon></BlankButton>
+                </Stack>
                 <RecipePageYield>Portion Yield: {state.yield}</RecipePageYield>
                 <div style={{border: '3px outset lightgrey', margin: '0rem 1rem'}}>
                     {ingredients.map((ingredient) => (

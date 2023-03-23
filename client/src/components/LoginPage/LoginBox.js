@@ -1,5 +1,6 @@
 import React from 'react';
 import { LoginBoxStyle, LoginFormContainer, LoginButton, LoginBoxTitle, LoginInput } from './loginStyles';
+import { Link } from 'react-router-dom';
 
 
 export default function LoginBox() {
@@ -15,7 +16,9 @@ export default function LoginBox() {
 
                         <label><LoginInput type='password' placeholder='Password'></LoginInput></label>
 
-                        <div><LoginButton type='submit'>Login</LoginButton></div>
+                        <div><Link to='/'><LoginButton type='submit'>Login</LoginButton></Link></div>
+
+                        <div>Are you a memeber? if not <Link to='/signup'>sign up here </Link></div>
                         
                     </form>
                 </LoginFormContainer>
