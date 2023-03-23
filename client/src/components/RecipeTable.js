@@ -2,12 +2,13 @@ import '../App.css'
 import React, { useState, useEffect } from 'react';
 import sortTableData from './RecipeTable/SortTableData';
 import { headCells } from './RecipeTable/testObjects';
-import { Table, TableHeaderRow, TableHeaderContent, TableContent, TableCell, TableContainer, TableCellHeader } from './styledComponents';
+import { Table, TableHeaderRow, TableHeaderContent, TableContent, TableCell, TableContainer, TableCellHeader, BlankButton } from './styledComponents';
 import SortButton from './RecipeTable/SortButton';
-import { TablePagination } from '@mui/material';
+import { TablePagination, TextField } from '@mui/material';
 import TableTitle from './RecipeTable/TableTitle';
 import { Link } from 'react-router-dom';
 import { FalseHeader } from './styledComponents';
+import FilterListIcon from '@mui/icons-material/FilterList';
 
 
 
@@ -16,7 +17,7 @@ const RecipeTable = ({ sortConfig }) => {
 
 
     useEffect(() => {
-        fetch('http://localhost:3001/officechef/recipes', {
+        fetch('http://localhost:3001/officechef/recipes/', {
         method: 'get',
         })
             .then(response => response.json())
@@ -33,6 +34,7 @@ const RecipeTable = ({ sortConfig }) => {
         const { showSortUi } = sortConfig || {}
         const [rowsPerPage, setRowsPerPage] = React.useState(5);
         const [page, setPage] = React.useState(0);
+        const [filterText, setFilterText] = useState('');
   
 
     //function for the Sort buttons
@@ -54,13 +56,69 @@ const RecipeTable = ({ sortConfig }) => {
         setPage(0);
     };
 
+ 
+    const filteredData = items.filter(row =>
+        Object.values(row).some(value =>
+          value.toLowerCase().toString().includes(filterText.toLowerCase())
+      )
+    );
 
+    const pop = () => {
+        alert('pop')
+    }
 
     return (
         <div>
             <FalseHeader />
             <TableContainer>
+
                 <TableTitle />
+                <ul>
+                    <li><BlankButton><FilterListIcon></FilterListIcon></BlankButton></li>
+                    <li>
+                        <div style={{height:'200px', width: '300px', backgroundColor:'pink', position:'absolute', right: '0', marginRight: '3rem'}}>
+                            <ul>
+                                <li>
+                                    <select
+                                    onChange={e => setFilterText(e.target.value)}>
+                                        <option value=''>Filter Station </option>
+                                        {items.map((item) =>
+                                        <option>{item.station}</option>
+                                        )}
+                                    </select>
+                                </li>
+                                <li>
+                                    <select
+                                    onChange={e => setFilterText(e.target.value)}>
+                                        <option value=''>Filter Dish</option>
+                                        {items.map((item) =>
+                                        <option>{item.dish}</option>
+                                        )}
+                                    </select>
+                                </li>
+                                <li>
+                                    <TextField
+                                    variant='filled'
+                                    onChange={e => setFilterText(e.target.value)}
+                                    sx={{
+                                        "& .MuiFormLabel-root": {
+                                            color: 'black'
+                                        },
+                                        "& .MuiFormLabel-root.Mui-focused": {
+                                            color: 'black'
+                                        },
+                                        "& .MuiInputBase-root::after": {
+                                            borderBottom: '2px solid black'
+                                        }
+                                    }}>
+                                    </TextField>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+
+
                 <Table>
                     <TableHeaderContent>
                         <TableHeaderRow>
@@ -80,8 +138,9 @@ const RecipeTable = ({ sortConfig }) => {
                         </TableHeaderRow>
                     </TableHeaderContent>
                     <TableContent>
-                        {items.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                        {filteredData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                         .map((item) => {
+
                             return (
 
                                 <Link className='recipeTableLink'to={'/recipe_page/' + item.recipe}>
@@ -97,8 +156,8 @@ const RecipeTable = ({ sortConfig }) => {
                                     <TableCell>{item.createdAt.slice(0, 10)}</TableCell>
                                     
                                 {/* </TableRow> */}
-
                                 </Link>
+                                
                         )})}
                     </TableContent>
                 </Table>

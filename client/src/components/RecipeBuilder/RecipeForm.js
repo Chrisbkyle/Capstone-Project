@@ -99,7 +99,7 @@ export default function RecipeForm() {
                     </TextField>  
 
                 {ingredients.map((input, index) => {
-                return (<Stack direction="row" spacing={1} key={index}>                    
+                return (<Stack direction="row" spacing={1} key={input.ingredient}>                    
                         <TextField
                         fullWidth
                         variant='filled'
@@ -141,6 +141,7 @@ export default function RecipeForm() {
                             labelId="uom"
                             id="uom"
                             value={ingredients.unitOfMeasure}
+                            defaultValue=''
                             name='unitOfMeasure'
                             label="Unit of Measure"
                             onChange={event => handleIngredientChange(index, event)}
@@ -182,7 +183,7 @@ export default function RecipeForm() {
 
 
                 {directions.map((input, index) => {
-                return (<Stack direction="row" spacing={1} key={index}>                  
+                return (<Stack direction="row" spacing={1} key={input.step}>                  
                         <TextField
                             variant='filled'
                             label='Step'

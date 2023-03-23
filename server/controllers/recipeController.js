@@ -1,7 +1,8 @@
 const Models = require('../models')
 
 const getRecipes = (req, res) => {
-    Models.Recipes.findAll({}).then(function (data) {
+    Models.Recipes.findAll({attributes: ['recipe', 'station', 'dish', 'createdAt']}).then(function (data) {
+        console.log(data)
         res.send(data)
     }).catch(err => {
         throw err

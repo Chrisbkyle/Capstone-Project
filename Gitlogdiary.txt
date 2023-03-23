@@ -89,9 +89,18 @@ main
     basic version complete
     app can add, store and read recipes
     bugs spotted:   dropdown error in recipe builder
-                    sorting error, datecreated column in recipe list
+                    sorting error, datecreated column in recipe list  #fixed, object key named changed with sequelize model, changed name in react page to match
 
     next features to implement
-        edit page for recipe page that routes back to recipe builder for the recipe(or the ability to edit features piece by piece)
+        edit page button for recipe page that routes back to recipe builder for the recipe(or the ability to edit features piece by piece)
         delete recipe on both recipe page and recipe list
         filter recipes with both search function and possible a station filter list
+
+------------------------------------------------------------------------------------------
+March 23rd 2:20pm
+------------------------------------------------------------------------------------------
+dev
+
+    filter options working, just need styling
+    edit page button for recipe page that routes back to recipe builder for the recipe(or the ability to edit features piece by piece)
+    delete recipe on both recipe page and recipe list

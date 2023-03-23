@@ -16,7 +16,7 @@
       label: 'Station',
     },
     {
-      id: 'dateCreated',
+      id: 'createdAt',
       numeric: false,
       label: 'Date Created',
     },

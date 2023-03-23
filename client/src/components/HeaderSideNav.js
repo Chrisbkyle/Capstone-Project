@@ -92,7 +92,7 @@ export default function HeaderSidenav() {
             {linkName: 'Prep Sheets', linkRoute: '/'},
             {linkName: 'Inventory Sheets', linkRoute: '/'},
             {linkName: 'Logout', linkRoute: '/login'}].map((text, index) => (
-            <ListItem key={text} disablePadding>
+            <ListItem key={text.linkName} disablePadding>
               <Link to={text.linkRoute} style={{textDecoration:'none', color:'black', width: '100%'}}>
                 <ListItemButton>
                   <ListItemText primary={text.linkName} />
