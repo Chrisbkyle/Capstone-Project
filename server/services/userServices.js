@@ -1,21 +1,26 @@
 const Models = require('../models')
 
 
-//review once this integrates
-let getUserEmailPassword = (req, res) => {
-    Models.Users.findAll({
-        where: {
-            name: req.param.name,
-            email: req.param.name,
-            password: req.param.name
-        },
+
+function checkPwdandUser(username, password) {    
+        let dbSearch = Models.Users.findOne({
+        where:{username: username}}).then()
+
+        // if (password != )
         
-    }.then(res.send(data))
-    ).catch(err => {
-        throw err
-    })
+
 }
 
+
+
 module.exports = {
-    getIngredients
+    checkPwdandUser
 }
+
+
+
+// find username that equals req.body.username
+// get password where username = req.body.username
+// if req.body.password === password where req.body.username === username all is good life is happy
+// else if req.body.password != pass where req.body.username === username life is terrible you got the wrong password why you like this
+// else if req.body.username != exist password doesnt exist

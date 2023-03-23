@@ -1,0 +1,84 @@
+March 23rd class work
+
+
+I have a fully working backend with no validation
+Everything is working well being taken from the front end to database using sequelize and axios 
+
+I have no validation
+I have to review how my folders are structured
+
+-----------------------------------------------------------------------------------------------
+What I have/know in detail
+-----------------------------------------------------------------------------------------------
+1 Index file, working, clear, simple
+    Do I need use.cors and use.cors(corsOptions)
+
+1 router folder, 1 'router.js' file inside
+    Only contains routes, do i need multiple and an index file or is one fully functioning
+
+1 controller folder
+    1 index file
+        this acts as an intermediary port between the individual controllers and the router 
+    3 controllers, recipes, ingredients, users
+        each controller holds links to the database with many different functions and links
+
+1 models folder
+    1 index file
+        This serves a dual purpose
+            Links the Models to my controllers
+            Creates a Schema/table in the database if it is missing
+
+1 db folder
+    1 dbConnect file
+        Creates a 'sequelize instance'... links to the database using sequelize
+        Links to the rest of the backend through my Models... these models are called in the models/index.js and the controllers
+
+-----------------------------------------------------------------------------------------------
+What I don't have/know
+-----------------------------------------------------------------------------------------------
+
+There is a missing link that probably needs to be a services folder
+    What is it's direct purpose and how do I know what to put as a service and what to put as a controller
+        They are both business logic?
+
+Is it proper to organize my controllers how I have
+Same with the routers, one folder seems clean/organized and structured...
+    however how does it effect performance... 
+    how do even know if performance is affected or not
+
+-----------------------------------------------------------------------------------------------
+#############################   Summary of today's goals   ####################################
+-----------------------------------------------------------------------------------------------
+
+
+    1 Services/controllers
+    2 Controller structure
+    3 Router structure   #no it's fine it it's current form as per a few internet demos, add comments to explain
+
+    Final goal, form/password/username validation implemented\
+
+
+-----------------------------------------------------------------------------------------------
+Lessons from the internet
+-----------------------------------------------------------------------------------------------
+
+RE services
+        ' Services should strictly be used for business logic. 
+        Are you creating/manipulating a data structure, heavily modifying data you requested, or authenticating something? 
+        These are just a few examples of business logic you would want to extract into a service module.'
+
+
+Controller works with router to get Model info to frontend
+Service works with business logic
+    Are my controllers executing the appropriate function or do I need to move something to the service
+
+I need to use a service for
+    1 Login validation
+        Is this a valid username/password
+    2 Signup Validation
+        Does the necessary critera exist in the format it is meant to
+    3 Recipe Builder Validation
+        Same as above
+
+I hypothetically could use a service for my find recipe, but maybe sequelize eliminated to need to, 
+or it's just simply too simple an action in general with or without sequelize to need a service to find an item by PK

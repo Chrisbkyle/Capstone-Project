@@ -14,8 +14,8 @@ router.post('/recipebuilder', (req, res) => {
     controller.recipeController.addRecipes(req, res);
 })
 
-router.get('/login', (req, res) => {
-    controller.userController(req, res);
+router.post('/login', (req, res) => {
+    controller.userController.getUsers(req, res);
 });
 
 router.post('/signup', (req, res) => {

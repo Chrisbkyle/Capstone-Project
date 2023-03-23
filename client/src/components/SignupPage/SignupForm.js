@@ -28,9 +28,6 @@ export default function SignupForm() {
         setState(data)
     }
 
-    const testAlert = () => {
-        alert('hello')
-    }
 
     const handleSubmit = (e) => {
         e.preventDefault();

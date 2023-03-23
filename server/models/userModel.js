@@ -5,8 +5,8 @@ const sequelizeInstance = dbConnect.Sequelize;
 class users extends Model {}
 
 users.init({
-    username: { type: DataTypes.STRING, allowNull: false, required: true },
-    email: { type: DataTypes.STRING, allowNull: false, required: true, primaryKey: true },
+    username: { type: DataTypes.STRING, allowNull: false, required: true, primaryKey: true },
+    email: { type: DataTypes.STRING, allowNull: false, required: true },
     password: { type: DataTypes.STRING, allowNull: false, required: true },
     fName: { type: DataTypes.STRING, allowNull: true, required: false },
     lName: { type: DataTypes.STRING, allowNull: true, required: false },
