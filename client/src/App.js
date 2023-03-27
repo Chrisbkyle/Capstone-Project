@@ -21,14 +21,13 @@ function App() {
       <Route path='/' element={<HeaderSidenav />}>
   
           <Route path='/' element={<MainPage />} />
+
+          <Route path='/recipe_builder' element={<RecipeBuilder />} />
           
           <Route path='/recipe_select' element={<RecipeTable sortConfig={{ sortBy: 'recipe', direction: 'ascending' }} />} />
             
           <Route path='/recipe_page/:id' element={<RecipePage />} />
-
-          <Route path='/recipe_builder' element={<RecipeBuilder />} />
           
-
         </Route>
       {/* </Route> */}
 

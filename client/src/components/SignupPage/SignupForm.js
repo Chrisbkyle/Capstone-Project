@@ -13,10 +13,7 @@ export default function SignupForm() {
     const [state, setState] = useState({
         username: '',
         password: '',
-        fName: '',
-        lName:'',
-        email:'',
-        restaurant:''
+        email:''
         }
     )
 
@@ -36,74 +33,66 @@ export default function SignupForm() {
             alert(response)
         });
     }
+    const [isFormInvalid, setIsFormInvalid] = useState(false);
+
+    const validate = values => {
+      if (values.apiKey !== "") {
+        setIsFormInvalid(false);
+      } else {
+        setIsFormInvalid(true);
+      }
+    };
+
 
     return(
         <div style={{marginTop: '2rem'}}>
+            <form onSubmit={handleSubmit}>
             <Stack direction='column' spacing={2}>
-                <TextField 
+                <TextField  
+                required 
                 name='username' 
                 placeholder='Input User Name' 
                 onChange={event => handleChange(event)}
                 value={state.username}
                 type='text'
-                required
+                inputProps={{
+                    pattern: "^(?=.{5,}$)[a-zA-Z_]*[0-9]*$"
+                }}
+                helperText="Usernames muse be over 5 characters, it can only contain letters, numbers and _, numbers can only be at the end"
                 >
 
                 </TextField>
-                <TextField 
+                <TextField
+                required 
                 name='password' 
                 placeholder='Password' 
                 onChange={event => handleChange(event)}
                 value={state.password}
                 type='password'
+                inputProps={{
+                    pattern: "/(?=.*[a-z])(?=.*[0-9])(?=.*[a-zA-Z0-9_])(?=.*^[a-zA-Z])(?=.{5,})/i"
+                }}
+                helperText="Password must be longer than 5 characters, It must start with a letter and contain at least 1 number and special character "
                 hidden
-                required
                 >
 
                 </TextField>
-                <TextField 
-                name='fName' 
-                placeholder='First Name' 
-                onChange={event => handleChange(event)}
-                value={state.fName}
-                type='text'
-                required
-                >
 
-                </TextField>
                 <TextField 
-                name='lName'
-                placeholder='Last Name' 
-                onChange={event => handleChange(event)}
-                value={state.lName}
-                type='text'
                 required
-                >
-
-                </TextField>
-                <TextField 
                 name='email' 
                 placeholder='Email' 
                 onChange={event => handleChange(event)}
                 value={state.email}
-                type='email'
-                required
+                type='email'   
                 >
 
                 </TextField>
-                <TextField 
-                name='restaurant' 
-                placeholder='Restaurant' 
-                onChange={event => handleChange(event)}
-                value={state.restaurant}
-                type='text'
-                >
-                
-                </TextField>
                 {/* <Link to='/login'> */}
-                    <BlankButton type='submit' onClick={handleSubmit}>Sign Up!</BlankButton>
+                    <BlankButton type='submit' onClick={validate} onSubmit={handleSubmit}>Sign Up!</BlankButton>
                 {/* </Link> */}
             </Stack>
+            </form>
         </div>
     )
 

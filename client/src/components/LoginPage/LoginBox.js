@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { LoginBoxStyle, LoginFormContainer, LoginButton, LoginBoxTitle, LoginInput } from './loginStyles';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { TextField } from '@mui/material';
 
 
 export default function LoginBox() {
@@ -25,6 +24,13 @@ export default function LoginBox() {
         axios.post('http://localhost:3001/officechef/login/', state)
         .then((response) => {
             console.log(response)
+            if(response.data == 'Login Successful') {
+                window.location = '/'
+            } else if (response.data == 'Username not found') {
+                alert('Username not found')
+            } else if(response.data == 'Password not found') {
+                alert('Password not found')
+            } 
         })
     }
     return (
@@ -37,6 +43,8 @@ export default function LoginBox() {
                     <form>
                         <label>
                             <LoginInput 
+                            required
+                            pattern='^(?=.{5,}$)[a-zA-Z]*\d*$'
                             type='text'
                             name='username'
                             value={state.username}
@@ -47,6 +55,8 @@ export default function LoginBox() {
 
                         <label>
                             <LoginInput 
+                            required
+                            pattern='(?=.*[a-z])(?=.*[0-9])(?=.*\W)(?=.*^[A-Za-z])(?=.{5,})'
                             type='password' 
                             name='password'
                             value={state.password}

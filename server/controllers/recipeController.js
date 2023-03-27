@@ -1,4 +1,5 @@
 const Models = require('../models')
+const service = require('../services/recipeServices')
 
 const getRecipes = (req, res) => {
     Models.Recipes.findAll({attributes: ['recipe', 'station', 'dish', 'createdAt']}).then(function (data) {
@@ -19,16 +20,21 @@ const getSpecificRecipe = (req, res) => {
 }
 
 const addRecipes = (req, res) => {
-    Models.Recipes.create({
-        recipe: req.body.recipe, 
-        ingredients: req.body.ingredients, 
-        directions:req.body.directions, 
-        yield: req.body.yield, dish: 
-        req.body.dish, station: 
-        req.body.station
-    }).catch(err => {
+    try {
+        if (service.validateRecipeForm(req.body) == false ) {
+            res.send({ result: 400, message:"Recipe form unable to submit" })
+        } else {
+        Models.Recipes.create({
+            recipe: req.body.recipe, 
+            ingredients: req.body.ingredients, 
+            directions:req.body.directions, 
+            yield: req.body.yield, dish: 
+            req.body.dish, station: 
+            req.body.station}
+        )}
+    } catch {(err) => {
         throw err
-    })
+    }}
 }
 
 module.exports = {

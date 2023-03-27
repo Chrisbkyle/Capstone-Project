@@ -1,13 +1,16 @@
 const Models = require('../models')
-const { checkPwdandUser } = require('../services/userServices.js');
+const service = require('../services/userServices')
 
 function getUsers(req, res) {
     Models.Users.findByPk(req.body.username)
     .then(data => {
-        if (req.body.password != data.dataValues.password) {
-            res.send('Password incorrect')
+        if (!data) {
+            res.send({result: 400, message: 'Username not found'})
+        }
+        else if (req.body.password != data.dataValues.password) {
+            res.send({result: 400, message:'Password not found'})
         } else {
-            res.redirect('http://localhost:3000/')
+            res.status({result: 200, message: 'Login Successful'})
         }
     }).catch((err) => {
         console.log(err);
@@ -15,12 +18,20 @@ function getUsers(req, res) {
 }
 
 const addUser = (req, res) => {
-    console.log(req.body)
-    Models.Users.create(req.body)
-    .catch(err => {
-        throw err
-    })
+    try {
+        if (service.validateUserForm(req.body) == false) {
+            res.send({result: 400, message: 'Form invalid'})
+        } else {
+            res.send({result: 200, message: 'User Signed up'})
+            Models.Users.create(req.body)
+        }
+    } catch {(err) => {
+            throw err
+        }
+    }
 }
+
+
 
 module.exports = {
     getUsers,

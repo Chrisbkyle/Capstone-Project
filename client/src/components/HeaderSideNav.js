@@ -45,7 +45,7 @@ export default function HeaderSidenav() {
   return (
     <div>
     <Box sx={{ flexGrow: 1,  }} >
-      <AppBar position="fixed" sx={{backgroundColor:"#C36A2D", color:"black"}}>
+      <AppBar position="absolute" sx={{backgroundColor:"#C36A2D", color:"black"}}>
         <Toolbar>
         <IconButton
             color="inherit"

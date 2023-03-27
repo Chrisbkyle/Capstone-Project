@@ -1,6 +1,6 @@
 import '../App.css'
 import React, { useState, useEffect } from 'react';
-import sortTableData from './RecipeTable/SortTableData';
+import sortTableData from './RecipeTable/Elements/SortTableData';
 import { headCells } from './RecipeTable/testObjects';
 import { Table, TableHeaderRow, TableHeaderContent, TableContent, TableCell, TableContainer, TableCellHeader, BlankButton } from './styledComponents';
 import SortButton from './RecipeTable/SortButton';

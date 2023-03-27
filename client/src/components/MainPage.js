@@ -17,7 +17,7 @@ export default function () {
 
             <MainPageBox />
 
-            <BackgroundGrid />
+            {/* <BackgroundGrid /> */}
 
             {/* <Footer /> */}
         </div>

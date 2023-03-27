@@ -121,3 +121,10 @@ main
         then signup page, make sure only approved information is submitted
         then recipe builder, same as above.... plan out what requirements are and what information you think you need in a seperate document
         
+------------------------------------------------------------------------------------------
+March 24rd 3:30am
+------------------------------------------------------------------------------------------
+dev
+
+    started backend fix, lots to do
+    focus on login validation

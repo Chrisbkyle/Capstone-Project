@@ -1,8 +1,5 @@
 import React from 'react';
-import Footer from './Footer';
-import HeaderSidenav from './HeaderSideNav';
 import RecipeForm from './RecipeBuilder/RecipeForm';
-import styled from 'styled-components';
 import { FalseHeader, RecipeFormContainer, RecipeBuilderTitle } from './styledComponents';
 
 

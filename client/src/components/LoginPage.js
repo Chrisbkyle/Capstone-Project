@@ -14,7 +14,7 @@ return  (
 
         <LoginBox />
 
-        <BackgroundGrid />
+        {/* <BackgroundGrid /> */}
 
     </div>
     )
