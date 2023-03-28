@@ -128,3 +128,16 @@ dev
 
     started backend fix, lots to do
     focus on login validation
+
+
+------------------------------------------------------------------------------------------
+March 28rd 2:30am
+------------------------------------------------------------------------------------------
+main
+
+    form validation done,
+        signup and recipe builder fully functioning
+        services added for server side validation
+        other validation added to both client side and model
+    
+    next tasks, add delete button, edit button and style filter on recipe table

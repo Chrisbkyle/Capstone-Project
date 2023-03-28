@@ -9,7 +9,43 @@ import TableTitle from './RecipeTable/TableTitle';
 import { Link } from 'react-router-dom';
 import { FalseHeader } from './styledComponents';
 import FilterListIcon from '@mui/icons-material/FilterList';
+import styled from 'styled-components';
 
+
+const FilterDisplay = styled.div`
+    margin-top:4px;
+    background-color: #EADCA6; 
+    box-shadow: 0px 2px lightgrey;
+    height: 3.5rem;
+`
+const FilterFlexItem = styled.div`
+    display: flex;
+    justify-content: center;
+    width:33%;
+    border: 3px outset #EADCA6;
+`
+const FilterSelect = styled.select`
+    width: 50%;
+    font-size: 1rem;
+    padding: .5rem;
+    margin: .25rem;
+    background-color: #EADCA6;
+    border: 1px solid black;
+    border-bottom: 2px solid black;
+    border-radius: 4px;
+    box-shadow: 2px 2px lightgrey;
+`
+const FilterSearch = styled.input`
+    width: 50%;
+    font-size: 1rem;
+    padding: .5rem;
+    margin: .25rem;
+    background-color: #EADCA6;
+    border: 1px solid black;
+    border-bottom: 2px solid black;
+    border-radius: 4px;
+    box-shadow: 2px 2px lightgrey;
+`
 
 
 const RecipeTable = ({ sortConfig }) => {
@@ -35,6 +71,7 @@ const RecipeTable = ({ sortConfig }) => {
         const [rowsPerPage, setRowsPerPage] = React.useState(5);
         const [page, setPage] = React.useState(0);
         const [filterText, setFilterText] = useState('');
+        const [filterDisplay, setFilterDisplay] = useState(false)
   
 
     //function for the Sort buttons
@@ -52,71 +89,63 @@ const RecipeTable = ({ sortConfig }) => {
     };
     
     const handleChangeRowsPerPage = (event) => {
-        setRowsPerPage(parseInt(event.target.value, 10));
+        setRowsPerPage(parseInt(event.target.value, 5));
         setPage(0);
     };
 
- 
+    //Filter data functions
     const filteredData = items.filter(row =>
         Object.values(row).some(value =>
           value.toLowerCase().toString().includes(filterText.toLowerCase())
       )
     );
 
-    const pop = () => {
-        alert('pop')
+    const toggleFilterDisplay = () => {
+        setFilterDisplay(current => !current)
+    }
+    const handleSearchChange = (e) => {
+        setFilterText(e.target.value)
     }
 
+
+    
+
+// useEffect(() => {
+//     console.log('search value was changed')
+// }, [filterText])
     return (
         <div>
             <FalseHeader />
             <TableContainer>
-
-                <TableTitle />
-                <ul>
-                    <li><BlankButton><FilterListIcon></FilterListIcon></BlankButton></li>
-                    <li>
-                        <div style={{height:'200px', width: '300px', backgroundColor:'pink', position:'absolute', right: '0', marginRight: '3rem'}}>
-                            <ul>
-                                <li>
-                                    <select
-                                    onChange={e => setFilterText(e.target.value)}>
-                                        <option value=''>Filter Station </option>
-                                        {items.map((item) =>
-                                        <option>{item.station}</option>
-                                        )}
-                                    </select>
-                                </li>
-                                <li>
-                                    <select
-                                    onChange={e => setFilterText(e.target.value)}>
-                                        <option value=''>Filter Dish</option>
-                                        {items.map((item) =>
-                                        <option>{item.dish}</option>
-                                        )}
-                                    </select>
-                                </li>
-                                <li>
-                                    <TextField
-                                    variant='filled'
-                                    onChange={e => setFilterText(e.target.value)}
-                                    sx={{
-                                        "& .MuiFormLabel-root": {
-                                            color: 'black'
-                                        },
-                                        "& .MuiFormLabel-root.Mui-focused": {
-                                            color: 'black'
-                                        },
-                                        "& .MuiInputBase-root::after": {
-                                            borderBottom: '2px solid black'
-                                        }
-                                    }}>
-                                    </TextField>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
+            <TableTitle />
+                <BlankButton onClick={toggleFilterDisplay}><FilterListIcon></FilterListIcon></BlankButton>
+                <FilterDisplay style={{display: filterDisplay ? 'flex' : 'none'}}>
+                    <FilterFlexItem>
+                    <FilterSearch
+                        value={filterText}
+                        placeholder= 'Search'
+                        onChange={handleSearchChange}>
+                    </FilterSearch>
+                    </FilterFlexItem>
+                    <FilterFlexItem>
+                        <FilterSelect 
+                            onChange={e => setFilterText(e.target.value)}>
+                            <option style={{borderBottom: '1px solid black'}}>Filter Dish</option>
+                            {items.map((item) =>
+                            <option>{item.dish}</option>
+                            )}
+                        </FilterSelect>
+                    </FilterFlexItem>
+                    <FilterFlexItem>
+                    <FilterSelect
+                        onChange={e => setFilterText(e.target.value)}>
+                            <option value=''>Filter Station </option>
+                               {items.map((item) =>
+                            <option>{item.station}</option>
+                            )}
+                        </FilterSelect>
+                    </FilterFlexItem>
+                </FilterDisplay>                    
 
 
                 <Table>

@@ -29,9 +29,9 @@ router.post('/signup', (req, res) => {
 
 
 
-router.get('/ingredients', (req, res) => {
-    controller.ingredientsController(req, res);
-});
+// router.get('/ingredients', (req, res) => {
+//     controller.ingredientsController(req, res);
+// });
 
 
 module.exports = 

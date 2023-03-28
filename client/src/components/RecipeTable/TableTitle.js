@@ -1,6 +1,6 @@
 import { RecipeTableTopBar } from '../styledComponents'
 import React from 'react';
-
+import FilterOptions from './FilterOptions';
 
 
 export default function TableTitle() {

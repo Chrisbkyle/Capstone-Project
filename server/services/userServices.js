@@ -3,8 +3,12 @@ const Models = require('../models')
 
 
 exports.validateUserForm = (obj) => {
+    const user = Models.Users.findByPk(obj.username);
+    console.log(user)
+    console.log(user.username)
     const userValid = /^(?=.{5,}$)[a-zA-Z_]*\d*$/;
-    const passwordValid = /(?=.*[a-z])(?=.*[0-9])(?=.*[a-zA-Z0-9_])(?=.*^[a-zA-Z])(?=.{5,})/i;
+    const passwordValid = /(?=.*[a-z])(?=.*[0-9])(?=.*\W)(?=.*^[A-Za-z])(?=.{5,})/i;
+    console.log(obj.username)
     Object.values(obj).map(item => console.log(typeof(item)))
     if (userValid.test(obj.username) != true) {
         console.log('Username does not match required criteria')
@@ -21,7 +25,7 @@ exports.validateUserForm = (obj) => {
     } else if (!obj.username || !obj.password|| !obj.email) {
         console.log("Please complete all fields for signup")
         return false;
-    } else if (Models.Users.findByPk(obj.username) == true) {
+    } else if (user.username === obj.username) {
         console.log("Username already in use")
         return false;
     } else {
@@ -31,8 +35,4 @@ exports.validateUserForm = (obj) => {
 }
 
 
-// find username that equals req.body.username
-// get password where username = req.body.username
-// if req.body.password === password where req.body.username === username all is good life is happy
-// else if req.body.password != pass where req.body.username === username life is terrible you got the wrong password why are you like this you absolute failure
-// else if req.body.username != exist password doesnt exist
+//duplicate username needs fixing
