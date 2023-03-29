@@ -1,23 +1,8 @@
 User info test
---------------------------------------------------------------------------------------------------------------
-Working signup examples ######################################################################################
---------------------------------------------------------------------------------------------------------------
-Username: ChefRemy                  sam_jones                   john1234
-Password: Ling!u1n!isAfra4d         S@mP@ssw0rd1                Pa$$w0rd1
-Email   : chef@gusteaus.co.fr       sam.jones@example.com       john1234@example.com
---------------------------------------------------------------------------------------------------------------
-For Postman:
- {"username":"ChefRemy",            
-  "password":"Ling!u1n!isAfra4d",
-  "email":"chef@gusteaus.co.fr"}
-
- {"username":"john1234",
-  "password":"Ling!u1n!isAfra4d",
-  "email":"john1234@example.com"}
-
- {"username":"sam_jones",
-  "password":"S@mP@ssw0rd1",
-  "email":"sam.jones@example.com"}
+Enter either manually while using the app 
+or 
+by using postman @ http://localhost:3001/officechef/signup
+            
 
 --------------------------------------------------------------------------------------------------------------
 Username too short ###########################################################################################
@@ -31,6 +16,8 @@ For Postman:
   "password":"P4$$W0rking",
   "email":"testingdata@test.com"}
 
+  Result: Test Successful
+
 --------------------------------------------------------------------------------------------------------------
 Password too short ###########################################################################################
 --------------------------------------------------------------------------------------------------------------
@@ -43,6 +30,8 @@ For Postman:
   "password":"7e$7",
   "email":"testingdata@test.com"}
 
+  Result: Test Successful
+
 --------------------------------------------------------------------------------------------------------------
 Special Characters in Username ###############################################################################
 --------------------------------------------------------------------------------------------------------------
@@ -54,6 +43,8 @@ For Postman:
  {"username":"!nval!d",
   "password":"P4$$W0rking",
   "email":"testingdata@test.com"}
+
+  Result: Test Successful
 
 --------------------------------------------------------------------------------------------------------------
 Password does not fit criteria ###############################################################################
@@ -75,6 +66,11 @@ For Postman:
    "password":"Testing",
    "email":"testingdata@test.com"}
 
+   Result
+    1.Test Successful
+    2. Test Successful
+    3. Test Successful
+
 --------------------------------------------------------------------------------------------------------------
 Email does not fit criteria ##################################################################################
 --------------------------------------------------------------------------------------------------------------
@@ -87,9 +83,55 @@ For Postman:
   "password":"P4$$W0rking",
   "email":"email@notworking"}
 
+  Result: Incorrectly submitted, email validation only clientside, not server side
+--------------------------------------------------------------------------------------------------------------
+Working signup examples ######################################################################################
+--------------------------------------------------------------------------------------------------------------
+Username: ChefRemy                  sam_jones                   john1234
+Password: Ling!u1n!isAfra4d         S@mP@ssw0rd1                Pa$$w0rd1
+Email   : chef@gusteaus.co.fr       sam.jones@example.com       john1234@example.com
+--------------------------------------------------------------------------------------------------------------
+For Postman:
+ {"username":"ChefRemy",            
+  "password":"Ling!u1n!isAfra4d",
+  "email":"chef@gusteaus.co.fr"}
 
+ {"username":"john1234",
+  "password":"S@mP@ssw0rd1",
+  "email":"john1234@example.com"}
 
+ {"username":"sam_jones",
+  "password":"S@mP@ssw0rd1",
+  "email":"sam.jones@example.com"}
 
+  Result:
+    1. Test Successful
+    2. Test Successful
+    3. Test Successful
+--------------------------------------------------------------------------------------------------------------
+Test is username exists Double Entry #########################################################################
+--------------------------------------------------------------------------------------------------------------
+Username: ChefRemy                  sam_jones                   john1234
+Password: Ling!u1n!isAfra4d         S@mP@ssw0rd1                Pa$$w0rd1
+Email   : chef@gusteaus.co.fr       sam.jones@example.com       john1234@example.com
+--------------------------------------------------------------------------------------------------------------
+For Postman:
+ {"username":"ChefRemy",            
+  "password":"Ling!u1n!isAfra4d",
+  "email":"chef@gusteaus.co.fr"}
+
+ {"username":"john1234",
+  "password":"S@mP@ssw0rd1",
+  "email":"john1234@example.com"}
+
+ {"username":"sam_jones",
+  "password":"S@mP@ssw0rd1",
+  "email":"sam.jones@example.com"}
+
+  Result:
+    1. Test Successful
+    2. Test Successful
+    3. Test Successful
 
 
 
@@ -98,7 +140,73 @@ For Postman:
 
 Recipe Page Testing
 
-Hard as cannot test in postman with layout of 'ingredients' and 'directions'
+Hard as cannot test in postman with layout of 'ingredients' and 'directions' with the JSON object as a value each property
+
+    Test Client side,  
+        required fields are
+            Recipe Name     #Working
+            Ingredients:    #Working
+            Directions:     #Working
+
+        When empty, form not sending, this uses the 'required' option on input
+
+        Testing without 'required' component to test api,
+--------------------------------------------------------------------------------------------------------------        
+Test:
+    Submit empty page
+Result:
+    page routes away from recipe builder without recording a recipe
+Desired Result:
+    Error on page, does not route out of page
+Fix:
+    API not testing properly,
+        reason: Poorly constructed, did not contain promise or proper error code/status
+    Reconstucted to mirror User entry API, promise added, executing properly and send error code/response to front end
+--------------------------------------------------------------------------------------------------------------
+Test:
+    Submit with only one required field
+Result:
+    recipe submits
+Desired Result:
+    Error message, recipe can't submit
+Fix:
+    API not testing properly,
+        reason: Poorly constructed, did not contain promise or proper error code/status
+    Reconstucted to mirror User entry API, promise added, executing properly and send error code/response to front end
+
+--------------------------------------------------------------------------------------------------------------
+Test:
+    Submit with multiple ingredients/or directions open, but with no content
+Result:
+    recipe submits
+Desired Result:
+    Error message, recipe won't submit
+Fix:
+    .....how to detect this issue as it is not technically empty
+    1. console.log on the backend, submit the recipe again and see what prints
+    What's happening...
+        Test is not working as it should, testing is recipe, ingredients and directions are empty, but they are pre populated with
+        data already
+    
+    Solution is using JSON.parse on back end and checking the ingredients and directions directly
+    Write the code, however rely on 'required' field
+    Rely on required field
+
+    Fixed Code
+-------------------------------------------------------------------------------------------------------------- 
+Test:
+    Upper character limit
+Result:
+    recipe:         Working
+    ingredients:    Working
+    direction:      Working
+    yield:          Working
+    station:        Working
+    dish:           Not Working
+                        typo in code: Fixed
+
+
+
 
 --------------------------------------------------------------------------------------------------------------
 Working recipe examples ######################################################################################
@@ -151,47 +259,28 @@ dish:                 Kingfish Crudo
 
 --------------------------------------------------------------------------------------------------------------
 For Postman:
-{recipe:"test recipe",
-ingredients:
-    `[{ingredient:"Fennel",
-    quantity: "2 bulbs"},
-    {ingredient:"Apple",
-    quantity: "2"},
-    {ingredient:"Celery",
-    quantity: "4"},
-    {ingredient:"Grapeseed Oil",
-    quantity: "200mL"},
-    {ingredient:"Xantam Gum",
-    quantity: "1/2tsp"}]`,
-directions: 
-    `[{step:"1",
-    direction:"Blend Apple, Fennel, Celery, Lemon juice together until completely pureed"},
-    {step:"2",
-    direction:"Strain mix through a fine strainer to separate juice from pulp"},
-    {step:"3",
-    direction:"Return juice to blender and slowly stream in grapeseed oil using a small amount of Xantam gum to bind the mix"},
-    {step:"4",
-    direction:"Season with salt and chardonnay vinegar"}]`,
-yield:"24",
-station:"Larder",
-dish:"Kingfish Crudo"}
-
-
-
-
-
-
-
-
-
-
-{"recipe":"",
+{"recipe":"test recipe",
 "ingredients":
-    [{"ingredient":"Fennel",
-    "quantity": "2 bulbs"}],
+    "[{'ingredient':'Fennel',
+    'quantity': '2 bulbs'},
+    {'ingredient':'Apple',
+    'quantity': '2'},
+    {'ingredient':'Celery',
+    'quantity': '4'},
+    {'ingredient':'Grapeseed Oil',
+    'quantity': '200mL'},
+    {'ingredient':'Xantam Gum',
+    'quantity': '1/2tsp'}]",
 "directions": 
-    [{"step":"",
-    "direction":""}],
-"yield":"",
-"station":"",
-"dish":""}
+    "[{'step':'1',
+    'direction':'Blend Apple, Fennel, Celery, Lemon juice together until completely pureed'},
+    {'step':'2',
+    'direction':'Strain mix through a fine strainer to separate juice from pulp'},
+    {'step':'3",
+    'direction':'Return juice to blender and slowly stream in grapeseed oil using a small amount of Xantam gum to bind the mix'},
+    {'step':'4',
+    'direction':'Season with salt and chardonnay vinegar'}]",
+"yield":"24",
+"station":"Larder",
+"dish":"Kingfish Crudo"}
+... not working in postman

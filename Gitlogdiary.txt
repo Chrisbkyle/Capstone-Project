@@ -153,3 +153,24 @@ main
 
     next test validation more,
     delete/edit button
+
+
+------------------------------------------------------------------------------------------
+March 29th 9pm
+------------------------------------------------------------------------------------------
+main
+
+    All pages funtioning
+    Delete button added to recipe page
+    Everything routing properly
+    Basic Styling done
+    Unit Testing for Signup/Login complete, data located in a txt file
+
+    next
+        Unit testing for recipe database
+        Edit for responsiveness
+        Proof-read:
+            Update documentation in code,
+            edit code location and layouts
+            organize styled components
+            

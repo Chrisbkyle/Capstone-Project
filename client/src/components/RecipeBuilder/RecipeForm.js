@@ -28,7 +28,8 @@ export default function RecipeForm() {
                 dish: dish
             }
         )
-        .then(window.location = '/app/recipe_select')
+        .then(response => console.log(response))
+        // .then(window.location = '/app/recipe_select')
         .catch(err =>
             console.log(err));
       };
@@ -69,7 +70,7 @@ export default function RecipeForm() {
                 return (
                 <Stack direction="row" spacing={1}>                    
                         <TextField
-                        required
+                        // required
                         fullWidth
                         variant='filled'
                         label='Ingredients'
@@ -106,7 +107,7 @@ export default function RecipeForm() {
                             }
                             }}>
                         </TextField>
-                        <Select
+                        {/* <Select
                             labelId="uom"
                             id="uom"
                             value={ingredients.unitOfMeasure}
@@ -134,7 +135,7 @@ export default function RecipeForm() {
                             value={'lbs'}>
                                 lbs
                             </MenuItem>
-                        </Select>
+                        </Select> */}
                         <BlankButton style={{height: '2rem', width:'2rem', borderRadius:'100%', margin:'auto 8px'}}
                         type='button'
 
