@@ -11,7 +11,7 @@ const FalseHeader = styled.div`
 
 
 
-const LoginBoxStyle = styled.div`
+const LoginFormContainer = styled.div`
     width: 350px;
     height: 300px;          
     position: absolute;
@@ -31,7 +31,7 @@ const LoginBoxTitle = styled.div`
     padding-bottom: 1rem;
 `
 
-const LoginFormContainer = styled.div`
+const LoginInputContainer = styled.div`
     margin-top: 1.5rem;
     margin-bottom: auto;
 
@@ -208,7 +208,7 @@ const FooterStyled = styled.div`
 
 export {
     FalseHeader,
-    LoginBoxStyle,
+    LoginInputContainer,
     LoginBoxTitle,
     LoginFormContainer,
     LoginInput,

@@ -141,3 +141,15 @@ main
         other validation added to both client side and model
     
     next tasks, add delete button, edit button and style filter on recipe table
+
+
+------------------------------------------------------------------------------------------
+March 28rd 8pm
+------------------------------------------------------------------------------------------
+main
+
+    form validation fixed
+    table filer done
+
+    next test validation more,
+    delete/edit button

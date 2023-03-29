@@ -172,7 +172,7 @@ const RecipeTable = ({ sortConfig }) => {
 
                             return (
 
-                                <Link className='recipeTableLink'to={'/recipe_page/' + item.recipe}>
+                                <Link className='recipeTableLink'to={'/app/recipe_page/' + item.recipe}>
 
                                 {/* <TableRow> */}
 

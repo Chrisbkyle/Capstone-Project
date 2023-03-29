@@ -4,7 +4,7 @@ import styled from 'styled-components'
 const SignupHead = styled.div`
     font-size: 3rem;
     text-align: center;
-    border-bottom: 2px solid lightgrey;
+    border-bottom: 2px solid black;
 `
 
 export default function SignupTitle() {

@@ -1,0 +1,22 @@
+1 Route straight to login page #Done
+2 Add Delete Button  #Done
+3 Unit Testing
+4 Responsive pages
+5 touch up styles
+
+
+BONUS
+
+1 render background photos for login/signup/main page
+2 admin/user support
+3 edit function
+
+
+
+
+Login Page      Basic: #Done            Responsive: Not Done
+Signup Page     Basic: #Done            Responsive: Not Done
+Main Page       Basic: #Done            Responsive: Not Done
+Recipe Table    Basic: #Done            Responsive: Not Done
+Recipe Builder  Basic: #Done            Responsive: Not Done
+Recipe Page     Basic: #Done            Responsive: Not Done

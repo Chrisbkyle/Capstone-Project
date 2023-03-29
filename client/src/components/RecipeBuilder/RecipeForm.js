@@ -27,9 +27,10 @@ export default function RecipeForm() {
                 station: station,
                 dish: dish
             }
-        ).then((response) => {
-            console.log(response)
-        });
+        )
+        .then(window.location = '/app/recipe_select')
+        .catch(err =>
+            console.log(err));
       };
 
 

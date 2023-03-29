@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { TextField, Stack } from '@mui/material';
-import { BlankButton } from '../styledComponents';
+import { LoginButton } from '../styledComponents';
 import { Link } from 'react-router-dom';
 import axios from 'axios'
-
-
 
 
 
@@ -38,15 +36,7 @@ export default function SignupForm() {
             console.log(err)
         )
     }
-    const [isFormInvalid, setIsFormInvalid] = useState(false);
 
-    // const validate = values => {
-    //   if (values.apiKey !== "") {
-    //     setIsFormInvalid(true);
-    //   } else {
-    //     setIsFormInvalid(true);
-    //   }
-    // };
     const passValid = new RegExp('/(?=.*[a-z])(?=.*[0-9])(?=.*\W)(?=.*^[A-Za-z])(?=.{5,})/i')
 
     return(
@@ -73,7 +63,10 @@ export default function SignupForm() {
                 placeholder='Password' 
                 onChange={event => handleChange(event)}
                 value={state.password}
-                // type='password'
+                type='password'
+                // inputProps={{
+                //     pattern: '/(?=.*[a-z])(?=.*[0-9])(?=.*\W)(?=.*^[A-Za-z])(?=.{5,})/i'
+                // }}                
                 // inputProps={{
                 //     pattern: {passValid}
                 // }}
@@ -87,14 +80,16 @@ export default function SignupForm() {
                 name='email' 
                 placeholder='Email' 
                 onChange={event => handleChange(event)}
-                // value={state.email}
+                value={state.email}
                 type='email'   
                 >
 
                 </TextField>
+                <div>
                 {/* <Link to='/login'> */}
-                    <BlankButton type='submit' onSubmit={handleSubmit}>Sign Up!</BlankButton>
+                    <LoginButton type='submit' onSubmit={handleSubmit}>Sign Up!</LoginButton>
                 {/* </Link> */}
+                </div>
             </Stack>
             </form>
         </div>

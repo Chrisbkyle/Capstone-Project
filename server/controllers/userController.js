@@ -3,23 +3,19 @@ const service = require('../services/userServices')
 
 
 
-
-
-
-
-
 async function getUsers(req, res) {
     const user = await Models.Users.findByPk(req.body.username);
-      console.log(user.password)
-      if (user === null) {
+      if (!req.body.username || !req.body.password) {
+        res.send('Please Complete all fields for login')
+      } else if (user === null) {
         res.send('Username not found')
       } else if (req.body.password != user.password) {
         res.send('Password not found')  
       } else {
-        res.status(200).send('Login Successful')
+        res.send('Login Successful')
       }
-    }
-    
+}
+
 async function addUser(req, res)  {
         const user = await Models.Users.findByPk(req.body.username);
         const userValid = /^(?=.{5,}$)[a-zA-Z_]*\d*$/;

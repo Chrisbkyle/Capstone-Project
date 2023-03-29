@@ -26,29 +26,15 @@ const RecipePageYield = styled.div`
     margin: 0rem 1rem;
     padding-left: 1rem;
 `
-const RecipePageIngredients = styled.div`
+const RecipePageFlex = styled.div`
     display: flex;
     margin: 1rem;
 `
-const RecipePageDirections = styled.div`
-    display: flex;
-    margin: 1rem;
-`
-const IndividualIngredient = styled.div`
+const RecipePageLine = styled.div`
     margin: 0rem 1rem;
 `
-const IngredientsQuantity = styled.div`
-    margin: 0rem 1rem;
-`
-const IngredientsUom = styled.div`
-    margin: 0rem 1rem;
-`
-const DirectionStep = styled.div`
-    margin: 0rem 1rem;
-`
-const IndividualDirection = styled.div`
-    margin: 0rem 1rem;
-`
+
+
 export default function RecipePage() {
 
 useEffect(() => {
@@ -57,8 +43,6 @@ useEffect(() => {
             {recipename: id}
         })
         .then((response) => {
-            // console.log('backend response');
-            // console.log(response.data)
             setState(response.data); 
             setDirections(JSON.parse(response.data.directions))
             setIngredients(JSON.parse(response.data.ingredients))
@@ -66,6 +50,22 @@ useEffect(() => {
             console.log(err)
         })
 }, []);
+const deleteWarning = (e) => { 
+    e.preventDefault()
+    if(window.confirm("Are you sure you want to delete the recipe?")) {
+        deleteHandler(id)
+    }
+}
+const deleteHandler = (e) => {
+    console.log(e)
+    axios.delete('http://localhost:3001/officechef/recipedelete', {headers: {recipename: id},data: {recipe: e}})
+    .then(window.location = '/app/recipe_select')
+    .catch(err => {
+        console.log(err)
+    })
+}
+
+
 
     const [state, setState] = useState({})
     const [ingredients, setIngredients] = useState([{}])
@@ -84,35 +84,44 @@ useEffect(() => {
             <RecipeDisplayHolder>
                 <Stack direction='row'>
                     <RecipePageName>{state.recipe}</RecipePageName>
-                    <BlankButton style={{margin:'1rem 1rem 0 0', width: '6.5%', border:'3px outset lightgrey', boxShadow:'none'}}><DeleteIcon></DeleteIcon></BlankButton>
+                    <BlankButton 
+                    onClick={deleteWarning}
+                    // onClick={() => deleteHandler(id)}
+                    style={{
+                        margin:'1rem 1rem 0 0', 
+                        width: '6.5%', 
+                        border:'3px outset lightgrey', 
+                        boxShadow:'none'}}>
+                            <DeleteIcon></DeleteIcon>
+                    </BlankButton>
                 </Stack>
                 <RecipePageYield>Portion Yield: {state.yield}</RecipePageYield>
                 <div style={{border: '3px outset lightgrey', margin: '0rem 1rem'}}>
                     {ingredients.map((ingredient) => (
-                            <RecipePageIngredients>
-                                <IndividualIngredient>
+                            <RecipePageFlex>
+                                <RecipePageLine>
                                     {ingredient.ingredient}
-                                </IndividualIngredient>
-                                <IngredientsQuantity>
+                                </RecipePageLine>
+                                <RecipePageLine>
                                     {ingredient.quantity}
-                                </IngredientsQuantity>
-                                <IngredientsUom>
+                                </RecipePageLine>
+                                <RecipePageLine>
                                     {ingredient.unitOfMeasure}
-                                </IngredientsUom>
-                            </RecipePageIngredients>
+                                </RecipePageLine>
+                            </RecipePageFlex>
                         
                     ))}
                 </div>
                 <div style={{border: '3px outset lightgrey', margin: '0rem 1rem'}}>
                     {directions.map((direction) => (
-                            <RecipePageDirections>
-                                <DirectionStep>
+                            <RecipePageFlex>
+                                <RecipePageLine>
                                     {direction.step}
-                                </DirectionStep>
-                                <IndividualDirection>
+                                </RecipePageLine>
+                                <RecipePageLine>
                                     {direction.direction}
-                                </IndividualDirection>
-                            </RecipePageDirections>
+                                </RecipePageLine>
+                            </RecipePageFlex>
                     ))}
                 </div>
             </RecipeDisplayHolder>

@@ -8,34 +8,47 @@ import { Route, Routes } from 'react-router-dom'
 import HeaderSidenav from './components/HeaderSideNav';
 import NotFound from './components/NotFound';
 import SignupPage from './components/SignupPage';
+import BackgroundGrid from './components/LoginBackground';
 
 function App() {
   return (
-    <Routes className="App">
+    <div className="App">
+      {/* <Routes>
 
+        <Route path='/' element={<BackgroundGrid />}></Route>
 
-      <Route path='/login' element={<LoginPage />} />
-      
-      <Route path='/signup' element={<SignupPage />} />
+        {/* <Route path='/signup' element={<BackgroundGrid />}></Route> */}
 
-      <Route path='/' element={<HeaderSidenav />}>
-  
-          <Route path='/' element={<MainPage />} />
+        {/* <Route path='/app' element={<BackgroundGrid />}></Route>
 
-          <Route path='/recipe_builder' element={<RecipeBuilder />} />
-          
-          <Route path='/recipe_select' element={<RecipeTable sortConfig={{ sortBy: 'recipe', direction: 'ascending' }} />} />
+      </Routes> */}
+
+      <Routes>
+
+        <Route path='/' element={<LoginPage />} />
+        
+        <Route path='/signup' element={<SignupPage />} />
+
+        <Route path='/app' element={<HeaderSidenav />}>
+    
+            <Route path='/app' element={<MainPage />} />
+
+            <Route path='/app/recipe_builder' element={<RecipeBuilder />} />
             
-          <Route path='/recipe_page/:id' element={<RecipePage />} />
-          
-        </Route>
-      {/* </Route> */}
+            <Route path='/app/recipe_select' element={<RecipeTable sortConfig={{ sortBy: 'recipe', direction: 'ascending' }} />} />
+              
+            <Route path='/app/recipe_page/:id' element={<RecipePage />} />
+            
+          </Route>
 
-      <Route path='*' element={<NotFound />}/>
 
-      {/* <Footer /> */}
+        <Route path='*' element={<NotFound />}/>
 
-    </Routes>
+
+
+
+      </Routes>
+    </div>
   );
 }
 

@@ -1,0 +1,197 @@
+User info test
+--------------------------------------------------------------------------------------------------------------
+Working signup examples ######################################################################################
+--------------------------------------------------------------------------------------------------------------
+Username: ChefRemy                  sam_jones                   john1234
+Password: Ling!u1n!isAfra4d         S@mP@ssw0rd1                Pa$$w0rd1
+Email   : chef@gusteaus.co.fr       sam.jones@example.com       john1234@example.com
+--------------------------------------------------------------------------------------------------------------
+For Postman:
+ {"username":"ChefRemy",            
+  "password":"Ling!u1n!isAfra4d",
+  "email":"chef@gusteaus.co.fr"}
+
+ {"username":"john1234",
+  "password":"Ling!u1n!isAfra4d",
+  "email":"john1234@example.com"}
+
+ {"username":"sam_jones",
+  "password":"S@mP@ssw0rd1",
+  "email":"sam.jones@example.com"}
+
+--------------------------------------------------------------------------------------------------------------
+Username too short ###########################################################################################
+--------------------------------------------------------------------------------------------------------------
+Username:   Test
+Password:   P4$$W0rking
+Email   :   testingdata@test.com
+--------------------------------------------------------------------------------------------------------------
+For Postman:
+ {"username":"Test",
+  "password":"P4$$W0rking",
+  "email":"testingdata@test.com"}
+
+--------------------------------------------------------------------------------------------------------------
+Password too short ###########################################################################################
+--------------------------------------------------------------------------------------------------------------
+Username:   ChefRemy
+Password:   7e$7
+Email   :   testingdata@test.com
+--------------------------------------------------------------------------------------------------------------
+For Postman:
+ {"username":"ChefRemy",
+  "password":"7e$7",
+  "email":"testingdata@test.com"}
+
+--------------------------------------------------------------------------------------------------------------
+Special Characters in Username ###############################################################################
+--------------------------------------------------------------------------------------------------------------
+Username:   !nval!d
+Password:   P4$$W0rking
+Email   :   testingdata@test.com
+--------------------------------------------------------------------------------------------------------------
+For Postman:
+ {"username":"!nval!d",
+  "password":"P4$$W0rking",
+  "email":"testingdata@test.com"}
+
+--------------------------------------------------------------------------------------------------------------
+Password does not fit criteria ###############################################################################
+--------------------------------------------------------------------------------------------------------------
+Username:   ChefRemy                    ChefRemy                ChefRemy                   
+Password:   Test1ng                     Test!ng                 Testing              
+Email   :   testingdata@test.com        testingdata@test.com    testingdata@test.com    
+--------------------------------------------------------------------------------------------------------------  
+For Postman:
+ {"username":"ChefRemy",
+  "password":"Test1ng",
+  "email":"testingdata@test.com"}
+
+  {"username":"ChefRemy",
+   "password":"Test!ng",
+   "email":"testingdata@test.com"}
+
+  {"username":"ChefRemy",
+   "password":"Testing",
+   "email":"testingdata@test.com"}
+
+--------------------------------------------------------------------------------------------------------------
+Email does not fit criteria ##################################################################################
+--------------------------------------------------------------------------------------------------------------
+Username:   ChefRemy
+Password:   P4$$W0rking
+Email   :   email@notworking
+--------------------------------------------------------------------------------------------------------------
+For Postman:
+ {"username":"ChefRemy",
+  "password":"P4$$W0rking",
+  "email":"email@notworking"}
+
+
+
+
+
+
+
+
+
+
+Recipe Page Testing
+
+Hard as cannot test in postman with layout of 'ingredients' and 'directions'
+
+--------------------------------------------------------------------------------------------------------------
+Working recipe examples ######################################################################################
+--------------------------------------------------------------------------------------------------------------
+
+recipe:                Fennel & Apple Gazpacho
+
+ingredients:           
+    ingredient:        Fennel
+    quantities:        2 bulbs
+
+ingredients:           
+    ingredient:        Apple
+    quantities:        1
+
+ingredients:           
+    ingredient:        Celery
+    quantities:        4
+
+ingredients:           
+    ingredient:        Lemon(Juiced)
+    quantities:        200mL
+
+ingredients:           
+    ingredient:        Grapeseed Oil
+    quantities:        1/2 tsp
+
+
+directions:
+    step:             1
+    direction:        Blend Apple, Fennel, Celery, Lemon juice together until completely pureed
+
+directions:
+    step:             2
+    direction:        Strain mix through a fine strainer to separate juice from pulp
+
+directions:
+    step:             3
+    direction:        Return juice to blender and slowly stream in grapeseed oil using a small amount of Xantam gum to bind the mix
+
+directions:
+    step:             4
+    direction:        Season with salt and chardonnay vinegar
+
+yield:                24
+
+station:              Larder
+
+dish:                 Kingfish Crudo
+
+--------------------------------------------------------------------------------------------------------------
+For Postman:
+{recipe:"test recipe",
+ingredients:
+    `[{ingredient:"Fennel",
+    quantity: "2 bulbs"},
+    {ingredient:"Apple",
+    quantity: "2"},
+    {ingredient:"Celery",
+    quantity: "4"},
+    {ingredient:"Grapeseed Oil",
+    quantity: "200mL"},
+    {ingredient:"Xantam Gum",
+    quantity: "1/2tsp"}]`,
+directions: 
+    `[{step:"1",
+    direction:"Blend Apple, Fennel, Celery, Lemon juice together until completely pureed"},
+    {step:"2",
+    direction:"Strain mix through a fine strainer to separate juice from pulp"},
+    {step:"3",
+    direction:"Return juice to blender and slowly stream in grapeseed oil using a small amount of Xantam gum to bind the mix"},
+    {step:"4",
+    direction:"Season with salt and chardonnay vinegar"}]`,
+yield:"24",
+station:"Larder",
+dish:"Kingfish Crudo"}
+
+
+
+
+
+
+
+
+
+
+{"recipe":"",
+"ingredients":
+    [{"ingredient":"Fennel",
+    "quantity": "2 bulbs"}],
+"directions": 
+    [{"step":"",
+    "direction":""}],
+"yield":"",
+"station":"",
+"dish":""}

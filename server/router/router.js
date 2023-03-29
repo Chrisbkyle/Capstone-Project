@@ -3,7 +3,7 @@ let router = express.Router();
 const controller = require('../controllers');
 
 
-// For the recipe databases
+// Recipe Routes
 
 router.get('/recipes', (req, res) => {
     controller.recipeController.getRecipes(req, res);
@@ -17,8 +17,11 @@ router.post('/recipebuilder', (req, res) => {
     controller.recipeController.addRecipes(req, res);
 })
 
-// Login/Signup info/databases
+router.delete('/recipedelete', (req, res) => {  
+    controller.recipeController.deleteRecipe(req, res);
+})
 
+// Login/Signup routes
 router.post('/login', (req, res) => {
     controller.userController.getUsers(req, res);
 });
@@ -28,10 +31,6 @@ router.post('/signup', (req, res) => {
 });
 
 
-
-// router.get('/ingredients', (req, res) => {
-//     controller.ingredientsController(req, res);
-// });
 
 
 module.exports = 

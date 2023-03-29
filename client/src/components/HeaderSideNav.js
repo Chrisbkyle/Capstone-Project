@@ -86,12 +86,10 @@ export default function HeaderSidenav() {
         </DrawerHeader>
         <Divider />
         <List>
-          {[{linkName: 'Home Page', linkRoute: '/'},
-            {linkName: 'Recipe Builder', linkRoute: '/recipe_builder'},
-            {linkName: 'Recipe List', linkRoute: '/recipe_select'},
-            {linkName: 'Prep Sheets', linkRoute: '/'},
-            {linkName: 'Inventory Sheets', linkRoute: '/'},
-            {linkName: 'Logout', linkRoute: '/login'}].map((text, index) => (
+          {[{linkName: 'Home Page', linkRoute: '/app'},
+            {linkName: 'Recipe Builder', linkRoute: '/app/recipe_builder'},
+            {linkName: 'Recipe List', linkRoute: '/app/recipe_select'},
+            {linkName: 'Logout', linkRoute: '/'}].map((text, index) => (
             <ListItem key={text.linkName} disablePadding>
               <Link to={text.linkRoute} style={{textDecoration:'none', color:'black', width: '100%'}}>
                 <ListItemButton>

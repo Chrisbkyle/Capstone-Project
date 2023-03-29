@@ -6,12 +6,15 @@ import SignupTitle from "./SignupPage/SignupTitle";
 
 
 const SignupFormHolder = styled.div`
-    margin: auto;
+    margin-top: 10%;
+    margin-left: auto;
+    margin-right:auto;
     width: 50%;
     border: 1px solid lightgrey;
     border-radius: 5px;
     box-shadow: 4px 4px lightgrey;
     padding: 3rem; 
+    background-color: rgba(226,194,117,.95);
 
 `
 
