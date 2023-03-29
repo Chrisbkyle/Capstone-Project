@@ -3,7 +3,7 @@ name: CI/CD
 # run the action whenever there is a commit to the main branch
 on:
   push:
-    branches: [main]
+    branches: [dev]
 
 #jobs that will be run when pushed to the main branch
 jobs:
