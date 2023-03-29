@@ -1,10 +1,32 @@
 import React, { useEffect, useState } from 'react';
 import {TextField, Stack, MenuItem, Select } from '@mui/material';
-import { BlankButton, FalseHeader } from '../styledComponents';
+import { FalseHeader } from '../styledComponents';
 import axios from 'axios';
+import styled from 'styled-components';
 import addField from './Elements/addField'
 import removeField from './Elements/removeField';
 import handleObjectChange from './Elements/handleObjectChange';
+
+const BlankButton = styled.button`
+    font-family: inherit!important;
+    font-size: 1.25rem;
+    background-color: transparent!important;
+    box-shadow: 2px 2px grey;
+    border: 1px solid lightgrey;
+    border-left: 1px solid lightgrey;
+    margin-left: 1rem;
+    &:hover {
+        background-color: #EADCA6!important;
+    }
+    &:active {
+        background-color: #C36A2D!important;
+        color: white!important;
+    }
+    @media (max-width: 768px) {
+        font-size:1rem;
+    }
+  `
+
 
 export default function RecipeForm() {
 
@@ -29,7 +51,7 @@ export default function RecipeForm() {
             }
         )
         .then(response => console.log(response))
-        // .then(window.location = '/app/recipe_select')
+        .then(window.location = '/app/recipe_select')
         .catch(err =>
             console.log(err));
       };
@@ -62,15 +84,14 @@ export default function RecipeForm() {
                             borderBottom: '2px solid black'
                         }
                     }}
-                    >
-                                   
+                    >        
                     </TextField>  
 
                 {ingredients.map((input, index) => {
                 return (
-                <Stack direction="row" spacing={1}>                    
+                <Stack direction={{xs: 'column', lg: 'row'}} spacing={1}>                    
                         <TextField
-                        // required
+                        required
                         fullWidth
                         variant='filled'
                         label='Ingredients'
@@ -107,35 +128,6 @@ export default function RecipeForm() {
                             }
                             }}>
                         </TextField>
-                        {/* <Select
-                            labelId="uom"
-                            id="uom"
-                            value={ingredients.unitOfMeasure}
-                            defaultValue=''
-                            name='unitOfMeasure'
-                            label="Unit of Measure"
-                            onChange={event => handleObjectChange(ingredients, setIngredients, index, event)}
-                            sx={{
-                                "& .MuiOutlinedInput-notchedOutline": {
-                                    border: '1px solid black!important'
-                                }
-                            }}>
-                            <MenuItem 
-                            name='unitOfMeasure'
-                            value={'mL'}>
-                                mL
-                            </MenuItem>
-                            <MenuItem 
-                            name='unitOfMeasure'
-                            value={'g'}>
-                                g
-                            </MenuItem>
-                            <MenuItem 
-                            name='unitOfMeasure'
-                            value={'lbs'}>
-                                lbs
-                            </MenuItem>
-                        </Select> */}
                         <BlankButton style={{height: '2rem', width:'2rem', borderRadius:'100%', margin:'auto 8px'}}
                         type='button'
 
@@ -153,7 +145,7 @@ export default function RecipeForm() {
 
 
                 {directions.map((input, index) => {
-                return (<Stack direction="row" spacing={1}>                  
+                return (<Stack direction={{xs: 'column', lg: 'row'}} spacing={1}>                  
                         <TextField
                             variant='filled'
                             label='Step'

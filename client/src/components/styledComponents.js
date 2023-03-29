@@ -1,4 +1,6 @@
 import styled from "styled-components";
+
+
 //Shared components
 
 const FalseHeader = styled.div`
@@ -6,20 +8,19 @@ const FalseHeader = styled.div`
     width: 100%;
 `
 
-
 // 1. Login Page Styles 
-
 
 
 const LoginFormContainer = styled.div`
     width: 350px;
-    height: 300px;          
-    position: absolute;
-    bottom: 40%;
-    right:0;
-    left:0;
-    margin-left:auto; 
-    margin-right:auto;
+    // height: 300px;          
+    // position: fixed;
+    // bottom: 40%;
+    // right:0;
+    // left:0;
+    // margin-left:auto; 
+    // margin-right:auto;
+    margin: 13% auto;
     background-color: rgba(226,194,117,.95);
     padding: 1rem;
     box-shadow: 4px 4px rgba(0,0,0,.25);
@@ -34,7 +35,6 @@ const LoginBoxTitle = styled.div`
 const LoginInputContainer = styled.div`
     margin-top: 1.5rem;
     margin-bottom: auto;
-
 `
 const LoginButton = styled.button`
     margin-top: 1.5rem;
@@ -198,7 +198,7 @@ const RecipeBuilderTitle = styled.div`
 const FooterStyled = styled.div`
     background-color: #C36A2D;
     width: 100%;
-    position: static;
+    position: fixed;
     bottom: 0;
     padding: .5rem;
     box-shadow: 2px 0 10px 5px rgba(0, 0, 0, 20%);

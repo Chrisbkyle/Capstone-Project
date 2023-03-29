@@ -121,7 +121,7 @@ For Postman:
   "email":"chef@gusteaus.co.fr"}
 
  {"username":"john1234",
-  "password":"S@mP@ssw0rd1",
+  "password":"Pa$$w0rd1",
   "email":"john1234@example.com"}
 
  {"username":"sam_jones",

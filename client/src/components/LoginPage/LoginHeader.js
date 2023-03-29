@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 
 export default function LoginHeader() {
     return (
-        <AppBar position="absolute" sx={{backgroundColor:"#C36A2D", color:"black"}}>
+        <AppBar position="static" sx={{backgroundColor:"#C36A2D", color:"black"}}>
         <Toolbar>
           <Typography
             variant="h6"

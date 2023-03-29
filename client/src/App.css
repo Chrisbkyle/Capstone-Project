@@ -4,35 +4,32 @@ body {
   margin: 0px;
   font-family: 'PT Serif', serif!important;
   box-sizing: border-box;
+  background-color: #FFFBEA;
 }
 
-.App {
+/* .App {
   text-align: center;
-}
+} */
 
-.bg1 {
-  background-image: url(./components/resources/images/office_chef_background1.jpg);
+/* .bg1 {
+  background-image: url(./components/resources/images/background.jpg);
   background-size: cover;
-  z-index: -1;
-}
+} */
 
-.bg2 {
-  background-image: url(./components/resources/images/office_chef_background2.jpg);
-  background-size: cover;
+/* .bg1 {
+  background-image: url(./components/resources/images/background.jpg);
+  background-size: 100% 120%;
+  background-repeat: no-repeat;
   z-index: -1;
-}
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  /* height: 100%;
+  width: 130%; */
+/* } */
 
-.bg3 {
-  background-image: url(./components/resources/images/office_chef_background3.jpg);
-  background-size: cover;
-  z-index: -1;
-}
-
-.bg4 {
-  background-image: url(./components/resources/images/office_chef_background4.jpg);
-  background-size: cover;
-  z-index: -1;
-}
 
 .recipeTableLink {
   color: black;

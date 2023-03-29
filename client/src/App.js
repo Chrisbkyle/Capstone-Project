@@ -13,15 +13,15 @@ import BackgroundGrid from './components/LoginBackground';
 function App() {
   return (
     <div className="App">
-      {/* <Routes>
+      <Routes>
 
         <Route path='/' element={<BackgroundGrid />}></Route>
 
-        {/* <Route path='/signup' element={<BackgroundGrid />}></Route> */}
+        <Route path='/signup' element={<BackgroundGrid />}></Route>
 
-        {/* <Route path='/app' element={<BackgroundGrid />}></Route>
+        <Route path='/app' element={<BackgroundGrid />}></Route>
 
-      </Routes> */}
+      </Routes>
 
       <Routes>
 

@@ -1,7 +1,8 @@
 import React from 'react';
 import LoginBox from './LoginPage/LoginBox';
 import LoginHeader from './LoginPage/LoginHeader';
-import BackgroundGrid from './LoginBackground';
+import Footer from './Footer'
+import background from "./resources/images/background.jpg"
 
 
 
@@ -14,7 +15,7 @@ return  (
 
         <LoginBox />
 
-        {/* <BackgroundGrid /> */}
+        <Footer />
 
     </div>
     )

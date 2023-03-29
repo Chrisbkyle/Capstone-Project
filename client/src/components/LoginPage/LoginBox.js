@@ -1,7 +1,49 @@
 import React, { useState } from 'react';
-import { LoginInputContainer, LoginFormContainer, LoginButton, LoginBoxTitle, LoginInput } from '../styledComponents';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 import axios from 'axios';
+
+const LoginFormContainer = styled.div`
+    width: 350px;
+    margin: 8% auto;
+    background-color: rgba(226,194,117,.95);
+    padding: 1rem;
+    box-shadow: 4px 4px rgba(0,0,0,.25);
+    border-radius: 8px;
+    @media (max-width: 481px) { 
+        width: 280px;
+    }
+`
+const LoginBoxTitle = styled.div`
+    font-size: 2rem;
+    border-bottom: 1px solid black;
+    padding-bottom: 1rem;
+`
+const LoginInputContainer = styled.div`
+    margin-top: 1.5rem;
+    margin-bottom: auto;
+`
+const LoginButton = styled.button`
+    margin-top: 1.5rem;
+    background-color: #C36A2D;
+    width: 60%;
+    font-size: 1.75rem;
+    padding: .5 rem;
+    border-radius: 8px;
+    box-shadow: 2px 2px rgba(0,0,0,.25);
+`
+const LoginInput = styled.input`
+    margin-top: 1rem;
+    margin-bottom: .5rem;
+    font-size: 1.5rem;
+    width: 100%;
+    box-shadow: 0px 1px rgba(0,0,0,.25); 
+    border: 0;
+    background-color: rgba(226,194,117,.95);
+    color: black;
+`
+
+
 
 
 export default function LoginBox() {

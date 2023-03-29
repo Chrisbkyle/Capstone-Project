@@ -19,7 +19,8 @@ import Footer from './Footer';
 
 
 
-const drawerWidth = 240;
+const drawerWidth = 360
+
 
 const DrawerHeader = styled('div')(({ theme }) => ({
     display: 'flex',
@@ -72,8 +73,7 @@ export default function HeaderSidenav() {
           flexShrink: 0,
           '& .MuiDrawer-paper': {
             width: drawerWidth,
-            boxSizing: 'border-box',
-          },
+            boxSizing: 'border-box'}
         }}
         variant="persistent"
         anchor="left"

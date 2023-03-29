@@ -12,7 +12,7 @@ March 15th 1:30am
 ----------------------------------------------------------------------------------------
 dev branch
 
-    dbConnect finised
+    dbConnect finished
     Models created
     Controllers, router, index.js next
 
@@ -173,4 +173,17 @@ main
             Update documentation in code,
             edit code location and layouts
             organize styled components
-            
+
+
+------------------------------------------------------------------------------------------
+March 30th 12:30am
+------------------------------------------------------------------------------------------
+main
+
+    Testing done
+    Parts of backend fixed
+
+        next: 
+            responsive app
+
+    

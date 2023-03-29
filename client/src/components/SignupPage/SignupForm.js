@@ -29,9 +29,9 @@ export default function SignupForm() {
     const handleSubmit = (e) => {
         e.preventDefault();
         axios.post("http://localhost:3001/officechef/signup/", state)
-        .then((response) => {
-            console.log(response)
-        })
+        .then(
+            window.location = '/'
+        )
         .catch(err =>
             console.log(err)
         )

@@ -3,6 +3,7 @@ import SignupForm from "./SignupPage/SignupForm";
 import styled from 'styled-components'
 import LoginHeader from "./LoginPage/LoginHeader";
 import SignupTitle from "./SignupPage/SignupTitle";
+import Footer from "./Footer";
 
 
 const SignupFormHolder = styled.div`
@@ -31,6 +32,7 @@ export default function SignupPage() {
                 <SignupTitle />
                 <SignupForm />
             </SignupFormHolder>
+            <Footer />
         </div>
     )
 }

@@ -2,9 +2,13 @@ import React, { useState, useEffect} from "react";
 import { useParams } from "react-router-dom";
 import axios from 'axios';
 import styled from "styled-components";
-import { FalseHeader, BlankButton } from "./styledComponents";
+import { FalseHeader } from "./styledComponents";
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Stack } from "@mui/material";
+
+
+// put in breakpoint at 768px & 480px
+
 
 const RecipeDisplayHolder = styled.div`
     margin: 3rem;
@@ -12,6 +16,9 @@ const RecipeDisplayHolder = styled.div`
     border-radius: 5px;
     box-shadow: 4px 4px lightgrey;
     font-size: 1.25rem;
+    @media (max-width: 768px) {
+        margin: 0;
+    }
 `
 const RecipePageName = styled.div`
     font-size: 3rem;
@@ -19,6 +26,10 @@ const RecipePageName = styled.div`
     margin: 1rem 0 0 1rem;
     padding-left: 1rem;
     width: 92%;
+    @media (max-width: 768px) {
+        font-size: 2rem;
+        width: 80%;
+    }
 `
 const RecipePageYield = styled.div`
     font-size: 1.5rem;
@@ -32,8 +43,27 @@ const RecipePageFlex = styled.div`
 `
 const RecipePageLine = styled.div`
     margin: 0rem 1rem;
+    @media (max-width: 768px) {
+        margin: 0rem 0.25rem;
+    }
 `
-
+const DeleteButton = styled.button`
+    width: 6.5%;
+    border: 3px outset lightgrey!important;
+    font-size: 3rem;
+    background-color: transparent!important;
+    margin:1rem 1rem 0 0;
+    @media (max-width: 768px) {
+        width: 15%;
+    }
+    &:hover {
+        background-color: #EADCA6!important;
+    }
+    &:active {
+        background-color: #C36A2D!important;
+        color: white!important;
+    }
+  `
 
 export default function RecipePage() {
 
@@ -84,16 +114,9 @@ const deleteHandler = (e) => {
             <RecipeDisplayHolder>
                 <Stack direction='row'>
                     <RecipePageName>{state.recipe}</RecipePageName>
-                    <BlankButton 
-                    onClick={deleteWarning}
-                    // onClick={() => deleteHandler(id)}
-                    style={{
-                        margin:'1rem 1rem 0 0', 
-                        width: '6.5%', 
-                        border:'3px outset lightgrey', 
-                        boxShadow:'none'}}>
-                            <DeleteIcon></DeleteIcon>
-                    </BlankButton>
+                    <DeleteButton onClick={deleteWarning}>
+                        <DeleteIcon></DeleteIcon>
+                    </DeleteButton>
                 </Stack>
                 <RecipePageYield>Portion Yield: {state.yield}</RecipePageYield>
                 <div style={{border: '3px outset lightgrey', margin: '0rem 1rem'}}>

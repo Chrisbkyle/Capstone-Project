@@ -3,6 +3,7 @@ import HeaderSidenav from './HeaderSideNav';
 import Footer from './Footer';
 import BackgroundGrid from './LoginBackground';
 import MainPageBox from './MainPage/MainPageBox';
+import { FalseHeader } from './styledComponents';
 
 
 
@@ -14,7 +15,7 @@ export default function () {
 
 
             {/* <HeaderSidenav /> */}
-
+            <FalseHeader/>
             <MainPageBox />
 
             {/* <BackgroundGrid /> */}
