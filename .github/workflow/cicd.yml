@@ -1,0 +1,52 @@
+name: CI/CD
+
+# run the action whenever there is a commit to the main branch
+on:
+  push:
+    branches: [main]
+
+#jobs that will be run when pushed to the main branch
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    #different environment variables
+    strategy:
+      matrix:
+        node version: [16.x] #node version set to 16.x
+
+    #steps taken after push
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        env:
+          PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: "true"
+        with:
+          node-versions: ${{ matrix.node-version }}
+
+      - name: Install npm packages
+        run: npm install
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2.1.0
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+
+      - name: Set up Docker buildx
+        id: buildx
+        uses: docker/setup-buildx-action@v2.4.1
+
+      - name: Build and push docker image
+        id: docker_build
+        uses: docker/build-push-action@v4
+        with:
+          context: ./
+          file: ./Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/office-chef
+
+      - name: Image digest
+        run: echo ${{ steps.docker_build.outputs.digest }}

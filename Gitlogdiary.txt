@@ -186,4 +186,14 @@ main
         next: 
             responsive app
 
-    
+------------------------------------------------------------------------------------------
+March 30th 4am
+------------------------------------------------------------------------------------------
+main
+
+    Styling almost done
+        Double check signup
+    Responsive done for
+        Login
+        Main Page
+        Recipe Page
