@@ -1,26 +1,31 @@
 const Models = require('../models')
-const service = require('../services/userServices')
+const bcrypt = require('bcrypt')
+const saltRounds = 10;
 
 
 
 async function getUsers(req, res) {
     const user = await Models.Users.findByPk(req.body.username);
+    const comparison = await bcrypt.compare(req.body.password, user.password)
+    console.log(user.password)
+    console.log(req.body.password)
+    console.log(comparison)
       if (!req.body.username || !req.body.password) {
         res.send('Please Complete all fields for login')
       } else if (user === null) {
         res.send('Username not found')
-      } else if (req.body.password != user.password) {
+      } else if (!comparison) {
         res.send('Password not found')  
       } else {
-        res.send('Login Successful')
-      }
+        res.send('Login Successful')}
+
+      
 }
 
 async function addUser(req, res)  {
         const user = await Models.Users.findByPk(req.body.username);
         const userValid = /^(?=.{5,}$)[a-zA-Z_]*\d*$/;
         const passwordValid = /(?=.*[a-z])(?=.*[0-9])(?=.*\W)(?=.*^[A-Za-z])(?=.{5,})/i;
-        Object.values(req.body).map(item => console.log(typeof(item)))
         if (userValid.test(req.body.username) != true) {
             res.send('Username does not match required criteria')
         } else if (passwordValid.test(req.body.password) != true ) {
@@ -33,8 +38,16 @@ async function addUser(req, res)  {
             res.send("Please complete all fields for signup")  
         }   else { 
             if(!user){
+                const password = req.body.password
+                const encryptedPassword = await bcrypt.hash(password, saltRounds)
+
+                let users = {
+                    'username': req.body.username,
+                    'password': encryptedPassword,
+                    'email': req.body.email
+                }
                 res.send("Signup Successful")
-                Models.Users.create(req.body)
+                Models.Users.create(users)
             } else {
                 res.send('user already exists')
             }

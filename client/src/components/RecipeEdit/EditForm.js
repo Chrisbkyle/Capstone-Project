@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {TextField, Stack, MenuItem, Select } from '@mui/material';
 import styled from 'styled-components';
-import addField from '../Elements/addField'
+import addField from '../Elements/addField';
 import removeField from '../Elements/removeField';
 import handleObjectChange from '../Elements/handleObjectChange';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
 
 
@@ -71,9 +73,9 @@ const BuilderButton = styled.button`
     }
  };
 
-export default function RecipeForm( {callback} ) {
+export default function EditForm( {callback} ) {
 
-    
+
 
 
     const [recipe, setRecipe] = useState('');
@@ -82,7 +84,24 @@ export default function RecipeForm( {callback} ) {
     const [recipeYield, setRecipeYield] = useState('');
     const [station, setStation] = useState('');
     const [dish, setDish] = useState('');
+    const { id } = useParams()
 
+    useEffect(() => {
+        axios.get('http://localhost:3001/api/recipeRoutes/recipepage', {
+        headers:
+            {recipename: id}
+        })
+        .then((response) => {
+            setRecipe(response.data.recipe)
+            setIngredients(JSON.parse(response.data.ingredients))
+            setDirections(JSON.parse(response.data.directions))
+            setRecipeYield(response.data.yield)
+            setStation(response.data.station)
+            setDish(response.data.dish)
+        }).catch((err) => {
+            console.log(err)
+        })
+}, []);
 
     const handleCallback = () => callback({
         recipe: recipe,
@@ -102,15 +121,7 @@ export default function RecipeForm( {callback} ) {
             
                 <Stack direction="column" spacing={2}>
 
-                    <TextField
-                        required
-                        variant='filled'
-                        label='Recipe Name'
-                        value={recipe}
-                        name='recipeName'
-                        onChange={(e) => setRecipe(e.target.value)}
-                        sx={largeField}>        
-                    </TextField>  
+                <h2>{recipe}</h2>
 
                 {ingredients.map((input, index) => {
                 return (
@@ -211,10 +222,9 @@ export default function RecipeForm( {callback} ) {
                         sx={largeField}>
                     </TextField>
 
-                    <BuilderButton type="button" onClick={handleCallback} style={{ margin:'auto'}}>Submit Recipe</BuilderButton> 
+                    <BuilderButton type="button" onClick={handleCallback} style={{ margin:'auto'}}>Edit Recipe</BuilderButton> 
                 </Stack>    
             </form>
         </div>
     )
 }
-

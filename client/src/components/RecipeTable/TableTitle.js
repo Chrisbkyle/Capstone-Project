@@ -1,5 +1,4 @@
 import React from 'react';
-import FilterOptions from './FilterOptions';
 import styled from "styled-components"
 
 const RecipeTableTopBar = styled.div`

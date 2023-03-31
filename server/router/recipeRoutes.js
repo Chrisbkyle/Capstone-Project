@@ -14,6 +14,10 @@ router.post('/recipebuilder', (req, res) => {
     controller.recipeController.addRecipes(req, res);
 })
 
+router.post('/recipeedit', (req, res) => {
+    controller.recipeController.updateRecipe(req, res);
+})
+
 router.delete('/recipedelete', (req, res) => {  
     controller.recipeController.deleteRecipe(req, res);
 })

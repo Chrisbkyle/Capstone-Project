@@ -1,7 +1,8 @@
-FROM node:16-alpine
-RUN npm install -g nodemon
-WORKDIR /app
-COPY . .
+FROM node:16
+WORKDIR /server
+COPY . /server/
+RUN npm run build
+
 EXPOSE 3001
-RUN npm install
-CMD ["nodemon","index.js"]
+
+CMD nodemon index

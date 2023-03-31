@@ -34,7 +34,7 @@ export default function SignupForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post("http://localhost:3001/api/signup/", state)
+        axios.post("http://localhost:3001/api/userRoutes/signup/", state)
         .then(
             window.location = '/'
         )
@@ -43,7 +43,6 @@ export default function SignupForm() {
         )
     }
 
-    const passValid = new RegExp('/(?=.*[a-z])(?=.*[0-9])(?=.*\W)(?=.*^[A-Za-z])(?=.{5,})/i')
 
     return(
         <div style={{marginTop: '2rem'}}>

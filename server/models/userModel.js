@@ -16,10 +16,7 @@ users.init({
         },
         password: {
             type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                is: [/(?=.*[a-z])(?=.*[0-9])(?=.*\W)(?=.*^[A-Za-z])(?=.{5,})/i]
-            }
+            allowNull: false
         },
         email: {
             type: DataTypes.STRING,

@@ -7,7 +7,7 @@ import Footer from "./SharedComponents/Footer";
 
 
 const SignupFormHolder = styled.div`
-    margin-top: 10%;
+    margin-top: 6%;
     margin-left: auto;
     margin-right:auto;
     width: 50%;

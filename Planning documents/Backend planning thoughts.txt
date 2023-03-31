@@ -80,5 +80,5 @@ I need to use a service for
     3 Recipe Builder Validation
         Same as above
 
-I hypothetically could use a service for my find recipe, but maybe sequelize eliminated to need to, 
+I hypothetically could use a service for my find recipe, but maybe I dont need to, 
 or it's just simply too simple an action in general with or without sequelize to need a service to find an item by PK

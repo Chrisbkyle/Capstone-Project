@@ -18,4 +18,4 @@ const connectMysql = async () => {
 module.exports = {
     Sequelize: sequelize,
     connectMysql
-}
+} 

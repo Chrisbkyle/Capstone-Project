@@ -8,8 +8,7 @@ import { Route, Routes } from 'react-router-dom'
 import HeaderSidenav from './components/SharedComponents/HeaderSideNav';
 import NotFound from './components/NotFound';
 import SignupPage from './components/SignupPage';
-import BackgroundGrid from './components/notinuse/LoginBackground';
-import RecipeEdit from './components/notinuse/RecipeEdit';
+import RecipeEdit from './components/RecipeEdit';
 
 function App() {
   return (

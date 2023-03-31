@@ -1,6 +1,8 @@
-FROM node:16-alpine
-WORKDIR /app
-COPY . .
+FROM node.16
+WORKDIR /client
+COPY . /client/
+
+RUN npm run build
 EXPOSE 3000
-RUN npm install
-CMD ["npm","start"]
+
+CMD npm start

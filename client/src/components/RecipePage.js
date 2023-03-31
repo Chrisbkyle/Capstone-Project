@@ -65,11 +65,28 @@ const DeleteButton = styled.button`
         color: white!important;
     }
   `
+  const EditButton = styled.button`
+    width: 6.5%;
+    border: 3px outset lightgrey!important;
+    font-size: 3rem;
+    background-color: transparent!important;
+    margin:1rem 0 0 0;
+    @media (max-width: 768px) {
+        width: 15%;
+    }
+    &:hover {
+        background-color: #EADCA6!important;
+    }
+    &:active {
+        background-color: #C36A2D!important;
+        color: white!important;
+    }
+  `
 
 export default function RecipePage() {
 
 useEffect(() => {
-        axios.get('http://localhost:3001/api/recipepage', {
+        axios.get('http://localhost:3001/api/recipeRoutes/recipepage', {
         headers:
             {recipename: id}
         })
@@ -89,15 +106,15 @@ const deleteWarning = (e) => {
 }
 const deleteHandler = (e) => {
     console.log(e)
-    axios.delete('http://localhost:3001/api/recipedelete', {headers: {recipename: id},data: {recipe: e}})
+    axios.delete('http://localhost:3001/api/recipeRoutes/recipedelete', {headers: {recipename: id},data: {recipe: e}})
     .then(window.location = '/app/recipe_select')
     .catch(err => {
         console.log(err)
     })
 }
-// const editHandlers = (e) => {
-//     window.location = '/app/recipe_builder/'
-// }
+const editHandlers = (e) => {
+    window.location = '/app/recipe_edit/' + state.recipe
+}
 
 
 
@@ -114,10 +131,11 @@ console.log(state.recipe)
     return(
         <div>
             <FalseHeader />
-            {/* <Link to={'/app/recipe_edit/' + state.recipe}><DeleteButton>edit</DeleteButton></Link> */}
+            
             <RecipeDisplayHolder>
                 <Stack direction='row'>
-                    <RecipePageName>{state.recipe}</RecipePageName> 
+                    <RecipePageName>{state.recipe}</RecipePageName>
+                    <EditButton onClick={editHandlers}>edit</EditButton> 
                     <DeleteButton onClick={deleteWarning}>
                         <DeleteIcon></DeleteIcon>
                     </DeleteButton>  
@@ -125,6 +143,7 @@ console.log(state.recipe)
                 </Stack>
                 <RecipePageYield>Portion Yield: {state.yield}</RecipePageYield>
                 <div style={{border: '3px outset lightgrey', margin: '0rem 1rem'}}>
+                    <h2 style={{textAlign: 'center'}}>Ingredients</h2>
                     {ingredients.map((ingredient) => (
                             <RecipePageFlex>
                                 <RecipePageLine>
@@ -140,7 +159,9 @@ console.log(state.recipe)
                         
                     ))}
                 </div>
+                
                 <div style={{border: '3px outset lightgrey', margin: '0rem 1rem'}}>
+                <h2 style={{textAlign: 'center'}}>Directions</h2>
                     {directions.map((direction) => (
                             <RecipePageFlex>
                                 <RecipePageLine>

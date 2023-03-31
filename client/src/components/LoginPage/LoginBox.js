@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import axios from 'axios';
 
 const LoginFormContainer = styled.div`
+    width: 350px;
     margin: 8% auto;
     background-color: rgba(226,194,117,.95);
     padding: 1rem;
@@ -61,7 +62,7 @@ export default function LoginBox() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:3001/api/login/', state)
+        axios.post('http://localhost:3001/api/userRoutes/login/', state)
         .then((response) => {
             console.log(response)
             if(response.data == 'Login Successful') {

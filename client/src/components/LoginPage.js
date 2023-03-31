@@ -12,9 +12,9 @@ return  (
     <div>
         
         <LoginHeader />
-
-        <LoginBox />
-
+            <div>
+                <LoginBox />
+            </div>
         <Footer />
 
     </div>

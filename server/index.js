@@ -29,8 +29,6 @@ app.use(cors());
 
 dbConnect.connectMysql();
 
-let router = require('./router/router')
-
 app.get('/', (req, res) => {
     res.json({message: 'Welcome to office-chef'});
 });
@@ -38,8 +36,8 @@ app.get('/', (req, res) => {
 const userRouter = require('./router/userRoutes')
 const recipeRouter = require('./router/recipeRoutes')
 
-app.use('/api/users', userRouter)
-app.use('/api/recipe', recipeRppouter)
+app.use('/api/userRoutes', userRouter)
+app.use('/api/recipeRoutes', recipeRouter)
 
 server.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);

@@ -1,8 +1,7 @@
-// import { BlankButton } from '../RecipeTable'
 import styled from "styled-components"
-import useMediaQuery from "./Elements/useMediaQuery";
+import useMediaQuery from "../Elements/useMediaQuery";
 
-const BlankButton = styled.button`
+const Button = styled.button`
     font-family: inherit!important;
     font-size: 1.25rem;
     background-color: transparent!important;
@@ -40,9 +39,9 @@ const SortButton = ({ direction, id, onClick, sortBy, content }) => {
     const arrow = sortBy === id ? arrows[direction] : '\u21D5'
 
     return (
-        <BlankButton id={id} onClick={onClick} style={buttonStyle}>
+        <Button id={id} onClick={onClick} style={buttonStyle}>
            {content} {arrow}
-        </BlankButton>
+        </Button>
     )
 
 }

@@ -2,10 +2,10 @@ import React, {useState, useEffect} from "react"
 import FilterListIcon from '@mui/icons-material/FilterList';
 import { TextField } from "@mui/material";
 import styled from "styled-components";
-import useMediaQuery from "./Elements/useMediaQuery";
+import useMediaQuery from "../client/src/components/RecipeTable/Elements/useMediaQuery";
 
 
-const BlankButton = styled.button`
+const FilterButton = styled.button`
     font-family: inherit!important;
     font-size: 1.25rem;
     background-color: transparent!important;
@@ -99,7 +99,7 @@ return (
 
     
     <div>
-        <BlankButton onClick={toggleFilterDisplay}><FilterListIcon></FilterListIcon></BlankButton>
+        <FilterButton onClick={toggleFilterDisplay}><FilterListIcon></FilterListIcon></FilterButton>
         <FilterDisplay style={{display: filterDisplay ? 'flex' : 'none'}}>
             <FilterFlexItem style={filterFlex}>
             <FilterSearch

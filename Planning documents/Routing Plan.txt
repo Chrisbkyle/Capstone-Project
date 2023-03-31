@@ -19,6 +19,7 @@ Next to implement
 
     Inventory control that will be nested in the App route
     Inventory list that will be populated from the inventory list and populated from the app route
+        #### Hold fire Inventory control out of scope #####
 
 
 

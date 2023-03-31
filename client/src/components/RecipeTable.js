@@ -1,20 +1,15 @@
 import '../App.css'
 import React, { useState, useEffect } from 'react';
-
-import sortTableData  from './RecipeTable/Elements/SortTableData';
-import useMediaQuery from './RecipeTable/Elements/useMediaQuery';
-
+import sortTableData  from './Elements/SortTableData';
+import useMediaQuery from './Elements/useMediaQuery';
 import { headCells, headCellsMobile } from './RecipeTable/testObjects';
 import SortButton from './RecipeTable/SortButton';
 import TableTitle from './RecipeTable/TableTitle';
-
 import { TablePagination } from '@mui/material';
-
 import { Link } from 'react-router-dom';
 import { FalseHeader } from './styledComponents';
 import styled from 'styled-components';
-
-import FilterOptions from './RecipeTable/FilterOptions';
+import FilterListIcon from '@mui/icons-material/FilterList';
 
 const TableContainer = styled.div`
     margin: 2rem;
@@ -64,10 +59,69 @@ const TableCellHeader = styled.div`
     padding: 1rem;
     font-size: 1.25rem;    
 `
+//Styles for hidden filter display
+const FilterButton = styled.button`
+    font-family: inherit!important;
+    font-size: 1.25rem;
+    background-color: transparent!important;
+    box-shadow: 2px 2px grey;
+    border: 1px solid lightgrey;
+    border-left: 1px solid lightgrey;
+    &:hover {
+        background-color: #EADCA6!important;
+    }
+    &:active {
+        background-color: #C36A2D!important;
+        color: white!important;
+    }
+    @media (max-width: 768px) {
+        font-size:1rem;
+    }
+  `
+const FilterDisplay = styled.div`
+    margin-top:4px;
+    background-color: #EADCA6; 
+    box-shadow: 0px 2px lightgrey;
+    height: 3.5rem;
+`
+const FilterFlexItem = styled.div`
+    display: flex;
+    justify-content: center;
+    width:33%;
+    border: 3px outset #EADCA6;
+    @media (max-width: 768px) {
+        width: 50%;
+    }
+`
+const FilterSearch = styled.input`
+    font-size: 1rem;
+    padding: .5rem;
+    margin: .25rem;
+    background-color: #EADCA6;
+    border: 1px solid black;
+    border-bottom: 2px solid black;
+    border-radius: 4px;
+    box-shadow: 2px 2px lightgrey;
+    @media (max-width: 768px) {
+        width: 100%;
+    }
+`
+const FilterSelect = styled.select`
+    font-size: 1rem;
+    padding: .5rem;
+    margin: .25rem;
+    background-color: #EADCA6;
+    border: 1px solid black;
+    border-bottom: 2px solid black;
+    border-radius: 4px;
+    box-shadow: 2px 2px lightgrey;
+`
 
 
 
 const RecipeTable = ({ sortConfig }) => {
+
+    //Media style for button row, to ensure third button disappears
     const isTablet = useMediaQuery('(max-width: 768px)');
 
     const secondaryButton = {
@@ -83,11 +137,13 @@ const RecipeTable = ({ sortConfig }) => {
         display: isTablet ? 'none' : 'table-cell',
         width: isTablet ?  '0' : '25%'
     }
-
+    const filterSearches = {
+        width: isTablet ? '100%' : '66%'
+    }
     
 
     useEffect(() => {
-        fetch('http://localhost:3001/api/recipes/', {
+        fetch('http://localhost:3001/api/recipeRoutes/recipes/', {
         method: 'get',
         })
             .then(response => response.json())
@@ -103,6 +159,7 @@ const RecipeTable = ({ sortConfig }) => {
         const [items, setItems] = useState([]);
         const [sortedItems, setSortedItems] = useState(items)
         const [filterText, setFilterText] = useState('');
+        const [filterDisplay, setFilterDisplay] = useState(false)
 
 
         const [direction, setDirection] = useState()
@@ -112,7 +169,6 @@ const RecipeTable = ({ sortConfig }) => {
         const [rowsPerPage, setRowsPerPage] = React.useState(5);
         const [page, setPage] = React.useState(0);
 
-console.log(items)
 
     //function for the Sort buttons
     const handleClick = event => {
@@ -133,12 +189,24 @@ console.log(items)
         setPage(0);
     };
 
-    //Filter data functions
+    // Filter data functions
+
+    // All the table data eventually comes through the filteredData variable, this variable is the data's last stop before being 
+    // rendered on the page
     const filteredData = items.filter(row =>
         Object.values(row).some(value =>
             value.toLowerCase().toString().includes(filterText.toLowerCase())
         )
     );
+
+    const stationFilter = Array.from(new Set(items.map(items => items.station)))
+
+    const toggleFilterDisplay = () => {
+        setFilterDisplay(current => !current)
+    }
+    const handleSearchChange = (e) => {
+        setFilterText(e.target.value)
+    }
             
 
    
@@ -148,8 +216,8 @@ console.log(items)
             setHeadCellsState(headCellsMobile)   
         } else {
             setHeadCellsState(headCells);
-          }
-        };
+        }
+    };
       
         // add event listener for window resize
         useEffect(() => {
@@ -158,7 +226,7 @@ console.log(items)
         }, []);
 
       
-    
+
 
 
     return (
@@ -169,8 +237,26 @@ console.log(items)
 
                 <TableTitle />
 
-                <FilterOptions 
-                stateConfig={items}/>
+                <FilterButton onClick={toggleFilterDisplay}><FilterListIcon></FilterListIcon></FilterButton>
+                <FilterDisplay style={{display: filterDisplay ? 'flex' : 'none'}}>
+                    <FilterFlexItem>
+                        <FilterSearch
+                            placeholder= 'Search'
+                            onChange={handleSearchChange}>
+                        </FilterSearch>
+                    </FilterFlexItem>
+                    <FilterFlexItem>
+                        <FilterSelect
+                            style={filterSearches}
+                            defaultValue={''}
+                            onChange={e => setFilterText(e.target.value)}>
+                            <option value=''>Filter Station</option>
+                            {stationFilter.map((item) =>
+                            <option>{item}</option>
+                            )}
+                        </FilterSelect>
+                    </FilterFlexItem>
+                </FilterDisplay>
 
                 <Table>
 
