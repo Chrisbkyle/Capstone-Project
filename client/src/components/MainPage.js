@@ -1,7 +1,7 @@
 import React from 'react';
-import HeaderSidenav from './HeaderSideNav';
-import Footer from './Footer';
-import BackgroundGrid from './LoginBackground';
+import HeaderSidenav from './SharedComponents/HeaderSideNav';
+import Footer from './SharedComponents/Footer';
+import BackgroundGrid from './notinuse/LoginBackground';
 import MainPageBox from './MainPage/MainPageBox';
 import { FalseHeader } from './styledComponents';
 

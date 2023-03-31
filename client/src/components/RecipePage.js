@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { FalseHeader } from "./styledComponents";
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Stack } from "@mui/material";
+import {Link} from "@mui/material";
 
 
 // put in breakpoint at 768px & 480px
@@ -68,7 +69,7 @@ const DeleteButton = styled.button`
 export default function RecipePage() {
 
 useEffect(() => {
-        axios.get('http://localhost:3001/officechef/recipepage', {
+        axios.get('http://localhost:3001/api/recipepage', {
         headers:
             {recipename: id}
         })
@@ -88,12 +89,15 @@ const deleteWarning = (e) => {
 }
 const deleteHandler = (e) => {
     console.log(e)
-    axios.delete('http://localhost:3001/officechef/recipedelete', {headers: {recipename: id},data: {recipe: e}})
+    axios.delete('http://localhost:3001/api/recipedelete', {headers: {recipename: id},data: {recipe: e}})
     .then(window.location = '/app/recipe_select')
     .catch(err => {
         console.log(err)
     })
 }
+// const editHandlers = (e) => {
+//     window.location = '/app/recipe_builder/'
+// }
 
 
 
@@ -102,7 +106,7 @@ const deleteHandler = (e) => {
     const [directions, setDirections] = useState([{}])
     const { id } = useParams()
 
-
+console.log(state.recipe)
 
 
 
@@ -110,13 +114,14 @@ const deleteHandler = (e) => {
     return(
         <div>
             <FalseHeader />
-            
+            {/* <Link to={'/app/recipe_edit/' + state.recipe}><DeleteButton>edit</DeleteButton></Link> */}
             <RecipeDisplayHolder>
                 <Stack direction='row'>
-                    <RecipePageName>{state.recipe}</RecipePageName>
+                    <RecipePageName>{state.recipe}</RecipePageName> 
                     <DeleteButton onClick={deleteWarning}>
                         <DeleteIcon></DeleteIcon>
-                    </DeleteButton>
+                    </DeleteButton>  
+                    
                 </Stack>
                 <RecipePageYield>Portion Yield: {state.yield}</RecipePageYield>
                 <div style={{border: '3px outset lightgrey', margin: '0rem 1rem'}}>

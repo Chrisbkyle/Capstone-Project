@@ -4,17 +4,21 @@ import { Link } from "react-router-dom";
 
 
 const MainBox = styled.div`
+    text-align: center;
     width: 30%;
+ 
     background-color: rgba(226,194,117,.95);
-    margin: 15% auto auto 50%;
+    margin: 8% auto auto 50%;
     box-shadow: 4px 4px rgba(0,0,0,.25);
     border-radius: 8px;   
     @media (max-width: 1200px) { 
-        width: 40%;
+        margin: 8% auto auto;
+        width: 30%;
+        font-size: .75rem;
     } 
     @media (max-width: 1024px) { 
         width: 50%;
-        margin: 15% auto;
+        margin: 8% auto;
     } 
     @media (max-width: 768px) { 
         width: 70%;
@@ -25,15 +29,7 @@ const MainBox = styled.div`
         margin: 15% auto;
     } 
 `
-// width: 350px;
-// margin: 8% auto;
-// background-color: rgba(226,194,117,.95);
-// padding: 1rem;
-// box-shadow: 4px 4px rgba(0,0,0,.25);
-// border-radius: 8px;
-// @media (max-width: 481px) { 
-//     width: 280px;
-// }
+
 const MainPageButton = styled.button`
     font-family: inherit!important;
     font-size: 1.25rem;
@@ -60,7 +56,7 @@ export default function MainPageBox() {
     return(
         <div>
             <MainBox>
-                <div style={{padding: '15%'}}>
+                <div style={{padding:'5%'}}>
                     <h1>Welcome to your Kitchen organization assisant</h1>
                     <Link to='/app/recipe_select'><MainPageButton>Get your Recipes</MainPageButton></Link><Link to='/app/recipe_builder'><MainPageButton>Add a Recipe</MainPageButton></Link>
                 </div>

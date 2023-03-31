@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
 import { TextField, Stack } from '@mui/material';
-import { LoginButton } from '../styledComponents';
-import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 import axios from 'axios'
 
-
+const LoginButton = styled.button`
+    background-color: #C36A2D;
+    width: 60%;
+    font-size: 1.75rem;
+    padding: .5 rem;
+    border-radius: 8px;
+    box-shadow: 2px 2px rgba(0,0,0,.25);
+`
 
 export default function SignupForm() {
 
@@ -28,7 +34,7 @@ export default function SignupForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post("http://localhost:3001/officechef/signup/", state)
+        axios.post("http://localhost:3001/api/signup/", state)
         .then(
             window.location = '/'
         )
@@ -85,8 +91,8 @@ export default function SignupForm() {
                 >
 
                 </TextField>
-                <div>
-                {/* <Link to='/login'> */}
+                <div style={{textAlign: 'center'}}>
+                {/* <Link to='/'> */}
                     <LoginButton type='submit' onSubmit={handleSubmit}>Sign Up!</LoginButton>
                 {/* </Link> */}
                 </div>

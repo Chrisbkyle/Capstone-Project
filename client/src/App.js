@@ -5,23 +5,15 @@ import RecipeTable from './components/RecipeTable';
 import RecipeBuilder from './components/RecipeBuilder';
 import RecipePage from './components/RecipePage';
 import { Route, Routes } from 'react-router-dom'
-import HeaderSidenav from './components/HeaderSideNav';
+import HeaderSidenav from './components/SharedComponents/HeaderSideNav';
 import NotFound from './components/NotFound';
 import SignupPage from './components/SignupPage';
-import BackgroundGrid from './components/LoginBackground';
+import BackgroundGrid from './components/notinuse/LoginBackground';
+import RecipeEdit from './components/notinuse/RecipeEdit';
 
 function App() {
   return (
     <div className="App">
-      <Routes>
-
-        <Route path='/' element={<BackgroundGrid />}></Route>
-
-        <Route path='/signup' element={<BackgroundGrid />}></Route>
-
-        <Route path='/app' element={<BackgroundGrid />}></Route>
-
-      </Routes>
 
       <Routes>
 
@@ -38,6 +30,8 @@ function App() {
             <Route path='/app/recipe_select' element={<RecipeTable sortConfig={{ sortBy: 'recipe', direction: 'ascending' }} />} />
               
             <Route path='/app/recipe_page/:id' element={<RecipePage />} />
+
+            <Route path='/app/recipe_edit/:id' element={<RecipeEdit />} />
             
           </Route>
 

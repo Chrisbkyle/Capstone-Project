@@ -17,9 +17,9 @@ BONUS
 Login Page      Basic: #Done            Tablet: #Done        Cellphone: #Done
 Signup Page     Basic: #Done            Tablet: #Done        Cellphone: Not Done      research how to change input data for media
 Main Page       Basic: #Done            Tablet: #Done        Cellphone: #Done
-Recipe Table    Basic: #Done            Tablet: Not Done        Cellphone: Not Done
-Recipe Builder  Basic: #Done            Tablet: #Done        Cellphone: Not Done       put in breakpoint at 700px
-Recipe Page     Basic: #Done            Tablet: #Done        Cellphone: #Done    put in breakpoint at 768px & 480px
+Recipe Table    Basic: #Done            Tablet: #Done        Cellphone: #Done
+Recipe Builder  Basic: #Done            Tablet: #Done        Cellphone: #Done    
+Recipe Page     Basic: #Done            Tablet: #Done        Cellphone: #Done    
 
 Now let’s see some common breakpoints for widths of devices:
 

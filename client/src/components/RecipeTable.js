@@ -1,59 +1,93 @@
 import '../App.css'
 import React, { useState, useEffect } from 'react';
-import sortTableData from './RecipeTable/Elements/SortTableData';
-import { headCells } from './RecipeTable/testObjects';
-import { Table, TableHeaderRow, TableHeaderContent, TableContent, TableCell, TableContainer, TableCellHeader, BlankButton } from './styledComponents';
+
+import sortTableData  from './RecipeTable/Elements/SortTableData';
+import useMediaQuery from './RecipeTable/Elements/useMediaQuery';
+
+import { headCells, headCellsMobile } from './RecipeTable/testObjects';
 import SortButton from './RecipeTable/SortButton';
-import { TablePagination, TextField } from '@mui/material';
 import TableTitle from './RecipeTable/TableTitle';
+
+import { TablePagination } from '@mui/material';
+
 import { Link } from 'react-router-dom';
 import { FalseHeader } from './styledComponents';
-import FilterListIcon from '@mui/icons-material/FilterList';
 import styled from 'styled-components';
 
+import FilterOptions from './RecipeTable/FilterOptions';
 
-const FilterDisplay = styled.div`
-    margin-top:4px;
-    background-color: #EADCA6; 
-    box-shadow: 0px 2px lightgrey;
-    height: 3.5rem;
+const TableContainer = styled.div`
+    margin: 2rem;
+    border: 1px solid #EADCA6;
+    @media (max-width: 768px) {
+        margin: 0rem;
+        font-size: 12px;
+    }
 `
-const FilterFlexItem = styled.div`
-    display: flex;
-    justify-content: center;
-    width:33%;
-    border: 3px outset #EADCA6;
+const Table = styled.div`
+    display: table;
+    width: 100%;
+    margin: 0px;
+    border-collapse: collapse;
 `
-const FilterSelect = styled.select`
-    width: 50%;
-    font-size: 1rem;
-    padding: .5rem;
-    margin: .25rem;
-    background-color: #EADCA6;
-    border: 1px solid black;
-    border-bottom: 2px solid black;
-    border-radius: 4px;
-    box-shadow: 2px 2px lightgrey;
+
+const TableHeaderRow = styled.div`
+    display: table-row;
+    margin: 0px;
+    height: 3rem;
+    border-bottom: 3px outset #EADCA6!important;
 `
-const FilterSearch = styled.input`
-    width: 50%;
-    font-size: 1rem;
-    padding: .5rem;
-    margin: .25rem;
-    background-color: #EADCA6;
-    border: 1px solid black;
-    border-bottom: 2px solid black;
-    border-radius: 4px;
-    box-shadow: 2px 2px lightgrey;
+const TableHeaderContent = styled.div`
+    display: table-header-group;
+    padding: .6rem;
+    height: 3rem;
 `
+const TableContent = styled.div`
+    display: table-row-group;
+    padding: .6rem; 
+    height: 3rem;
+`
+const TableCell = styled.div`
+    display: table-cell;
+    width: 25%;
+    text-align: left;
+    padding-left: 5%;
+    padding: 1rem;
+    font-size: 1rem;    
+`
+const TableCellHeader = styled.div`
+    display: table-cell;
+    border-bottom: 1px solid #EADCA6;
+    width: 25%;
+    text-align: left;
+    padding-left: 5%;
+    padding: 1rem;
+    font-size: 1.25rem;    
+`
+
 
 
 const RecipeTable = ({ sortConfig }) => {
+    const isTablet = useMediaQuery('(max-width: 768px)');
 
+    const secondaryButton = {
+        width: isTablet ? '20%' : '25%'
+    }
+    const mainButton = {
+        width: isTablet ? '40%' : '25%'
+    }
+    const buttonHolderStyle = {
+        padding: isTablet ? '0rem' : '1rem'
+    }
+    const disppearingButton = {
+        display: isTablet ? 'none' : 'table-cell',
+        width: isTablet ?  '0' : '25%'
+    }
 
+    
 
     useEffect(() => {
-        fetch('http://localhost:3001/officechef/recipes/', {
+        fetch('http://localhost:3001/api/recipes/', {
         method: 'get',
         })
             .then(response => response.json())
@@ -62,26 +96,32 @@ const RecipeTable = ({ sortConfig }) => {
                 console.log(err)
             })
         }, [])
-    
+
+
+        const [headCellsState, setHeadCellsState] = useState(headCells)
+
         const [items, setItems] = useState([]);
         const [sortedItems, setSortedItems] = useState(items)
+        const [filterText, setFilterText] = useState('');
+
+
         const [direction, setDirection] = useState()
         const [sortBy, setSortBy] = useState()
         const { showSortUi } = sortConfig || {}
+
         const [rowsPerPage, setRowsPerPage] = React.useState(5);
         const [page, setPage] = React.useState(0);
-        const [filterText, setFilterText] = useState('');
-        const [filterDisplay, setFilterDisplay] = useState(false)
-  
+
+console.log(items)
 
     //function for the Sort buttons
     const handleClick = event => {
-      const sortDir = direction === 'descending' ? 'ascending' : 'descending'
-      setDirection(sortDir)
-      setSortBy(event.target.id)
-      const sortConfig = { sortBy: event.target.id, direction: sortDir }
-      setSortedItems(sortTableData(items, sortConfig))
-    }
+        const sortDir = direction === 'descending' ? 'ascending' : 'descending'
+        setDirection(sortDir)
+        setSortBy(event.target.id)
+        const sortConfig = { sortBy: event.target.id, direction: sortDir }
+        setSortedItems(sortTableData(items, sortConfig))
+    }        
 
     //for the pagination bar at bottom, from MUI
     const handleChangePage = (event, newPage) => {
@@ -89,70 +129,58 @@ const RecipeTable = ({ sortConfig }) => {
     };
     
     const handleChangeRowsPerPage = (event) => {
-        setRowsPerPage(parseInt(event.target.value, 5));
+        setRowsPerPage(parseInt(event.target.value, 10));
         setPage(0);
     };
 
     //Filter data functions
     const filteredData = items.filter(row =>
         Object.values(row).some(value =>
-          value.toLowerCase().toString().includes(filterText.toLowerCase())
-      )
+            value.toLowerCase().toString().includes(filterText.toLowerCase())
+        )
     );
+            
 
-    const toggleFilterDisplay = () => {
-        setFilterDisplay(current => !current)
-    }
-    const handleSearchChange = (e) => {
-        setFilterText(e.target.value)
-    }
+   
+    // Handling responive features in the header
+    const handleResize = () => {
+        if (window.innerWidth <= 769) {
+            setHeadCellsState(headCellsMobile)   
+        } else {
+            setHeadCellsState(headCells);
+          }
+        };
+      
+        // add event listener for window resize
+        useEffect(() => {
+          window.addEventListener('resize', handleResize);
+          return () => window.removeEventListener('resize', handleResize);
+        }, []);
 
-
+      
     
 
-// useEffect(() => {
-//     console.log('search value was changed')
-// }, [filterText])
+
     return (
         <div>
             <FalseHeader />
-            <TableContainer>
-            <TableTitle />
-                <BlankButton onClick={toggleFilterDisplay}><FilterListIcon></FilterListIcon></BlankButton>
-                <FilterDisplay style={{display: filterDisplay ? 'flex' : 'none'}}>
-                    <FilterFlexItem>
-                    <FilterSearch
-                        value={filterText}
-                        placeholder= 'Search'
-                        onChange={handleSearchChange}>
-                    </FilterSearch>
-                    </FilterFlexItem>
-                    <FilterFlexItem>
-                        <FilterSelect 
-                            onChange={e => setFilterText(e.target.value)}>
-                            <option style={{borderBottom: '1px solid black'}}>Filter Dish</option>
-                            {items.map((item) =>
-                            <option>{item.dish}</option>
-                            )}
-                        </FilterSelect>
-                    </FilterFlexItem>
-                    <FilterFlexItem>
-                    <FilterSelect
-                        onChange={e => setFilterText(e.target.value)}>
-                            <option value=''>Filter Station </option>
-                               {items.map((item) =>
-                            <option>{item.station}</option>
-                            )}
-                        </FilterSelect>
-                    </FilterFlexItem>
-                </FilterDisplay>                    
 
+            <TableContainer>
+
+                <TableTitle />
+
+                <FilterOptions 
+                stateConfig={items}/>
 
                 <Table>
+
+
                     <TableHeaderContent>
                         <TableHeaderRow>
-                            {headCells.map((headCell) => (
+                            {headCellsState.map((headCell) => (
+                                
                                 <TableCellHeader 
+                                style={buttonHolderStyle}
                                     key={headCell.id}
                                 >
                                     <SortButton
@@ -161,45 +189,44 @@ const RecipeTable = ({ sortConfig }) => {
                                     onClick={handleClick}
                                     sortBy={sortBy}
                                     content={headCell.label}
+                                    
                                 />
                                 </TableCellHeader>
+                                
                             ))}
                         </TableHeaderRow>
                     </TableHeaderContent>
                     <TableContent>
+                    
                         {filteredData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                         .map((item) => {
 
                             return (
+                                <Link className='recipeTableLink' to={'/app/recipe_page/' + item.recipe}>
 
-                                <Link className='recipeTableLink'to={'/app/recipe_page/' + item.recipe}>
+                                    <TableCell style={mainButton}>{item.recipe}</TableCell>
 
-                                {/* <TableRow> */}
+                                    <TableCell style={mainButton}>{item.dish}</TableCell>
 
-                                    <TableCell>{item.recipe}</TableCell>
+                                    <TableCell style={secondaryButton}>{item.station}</TableCell>
 
-                                    <TableCell>{item.dish}</TableCell>
+                                    <TableCell style={disppearingButton}>{item.createdAt.slice(0, 10)}</TableCell>
 
-                                    <TableCell>{item.station}</TableCell>
-
-                                    <TableCell>{item.createdAt.slice(0, 10)}</TableCell>
-                                    
-                                {/* </TableRow> */}
                                 </Link>
-                                
+                          
                         )})}
+                        
                     </TableContent>
                 </Table>
-                    <TablePagination
-                        rowsPerPageOptions={[5, 10, 15]}
-                        component="div"
-                        count={items.length}
-                        rowsPerPage={rowsPerPage}
-                        page={page}
-                        onPageChange={handleChangePage}
-                        onRowsPerPageChange={handleChangeRowsPerPage} />
+                <TablePagination
+                    rowsPerPageOptions={[5, 10, 15]}
+                    component="div"
+                    count={filteredData.length}
+                    rowsPerPage={rowsPerPage}
+                    page={page}
+                    onPageChange={handleChangePage}
+                    onRowsPerPageChange={handleChangeRowsPerPage} />
             </TableContainer>
-            {/* <Footer /> */}
         </div>
     )
 }

@@ -3,7 +3,7 @@ import SignupForm from "./SignupPage/SignupForm";
 import styled from 'styled-components'
 import LoginHeader from "./LoginPage/LoginHeader";
 import SignupTitle from "./SignupPage/SignupTitle";
-import Footer from "./Footer";
+import Footer from "./SharedComponents/Footer";
 
 
 const SignupFormHolder = styled.div`

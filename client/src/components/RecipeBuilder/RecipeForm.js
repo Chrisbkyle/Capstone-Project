@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {TextField, Stack, MenuItem, Select } from '@mui/material';
-import { FalseHeader } from '../styledComponents';
 import axios from 'axios';
 import styled from 'styled-components';
 import addField from './Elements/addField'
 import removeField from './Elements/removeField';
 import handleObjectChange from './Elements/handleObjectChange';
 
+
+
 const BlankButton = styled.button`
+    width: 20%;
     font-family: inherit!important;
     font-size: 1.25rem;
     background-color: transparent!important;
@@ -24,9 +26,51 @@ const BlankButton = styled.button`
     }
     @media (max-width: 768px) {
         font-size:1rem;
+        width:35%;
+    }
+    @media (max-width: 480px) {
+        width: 50%;
     }
   `
 
+  const largeField = {
+    width: { xs: "100%", sm: "60%",
+     md: "50%", lg: "40%" },
+     "& .MuiFormLabel-root": {
+        color: 'black'
+    },
+    "& .MuiFormLabel-root.Mui-focused": {
+        color: 'black'
+    },
+    "& .MuiInputBase-root::after": {
+        borderBottom: '2px solid black'
+    }
+ };
+ const mediumField = {
+    "& .MuiFormLabel-root": {
+       color: 'black'
+   },
+   "& .MuiFormLabel-root.Mui-focused": {
+       color: 'black'
+   },
+   "& .MuiInputBase-root::after": {
+       borderBottom: '2px solid black'
+   }
+ }
+
+ const smallField = {
+    width: { xs: "40%", sm: "20%",
+     md: "10%", lg: "10%" },
+     "& .MuiFormLabel-root": {
+        color: 'black'
+    },
+    "& .MuiFormLabel-root.Mui-focused": {
+        color: 'black'
+    },
+    "& .MuiInputBase-root::after": {
+        borderBottom: '2px solid black'
+    }
+ };
 
 export default function RecipeForm() {
 
@@ -40,7 +84,7 @@ export default function RecipeForm() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        axios.post("http://localhost:3001/officechef/recipebuilder", 
+        axios.post("http://localhost:3001/api/recipebuilder", 
             {
                 recipe: recipe,
                 ingredients: JSON.stringify(ingredients),
@@ -62,86 +106,54 @@ export default function RecipeForm() {
 
         <div>
             <form onSubmit={handleSubmit}>
-            
+
                 <Stack direction="column" spacing={2}>
 
                     <TextField
-                    required
-                    variant='filled'
-                    label='Recipe Name'
-                    value={recipe}
-                    name='recipeName'
-                    onChange={(e) => setRecipe(e.target.value)}
-                    // sx={{width: '30%'}}
-                    sx={{width: '30%',
-                        "& .MuiFormLabel-root": {
-                            color: 'black'
-                        },
-                        "& .MuiFormLabel-root.Mui-focused": {
-                            color: 'black'
-                        },
-                        "& .MuiInputBase-root::after": {
-                            borderBottom: '2px solid black'
-                        }
-                    }}
-                    >        
+                        required
+                        variant='filled'
+                        label='Recipe Name'
+                        value={recipe}
+                        name='recipeName'
+                        onChange={(e) => setRecipe(e.target.value)}
+                        sx={largeField}>        
                     </TextField>  
 
                 {ingredients.map((input, index) => {
                 return (
                 <Stack direction={{xs: 'column', lg: 'row'}} spacing={1}>                    
                         <TextField
-                        required
-                        fullWidth
-                        variant='filled'
-                        label='Ingredients'
-                        value={input.ingredient}
-                        name='ingredient'
-                        onChange={event => handleObjectChange(ingredients, setIngredients, index, event)}
-                        sx={{
-                            "& .MuiFormLabel-root": {
-                                color: 'black'
-                            },
-                            "& .MuiFormLabel-root.Mui-focused": {
-                                color: 'black'
-                            },
-                            "& .MuiInputBase-root::after": {
-                                borderBottom: '2px solid black'
-                            }
-                            }}>
+                            required
+                            fullWidth
+                            variant='filled'
+                            label='Ingredients'
+                            value={input.ingredient}
+                            name='ingredient'
+                            onChange={event => handleObjectChange(ingredients, setIngredients, index, event)}
+                            sx={mediumField}>
                         </TextField>
-                            <TextField
-                        variant='filled'
-                        label='Quantity'
-                        value={input.quantity}
-                        name='quantity'
-                        onChange={event => handleObjectChange(ingredients, setIngredients, index, event)}
-                        sx={{
-                            "& .MuiFormLabel-root": {
-                                color: 'black'
-                            },
-                            "& .MuiFormLabel-root.Mui-focused": {
-                                color: 'black'
-                            },
-                            "& .MuiInputBase-root::after": {
-                                borderBottom: '2px solid black'
-                            }
-                            }}>
+                        <TextField
+                            variant='filled'
+                            label='Quantity'
+                            value={input.quantity}
+                            name='quantity'
+                            onChange={event => handleObjectChange(ingredients, setIngredients, index, event)}
+                            sx={smallField}>
                         </TextField>
-                        <BlankButton style={{height: '2rem', width:'2rem', borderRadius:'100%', margin:'auto 8px'}}
-                        type='button'
-
-                        onClick={() => removeField(ingredients, setIngredients, index)}>
+                        <BlankButton 
+                            style={{height: '2rem', width:'2rem', borderRadius:'100%', margin:'auto 8px'}}
+                            type='button'
+                            onClick={() => removeField(ingredients, setIngredients, index)}>
                             -
                         </BlankButton>
                     </Stack>
                     )
                 })}
                     <BlankButton 
-                    type="button"
-                    onClick={event => addField(ingredients, setIngredients, event)}
-                    style={{width: '20%', fontSize: '1rem'}}>
-                    + Add another Ingredient</BlankButton> 
+                        type="button"
+                        onClick={event => addField(ingredients, setIngredients, event)}>
+                        + Add another Ingredient
+                    </BlankButton> 
 
 
                 {directions.map((input, index) => {
@@ -152,17 +164,7 @@ export default function RecipeForm() {
                             value={input.step}
                             name='step'
                             onChange={event => handleObjectChange(directions, setDirections, index, event)}
-                            sx={{
-                                "& .MuiFormLabel-root": {
-                                    color: 'black'
-                                },
-                                "& .MuiFormLabel-root.Mui-focused": {
-                                    color: 'black'
-                                },
-                                "& .MuiInputBase-root::after": {
-                                    borderBottom: '2px solid black'
-                                }
-                                }}>
+                            sx={smallField}>
                         </TextField>
                         <TextField
                             required
@@ -174,95 +176,50 @@ export default function RecipeForm() {
                             onChange={event => handleObjectChange(directions, setDirections, index, event)}
                             multiline
                             rows={5}
-                            sx={{
-                                "& .MuiFormLabel-root": {
-                                    color: 'black'
-                                },
-                                "& .MuiFormLabel-root.Mui-focused": {
-                                    color: 'black'
-                                },
-                                "& .MuiInputBase-root::after": {
-                                    borderBottom: '2px solid black'
-                                }
-                                }}> 
+                            sx={mediumField}> 
                         </TextField> 
                         <BlankButton 
-                        style={{height: '2rem', width:'2rem', borderRadius:'100%', marginTop:'1rem'}}
-                        type='button' 
-                        onClick={() => removeField(directions, setDirections, index)}>
+                            style={{height: '2rem', width:'2rem', borderRadius:'100%', marginTop:'1rem'}}
+                            type='button' 
+                            onClick={() => removeField(directions, setDirections, index)}>
                             -
-                            </BlankButton> 
+                        </BlankButton> 
                     </Stack>
                     )
                 })}
                     <BlankButton
-                    type="button" 
-                    onClick={event => addField(directions, setDirections, event)}
-                    style={{width: '20%', fontSize: '1rem'}}>
+                        type="button" 
+                        onClick={event => addField(directions, setDirections, event)}>
                     +Add next Step
                     </BlankButton>              
                     <TextField
-                    variant='filled'
-                    label='Yield'
-                    value={recipeYield}
-                    name='recipeYield'
-                    onChange={(e) => setRecipeYield(e.target.value)}
-                    helperText="not required"
-                    sx={{width: '30%',
-                    "& .MuiFormLabel-root": {
-                        color: 'black'
-                    },
-                    "& .MuiFormLabel-root.Mui-focused": {
-                        color: 'black'
-                    },
-                    "& .MuiInputBase-root::after": {
-                        borderBottom: '2px solid black'
-                    }
-                }}>
+                        variant='filled'
+                        label='Yield'
+                        value={recipeYield}
+                        name='recipeYield'
+                        onChange={(e) => setRecipeYield(e.target.value)}
+                        sx={largeField}>
                     </TextField>  
                                         
                     <TextField
-                    variant='filled'
-                    label='Station'
-                    value={station}
-                    name='station'
-                    onChange={(e) => setStation(e.target.value)}
-                    helperText="not required"
-                    sx={{width: '30%',
-                    "& .MuiFormLabel-root": {
-                        color: 'black'
-                    },
-                    "& .MuiFormLabel-root.Mui-focused": {
-                        color: 'black'
-                    },
-                    "& .MuiInputBase-root::after": {
-                        borderBottom: '2px solid black'
-                    }
-                }}>
+                        variant='filled'
+                        label='Station'
+                        value={station}
+                        name='station'
+                        onChange={(e) => setStation(e.target.value)}
+                        sx={largeField}>
                     </TextField>  
                                         
                     <TextField
-                    variant='filled'
-                    label='Dish'
-                    value={dish}
-                    name='dish'
-                    onChange={(e) => setDish(e.target.value)}
-                    helperText="not required"
-                    sx={{width: '30%',
-                    "& .MuiFormLabel-root": {
-                        color: 'black'
-                    },
-                    "& .MuiFormLabel-root.Mui-focused": {
-                        color: 'black'
-                    },
-                    "& .MuiInputBase-root::after": {
-                        borderBottom: '2px solid black'
-                    }
-                    
-                }}>
+                        variant='filled'
+                        label='Dish'
+                        value={dish}
+                        name='dish'
+                        onChange={(e) => setDish(e.target.value)}
+                        sx={largeField}>
                     </TextField>
 
-                    <BlankButton type="submit" style={{width: '15%', margin:'auto'}}>Submit Recipe</BlankButton> 
+                    <BlankButton type="submit" style={{ margin:'auto'}}>Submit Recipe</BlankButton> 
                 </Stack>    
                 </form>
         </div>

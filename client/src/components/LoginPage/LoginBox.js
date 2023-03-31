@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import axios from 'axios';
 
 const LoginFormContainer = styled.div`
-    width: 350px;
     margin: 8% auto;
     background-color: rgba(226,194,117,.95);
     padding: 1rem;
@@ -18,6 +17,7 @@ const LoginBoxTitle = styled.div`
     font-size: 2rem;
     border-bottom: 1px solid black;
     padding-bottom: 1rem;
+    text-align: center;
 `
 const LoginInputContainer = styled.div`
     margin-top: 1.5rem;
@@ -61,7 +61,7 @@ export default function LoginBox() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:3001/officechef/login/', state)
+        axios.post('http://localhost:3001/api/login/', state)
         .then((response) => {
             console.log(response)
             if(response.data == 'Login Successful') {
@@ -104,11 +104,11 @@ export default function LoginBox() {
                             </LoginInput>
                         </label>
 
-                        <div><Link to='/app'>
+                        <div style={{textAlign: 'center'}}><Link to='/app'>
                             <LoginButton type='button' onClick={handleSubmit}>Login</LoginButton>
                         </Link></div>
 
-                        <div>Are you a memeber? if not <Link to='/signup'>sign up here </Link></div>
+                        <div style={{textAlign: 'center'}}>Are you a memeber? if not <Link to='/signup'>sign up here </Link></div>
             
                     </form>
                     </LoginInputContainer>

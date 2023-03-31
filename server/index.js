@@ -35,8 +35,11 @@ app.get('/', (req, res) => {
     res.json({message: 'Welcome to office-chef'});
 });
 
-app.use('/officechef', router)
+const userRouter = require('./router/userRoutes')
+const recipeRouter = require('./router/recipeRoutes')
 
+app.use('/api/users', userRouter)
+app.use('/api/recipe', recipeRppouter)
 
 server.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);

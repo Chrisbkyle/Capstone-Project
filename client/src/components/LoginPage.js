@@ -1,8 +1,8 @@
 import React from 'react';
 import LoginBox from './LoginPage/LoginBox';
 import LoginHeader from './LoginPage/LoginHeader';
-import Footer from './Footer'
-import background from "./resources/images/background.jpg"
+import Footer from './SharedComponents/Footer'
+import styled from 'styled-components';
 
 
 

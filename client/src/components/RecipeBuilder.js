@@ -1,9 +1,22 @@
 import React from 'react';
 import RecipeForm from './RecipeBuilder/RecipeForm';
-import { FalseHeader, RecipeFormContainer, RecipeBuilderTitle } from './styledComponents';
+import { FalseHeader } from './styledComponents';
+import styled from 'styled-components';
 
+const RecipeBuilderTitle = styled.div`
+    font-size: 3rem;
+    text-align: center;
+    padding-top: 1%;
+`
+const RecipeFormContainer = styled.div`
+    background-color: #FFFBEA;
+    margin: 2% 5% 5% 5%;
+    padding: 5%;
+    border-radius: 5px;
+    box-shadow: 4px 4px lightgrey;
+    border: 1px solid lightgrey;
 
-
+`
 
 export default function RecipeBuilder() {
 
