@@ -1,7 +1,7 @@
 import styled from "styled-components"
-import useMediaQuery from "../Elements/useMediaQuery";
 
 const Button = styled.button`
+    width: 40%;
     font-family: inherit!important;
     font-size: 1.25rem;
     background-color: transparent!important;
@@ -17,6 +17,7 @@ const Button = styled.button`
     }
     @media (max-width: 768px) {
         font-size:1.25rem;
+        width: 100%;
     }
   `
 
@@ -24,22 +25,13 @@ const Button = styled.button`
 
 const SortButton = ({ direction, id, onClick, sortBy, content }) => {
 
-    const isTablet = useMediaQuery('(max-width: 768px)');
-    const buttonStyle = {
-      width: isTablet ? '100%' : '40%;',
-      fontSize: isTablet ? '1rem' : '1.25rem'
-  }
-
-
-
-
 
 
     const arrows = { ascending: '\u21D3', descending: '\u21D1'}
     const arrow = sortBy === id ? arrows[direction] : '\u21D5'
 
     return (
-        <Button id={id} onClick={onClick} style={buttonStyle}>
+        <Button id={id} onClick={onClick}>
            {content} {arrow}
         </Button>
     )

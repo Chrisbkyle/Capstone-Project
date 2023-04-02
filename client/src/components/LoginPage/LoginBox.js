@@ -64,14 +64,10 @@ export default function LoginBox() {
         e.preventDefault();
         axios.post('http://localhost:3001/api/userRoutes/login/', state)
         .then((response) => {
-            console.log(response)
-            if(response.data == 'Login Successful') {
-                window.location = '/app'
-            } else if (response.data == 'Username not found') {
-                alert('Username not found')
-            } else if(response.data == 'Password not found') {
-                alert('Password not found')
-            } 
+            window.location = '/app'
+        }).catch((err) => {
+            alert(`${err.response.data}`)
+            console.log(err)
         })
     }
     return (

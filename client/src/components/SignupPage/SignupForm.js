@@ -24,7 +24,6 @@ export default function SignupForm() {
 
 
     const handleChange = (event) => {
-        
         let data = {...state}
         data[event.target.name] = event.target.value
         setState(data)
@@ -35,9 +34,14 @@ export default function SignupForm() {
     const handleSubmit = (e) => {
         e.preventDefault();
         axios.post("http://localhost:3001/api/userRoutes/signup/", state)
-        .then(
-            window.location = '/'
-        )
+        .then(response => {
+            console.log(response.data)
+            if(response.data == "Signup Successful") {
+                window.location = '/'
+            } else {
+                alert(`${response.data}`)
+            }
+        })
         .catch(err =>
             console.log(err)
         )

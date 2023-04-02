@@ -4,8 +4,8 @@ import axios from 'axios';
 import styled from "styled-components";
 import { FalseHeader } from "./styledComponents";
 import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 import { Stack } from "@mui/material";
-import {Link} from "@mui/material";
 
 
 // put in breakpoint at 768px & 480px
@@ -135,7 +135,9 @@ console.log(state.recipe)
             <RecipeDisplayHolder>
                 <Stack direction='row'>
                     <RecipePageName>{state.recipe}</RecipePageName>
-                    <EditButton onClick={editHandlers}>edit</EditButton> 
+                    <EditButton onClick={editHandlers}>
+                        <EditIcon></EditIcon>    
+                    </EditButton> 
                     <DeleteButton onClick={deleteWarning}>
                         <DeleteIcon></DeleteIcon>
                     </DeleteButton>  

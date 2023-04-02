@@ -10,9 +10,11 @@ import NotFound from './components/NotFound';
 import SignupPage from './components/SignupPage';
 import RecipeEdit from './components/RecipeEdit';
 
+
 function App() {
   return (
     <div className="App">
+
 
       <Routes>
 
@@ -38,9 +40,8 @@ function App() {
         <Route path='*' element={<NotFound />}/>
 
 
-
-
       </Routes>
+      
     </div>
   );
 }

@@ -12,7 +12,23 @@ body {
 } */
 
 /* .bg1 {
-  background-image: url(./components/resources/images/background.jpg);
+  display: grid;
+  background-image: url(./components/resources/images/office_chef_background1.jpg);
+  background-size: cover;
+}
+.bg2 {
+  display: grid;
+  background-image: url(./components/resources/images/office_chef_background2.jpg);
+  background-size: cover;
+}
+.bg3 {
+  display: grid;
+  background-image: url(./components/resources/images/office_chef_background3.jpg);
+  background-size: cover;
+}
+.bg4 {
+  display: grid;
+  background-image: url(./components/resources/images/office_chef_background4.jpg);
   background-size: cover;
 } */
 
