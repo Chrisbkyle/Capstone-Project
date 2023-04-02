@@ -7,12 +7,9 @@ const saltRounds = 10;
 async function getUsers(req, res) {
     const user = await Models.Users.findByPk(req.body.username);
     const comparison = await bcrypt.compare(req.body.password, user.password)
-    console.log(user.password)
-    console.log(req.body.password)
-    console.log(comparison)
       if (!req.body.username || !req.body.password) {
         res.send('Please Complete all fields for login')
-      } else if (user === null) {
+      } else if (!user) {
         res.send('Username not found')
       } else if (!comparison) {
         res.send('Password not found')  
