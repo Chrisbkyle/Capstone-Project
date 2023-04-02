@@ -121,19 +121,21 @@ const FilterSelect = styled.select`
 
 const RecipeTable = ({ sortConfig }) => {
 
-    //Media style for button row, to ensure third button disappears
+    //Media style for button row, to ensure forth button disappears on resize
     const isTablet = useMediaQuery('(max-width: 768px)');
+    const isNotTablet = useMediaQuery('min-width: 768px')
 
-    const secondaryButton = {
-        width: isTablet ? '20%' : '25%'
+    const smallCol = {
+        width: isTablet ? '28%' : '25%',
+        
     }
-    const mainButton = {
-        width: isTablet ? '40%' : '25%'
+    const largeCol = {
+        width: isTablet ? '36%' : '25%',
     }
     const buttonHolderStyle = {
         padding: isTablet ? '0rem' : '1rem'
     }
-    const disppearingButton = {
+    const disppearingCol = {
         display: isTablet ? 'none' : 'table-cell',
         width: isTablet ?  '0' : '25%'
     }
@@ -266,7 +268,7 @@ const RecipeTable = ({ sortConfig }) => {
                             {headCellsState.map((headCell) => (
                                 
                                 <TableCellHeader 
-                                style={buttonHolderStyle}
+                                // style={buttonHolderStyle}
                                     key={headCell.id}
                                 >
                                     <SortButton
@@ -290,13 +292,13 @@ const RecipeTable = ({ sortConfig }) => {
                             return (
                                 <Link className='recipeTableLink' to={'/app/recipe_page/' + item.recipe}>
 
-                                    <TableCell style={mainButton}>{item.recipe}</TableCell>
+                                    <TableCell style={largeCol}>{item.recipe}</TableCell>
 
-                                    <TableCell style={mainButton}>{item.dish}</TableCell>
+                                    <TableCell style={largeCol}>{item.dish}</TableCell>
 
-                                    <TableCell style={secondaryButton}>{item.station}</TableCell>
+                                    <TableCell style={smallCol}>{item.station}</TableCell>
 
-                                    <TableCell style={disppearingButton}>{item.createdAt.slice(0, 10)}</TableCell>
+                                    <TableCell style={disppearingCol}>{item.createdAt.slice(0, 10)}</TableCell>
 
                                 </Link>
                           
