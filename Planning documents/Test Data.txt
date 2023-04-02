@@ -2,7 +2,7 @@ User info test
 Enter either manually while using the app 
 or 
 by using postman @ http://localhost:3001/api/userRoutes/signup
-            
+
 
 --------------------------------------------------------------------------------------------------------------
 Username too short ###########################################################################################

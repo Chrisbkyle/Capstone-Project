@@ -6,19 +6,25 @@ const saltRounds = 10;
 
 async function getUsers(req, res) {
     const user = await Models.Users.findByPk(req.body.username);
+    if(!user) {
+        res.send('Username not found')
+    } else {
+  
     const comparison = await bcrypt.compare(req.body.password, user.password)
     console.log(user.password)
     console.log(req.body.password)
     console.log(comparison)
       if (!req.body.username || !req.body.password) {
         res.send('Please Complete all fields for login')
-      } else if (user === null) {
-        res.send('Username not found')
-      } else if (!comparison) {
+      } 
+    //   else if (user === null) {
+    //     res.send('Username not found')
+    //   } 
+      else if (!comparison) {
         res.send('Password not found')  
       } else {
-        res.send('Login Successful')}
-
+        res.send('Login Successful')
+      }}
       
 }
 
@@ -26,9 +32,9 @@ async function addUser(req, res)  {
         const user = await Models.Users.findByPk(req.body.username);
         const userValid = /^(?=.{5,}$)[a-zA-Z_]*\d*$/;
         const passwordValid = /(?=.*[a-z])(?=.*[0-9])(?=.*\W)(?=.*^[A-Za-z])(?=.{5,})/i;
-        if (userValid.test(req.body.username) != true) {
+        if (!userValid.test(req.body.username)) {
             res.send('Username does not match required criteria')
-        } else if (passwordValid.test(req.body.password) != true ) {
+        } else if (!passwordValid.test(req.body.password)) {
             res.send('Password does not match required criteria')
         } else if ((Object.values(req.body).map(item => typeof(item) != typeof('string'))) == true) {
             res.send('Data sent needs to be a string')
@@ -50,7 +56,7 @@ async function addUser(req, res)  {
                 Models.Users.create(users)
             } else {
                 res.send('user already exists')
-            }
+            } 
         }
     }
 

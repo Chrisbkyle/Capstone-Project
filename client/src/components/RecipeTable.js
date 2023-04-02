@@ -2,7 +2,7 @@ import '../App.css'
 import React, { useState, useEffect } from 'react';
 import sortTableData  from './Elements/SortTableData';
 import useMediaQuery from './Elements/useMediaQuery';
-import { headCells, headCellsMobile } from './RecipeTable/testObjects';
+import { headCells, headCellsMobile } from './RecipeTable/tableObjects';
 import SortButton from './RecipeTable/SortButton';
 import TableTitle from './RecipeTable/TableTitle';
 import { TablePagination } from '@mui/material';

@@ -67,6 +67,8 @@ export default function LoginBox() {
             console.log(response)
             if(response.data == 'Login Successful') {
                 window.location = '/app'
+            } else if (response.data == "Please Complete all fields for login") {
+                alert("Please Complete all fields for login")
             } else if (response.data == 'Username not found') {
                 alert('Username not found')
             } else if(response.data == 'Password not found') {
