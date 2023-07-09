@@ -40,11 +40,14 @@ When you pull off git all you need to do is
 
 2. Navigate to 'server', run npm intall
 
-3. Find /db/dbConnect on the backend and change the connection to a database on lines 3-5
+3. Create a new .env file in the 'server file' and populate with
+   DB_HOST=
+   DB_PORT=
+   DB_USER=
+   DB_PASSWORD=
+   DB_NAME='office_chef'
+   Add in details of your local mySQL connection to use
 
 4. Navigate to 'client', run npm start
 
 5. Navigate to 'server', run nodemon index.js
-
-
-
