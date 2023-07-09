@@ -163,12 +163,11 @@ const RecipeTable = ({ sortConfig }) => {
         method: 'get',
         })
             .then(response => response.json())
-            .then(data =>  setItems(data))
+            .then(data =>  console.log(data))
             .catch((err) => {
                 console.log(err)
             })
         }, [])
-        console.log(items)
 
         const [headCellsState, setHeadCellsState] = useState(headCells)
 
