@@ -162,13 +162,13 @@ const RecipeTable = ({ sortConfig }) => {
         fetch(deployedApi + 'api/recipeRoutes/recipes/', {
         method: 'get',
         })
-            .then(response => console.log(response.json()))
-            .then(data => setItems(data))
+            .then(response => response.json())
+            .then(data =>  setItems(data))
             .catch((err) => {
                 console.log(err)
             })
         }, [])
-
+        console.log(items)
 
         const [headCellsState, setHeadCellsState] = useState(headCells)
 
