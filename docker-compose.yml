@@ -7,8 +7,8 @@ services:
     env_file: 
       - ./server/.env
     environment:
-      - MYSQL_ROOT_PASSWORD=$DB_PASSWORD
-      - MYSQL_DATABASE=$DB_NAME
+      - MYSQL_ROOT_PASSWORD=$DB_PASSWORD || 'pass'
+      - MYSQL_DATABASE=$DB_NAME || 'office_chef'
     ports:
       - 8080:8080
   
@@ -25,9 +25,9 @@ services:
       - 3001:3001
     environment:
       DB_HOST: db
-      DB_USER: $DB_USER
-      DB_PASSWORD: $DB_PASSWORD
-      DB_NAME: $DB_NAME
+      DB_USER: $DB_USER || 'root'
+      DB_PASSWORD: $DB_PASSWORD || 'pass'
+      DB_NAME: $DB_NAME || 'office_chef'
       # - DB_PORT=$MYSQLDB_DOCKER_PORT
     stdin_open: true
     tty: true
