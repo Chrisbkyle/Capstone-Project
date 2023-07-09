@@ -147,27 +147,27 @@ const RecipeTable = ({ sortConfig }) => {
     const localApi = 'http://localhost:3001/'
     const deployedApi = 'http://13.239.25.244/server/'
 
+    // useEffect(() => {
+    //     axios.get(deployedApi + 'api/recipeRoutes/recipes/')
+    //         .then(response => console.log(response.json()))
+    //         .then(data => setItems(data))
+    //         .catch((err) => {
+    //             console.log(err)
+    //         }).catch((err) => {
+    //             console.log(err)
+    //     })
+    // }, []);
+
     useEffect(() => {
-        axios.get(deployedApi + 'api/recipeRoutes/recipes/')
+        fetch(deployedApi + 'api/recipeRoutes/recipes/', {
+        method: 'get',
+        })
             .then(response => console.log(response.json()))
             .then(data => setItems(data))
             .catch((err) => {
                 console.log(err)
-            }).catch((err) => {
-                console.log(err)
-        })
-    }, []);
-
-    // useEffect(() => {
-    //     fetch(deployedApi + 'api/recipeRoutes/recipes/', {
-    //     method: 'get',
-    //     })
-    //         .then(response => response.json())
-    //         .then(data => setItems(data))
-    //         .catch((err) => {
-    //             console.log(err)
-    //         })
-    //     }, [])
+            })
+        }, [])
 
 
         const [headCellsState, setHeadCellsState] = useState(headCells)
