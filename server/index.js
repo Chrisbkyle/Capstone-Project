@@ -4,6 +4,7 @@ const http = require('http');
 const dbConnect = require('./db/dbConnect')
 const bodyParser = require('body-parser')
 const app = express();
+require('dotenv').config();
 const PORT = 3001;
 
 
