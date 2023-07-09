@@ -99,7 +99,7 @@ export default function EditForm( {callback} ) {
             setRecipeYield(response.data.yield)
             setStation(response.data.station)
             setDish(response.data.dish)
-        }).catch((err) => {
+        }).then(() => console.log(recipe)).catch((err) => {
             console.log(err)
         })
 }, []);
