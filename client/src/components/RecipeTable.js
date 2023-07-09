@@ -163,7 +163,8 @@ const RecipeTable = ({ sortConfig }) => {
         method: 'get',
         })
             .then(response => response.json())
-            .then(data =>  console.log(data))
+            .then(data =>  setItems(data))
+            .then(console.log(items))
             .catch((err) => {
                 console.log(err)
             })
