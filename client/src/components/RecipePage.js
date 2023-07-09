@@ -88,7 +88,7 @@ export default function RecipePage() {
     const localApi = 'http://localhost:3001/'
     const deployedApi = 'http://13.239.25.244/server/'
 
-c
+
 const deleteWarning = (e) => { 
     e.preventDefault()
     if(window.confirm("Are you sure you want to delete the recipe?")) {
