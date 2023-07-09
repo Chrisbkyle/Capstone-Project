@@ -142,10 +142,12 @@ const RecipeTable = ({ sortConfig }) => {
     const filterSearches = {
         width: isTablet ? '100%' : '66%'
     }
-    
+
+    const localApi = 'http://localhost:3001/'
+    const deployedApi = 'http://13.239.25.244/server/'
 
     useEffect(() => {
-        fetch('http://localhost:3001/api/recipeRoutes/recipes/', {
+        fetch(deployedApi + 'api/recipeRoutes/recipes/', {
         method: 'get',
         })
             .then(response => response.json())
