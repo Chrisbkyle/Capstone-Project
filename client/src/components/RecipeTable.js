@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 import { FalseHeader } from './styledComponents';
 import styled from 'styled-components';
 import FilterListIcon from '@mui/icons-material/FilterList';
+import axios from 'axios'
 
 const TableContainer = styled.div`
     margin: 2rem;
@@ -147,15 +148,27 @@ const RecipeTable = ({ sortConfig }) => {
     const deployedApi = 'http://13.239.25.244/server/'
 
     useEffect(() => {
-        fetch(deployedApi + 'api/recipeRoutes/recipes/', {
-        method: 'get',
+        axios.get(deployedApi + 'api/recipeRoutes/recipes/', {
         })
             .then(response => response.json())
             .then(data => setItems(data))
             .catch((err) => {
                 console.log(err)
-            })
-        }, [])
+            }).catch((err) => {
+                console.log(err)
+        })
+    }, []);
+
+    // useEffect(() => {
+    //     fetch(deployedApi + 'api/recipeRoutes/recipes/', {
+    //     method: 'get',
+    //     })
+    //         .then(response => response.json())
+    //         .then(data => setItems(data))
+    //         .catch((err) => {
+    //             console.log(err)
+    //         })
+    //     }, [])
 
 
         const [headCellsState, setHeadCellsState] = useState(headCells)
