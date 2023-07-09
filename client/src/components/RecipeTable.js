@@ -149,7 +149,7 @@ const RecipeTable = ({ sortConfig }) => {
 
     useEffect(() => {
         axios.get(deployedApi + 'api/recipeRoutes/recipes/')
-            .then(response => response.json())
+            .then(response => console.log(response.json()))
             .then(data => setItems(data))
             .catch((err) => {
                 console.log(err)
