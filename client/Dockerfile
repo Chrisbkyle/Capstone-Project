@@ -1,8 +1,15 @@
-FROM node.16
-WORKDIR /client
-COPY . /client/
+FROM node:20-alpine AS alpine
 
-RUN npm run build
-EXPOSE 3000
+WORKDIR /usr/src/app
 
-CMD npm start
+COPY . .
+
+# RUN apt-get update && apt-get upgrade -y && \
+#     apt-get install -y nodejs \
+#     npm
+
+RUN npm install
+
+
+# RUN npm build
+CMD ["npm", "start"]  

@@ -8,12 +8,12 @@ const Grid = styled.div`
     width 100vw;
     grid-template-columns: auto auto;
     grid-template-rows: auto auto;
-    z-index: -1;
+    z-index: 1;
 `
 
 
 
-export default function BackgroundGrid() {
+export default function LoginBackground() {
     return(
 
             <Grid>

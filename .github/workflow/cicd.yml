@@ -12,17 +12,17 @@ jobs:
     #different environment variables
     strategy:
       matrix:
-        node version: [16.x] #node version set to 16.x
+        node-version: [16.x] #node version set to 16.x
 
     #steps taken after push
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3 #premade github action
 
       - name: Set up Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v3 #premade github action
         env:
-          PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: "true"
+          PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: "true" #instructs not to download Chormium
         with:
           node-versions: ${{ matrix.node-version }}
 

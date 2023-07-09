@@ -1,8 +1,12 @@
-FROM node:16
-WORKDIR /server
-COPY . /server/
-RUN npm run build
+FROM node:20-alpine AS alpine
+# RUN ls -la
+WORKDIR /usr/src/app
+
+COPY . .
+
+RUN npm install
+RUN npm install -g nodemon
 
 EXPOSE 3001
 
-CMD nodemon index
+CMD ["nodemon", "index.js"]
