@@ -5,10 +5,10 @@ services:
     image: mysql:8.0
     restart: unless-stopped
     env_file: 
-      - ./server/.env
+      - .env
     environment:
-      - MYSQL_ROOT_PASSWORD=$DB_PASSWORD || 'pass'
-      - MYSQL_DATABASE=$DB_NAME || 'office_chef'
+      - MYSQL_ROOT_PASSWORD=$MYSQLDB_ROOT_PASSWORD
+      - MYSQL_DATABASE=$MYSQLDB_DATABASE
     ports:
       - 8080:8080
   
@@ -20,14 +20,14 @@ services:
       dockerfile: Dockerfile
     image: christopherkyle/capstone-server
     env_file: 
-      - ./server/.env
+      - .env
     ports:
       - 3001:3001
     environment:
       DB_HOST: db
-      DB_USER: $DB_USER || 'root'
-      DB_PASSWORD: $DB_PASSWORD || 'pass'
-      DB_NAME: $DB_NAME || 'office_chef'
+      DB_USER: $MYSQLDB_USER
+      DB_PASSWORD: $MYSQLDB_ROOT_PASSWORD
+      DB_NAME: $MYSQLDB_DATABASE
       # - DB_PORT=$MYSQLDB_DOCKER_PORT
     stdin_open: true
     tty: true
