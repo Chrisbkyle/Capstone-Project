@@ -148,8 +148,7 @@ const RecipeTable = ({ sortConfig }) => {
     const deployedApi = 'http://13.239.25.244/server/'
 
     useEffect(() => {
-        axios.get(deployedApi + 'api/recipeRoutes/recipes/', {
-        })
+        axios.get(deployedApi + 'api/recipeRoutes/recipes/')
             .then(response => response.json())
             .then(data => setItems(data))
             .catch((err) => {
