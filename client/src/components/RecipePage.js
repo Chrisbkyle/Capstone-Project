@@ -88,7 +88,19 @@ export default function RecipePage() {
     const localApi = 'http://localhost:3001/'
     const deployedApi = 'http://13.239.25.244/server/'
 
-
+useEffect(() => {
+    axios.get(deployedApi + 'api/recipeRoutes/recipepage', {
+    headers:
+        {recipename: id}
+    })
+    .then((response) => {
+        setState(response.data); 
+        setDirections(JSON.parse(response.data.directions))
+        setIngredients(JSON.parse(response.data.ingredients))
+    }).catch((err) => {
+        console.log(err)
+    })
+}, []);
 const deleteWarning = (e) => { 
     e.preventDefault()
     if(window.confirm("Are you sure you want to delete the recipe?")) {

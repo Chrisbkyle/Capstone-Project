@@ -88,7 +88,7 @@ export default function EditForm( {callback} ) {
     const { id } = useParams()
 
     useEffect(() => {
-        axios.get('http://13.239.25.244/server/api/recipeRoutes/recipepage', {
+        axios.get(deployedApi + 'api/recipeRoutes/recipepage', {
         headers:
             {recipename: id}
         })
