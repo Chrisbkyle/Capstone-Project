@@ -49,8 +49,8 @@ const LoginInput = styled.input`
 
 export default function LoginBox() {
 
-    const api = 'http://localhost:3001/'
-    // const api = 'http://13.239.25.244/server/'
+    // const api = 'http://localhost:3001/'
+    const api = 'http://13.239.25.244/server/'
 
     const [state, setState] = useState({
                                     username: '',

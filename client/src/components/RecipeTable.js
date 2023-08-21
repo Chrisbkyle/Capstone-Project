@@ -144,8 +144,8 @@ const RecipeTable = ({ sortConfig }) => {
         width: isTablet ? '100%' : '66%'
     }
 
-    const api = 'http://localhost:3001/'
-    // const api = 'http://13.239.25.244/server/'
+    // const api = 'http://localhost:3001/'
+    const api = 'http://13.239.25.244/server/'
 
 
     useEffect(() => {

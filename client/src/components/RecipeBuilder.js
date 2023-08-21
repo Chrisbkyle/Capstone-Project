@@ -23,8 +23,8 @@ const RecipeFormContainer = styled.div`
 
 export default function RecipeBuilder() {
 
-    const api = 'http://localhost:3001/'
-    // const api = 'http://13.239.25.244/server/'
+    // const api = 'http://localhost:3001/'
+    const api = 'http://13.239.25.244/server/'
 
       const callback = payload => {
         axios.post(api + "api/recipeRoutes/recipebuilder", payload
