@@ -24,16 +24,19 @@ const RecipeFormContainer = styled.div`
 export default function RecipeEdit() {
 
 
-    const localApi = 'http://localhost:3001/'
+    // const localApi = 'http://localhost:3001/'
     const deployedApi = 'http://13.239.25.244/server/'
 
       const callback = payload => {
+        console.log(payload)
         axios.post(deployedApi + "api/recipeRoutes/recipeedit", payload
             ).then(response => console.log(response))
             .then(window.location = '/app/recipe_select')
             .catch(err =>
                 console.log(err));
         };
+
+          
       
 
 

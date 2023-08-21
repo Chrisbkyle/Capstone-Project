@@ -54,6 +54,7 @@ async function addRecipes(req, res) {
 
     
 
+// Used to delete specific Recipe
 async function deleteRecipe(req, res) {
     let recipe = await Models.Recipes.findByPk(req.body.recipe)
     if (!recipe) {
@@ -62,6 +63,9 @@ async function deleteRecipe(req, res) {
     await recipe.destroy();   
     res.send('recipe deleted')
 }}
+
+
+// used to update recipe
 
 async function updateRecipe(req, res) {
 
