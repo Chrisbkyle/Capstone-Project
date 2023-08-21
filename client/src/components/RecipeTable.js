@@ -144,22 +144,12 @@ const RecipeTable = ({ sortConfig }) => {
         width: isTablet ? '100%' : '66%'
     }
 
-    const localApi = 'http://localhost:3001/'
-    const deployedApi = 'http://13.239.25.244/server/'
+    const api = 'http://localhost:3001/'
+    // const api = 'http://13.239.25.244/server/'
 
-    // useEffect(() => {
-    //     axios.get(deployedApi + 'api/recipeRoutes/recipes/')
-    //         .then(response => console.log(response.json()))
-    //         .then(data => setItems(data))
-    //         .catch((err) => {
-    //             console.log(err)
-    //         }).catch((err) => {
-    //             console.log(err)
-    //     })
-    // }, []);
 
     useEffect(() => {
-        fetch(deployedApi + 'api/recipeRoutes/recipes/', {
+        fetch(api + 'api/recipeRoutes/recipes/', {
         method: 'get',
         })
             .then(response => response.json())

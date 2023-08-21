@@ -82,8 +82,8 @@ async function updateRecipe(req, res) {
         res.status(400).send('Recipe, yield, station or dish cannot be longer than 255 characters')}
      else if (req.body.ingredients.length > 30000 || req.body.directions.length > 30000) {
         res.status(400).send('Directions and Ingredients must be below 30 000 characters')}
-    else if (recipeTest) {
-        res.status(400).send("Recipe already created")}
+    // else if (recipeTest) {
+    //     res.status(400).send("Recipe already created")}
     else {
         res.send("Recipe updated Successful")
          Models.Recipes.update({

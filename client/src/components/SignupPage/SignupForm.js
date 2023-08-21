@@ -14,8 +14,8 @@ const LoginButton = styled.button`
 
 export default function SignupForm() {
 
-    const localApi = 'http://localhost:3001/'
-    const deployedApi = 'http://13.239.25.244/server/'
+    const api = 'http://localhost:3001/'
+    // const api = 'http://13.239.25.244/server/'
 
     const [state, setState] = useState({
         username: '',
@@ -36,7 +36,7 @@ export default function SignupForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post(deployedApi + "api/userRoutes/signup/", state)
+        axios.post(api + "api/userRoutes/signup/", state)
         .then(response => {
             console.log(response.data)
             if(response.data == "Signup Successful") {

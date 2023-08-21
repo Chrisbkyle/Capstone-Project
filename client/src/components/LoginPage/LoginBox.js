@@ -49,8 +49,8 @@ const LoginInput = styled.input`
 
 export default function LoginBox() {
 
-    const localApi = 'http://localhost:3001/'
-    const deployedApi = 'http://13.239.25.244/server/'
+    const api = 'http://localhost:3001/'
+    // const api = 'http://13.239.25.244/server/'
 
     const [state, setState] = useState({
                                     username: '',
@@ -65,7 +65,7 @@ export default function LoginBox() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post(deployedApi + 'api/userRoutes/login/', state)
+        axios.post(api + 'api/userRoutes/login/', state)
         .then((response) => {
             window.location = '/app'
         }).catch((err) => {

@@ -85,11 +85,11 @@ const DeleteButton = styled.button`
 
 export default function RecipePage() {
 
-    const localApi = 'http://localhost:3001/'
-    const deployedApi = 'http://13.239.25.244/server/'
+    const api = 'http://localhost:3001/'
+    // const api = 'http://13.239.25.244/server/'
 
 useEffect(() => {
-    axios.get(deployedApi + 'api/recipeRoutes/recipepage', {
+    axios.get(api + 'api/recipeRoutes/recipepage', {
     headers:
         {recipename: id}
     })
@@ -109,7 +109,7 @@ const deleteWarning = (e) => {
 }
 const deleteHandler = (e) => {
     console.log(e)
-    axios.delete(deployedApi + 'api/recipeRoutes/recipedelete', {headers: {recipename: id},data: {recipe: e}})
+    axios.delete(api + 'api/recipeRoutes/recipedelete', {headers: {recipename: id},data: {recipe: e}})
     .then(window.location = '/app/recipe_select')
     .catch(err => {
         console.log(err)
