@@ -9,9 +9,6 @@ const FooterStyled = styled.div`
     padding: .5rem;
     box-shadow: 2px 0 10px 5px rgba(0, 0, 0, 20%);
     text-align: center;
-    @media (max-width: 480px) {
-        position: static;
-    }
 `
 
 export default function Footer() {

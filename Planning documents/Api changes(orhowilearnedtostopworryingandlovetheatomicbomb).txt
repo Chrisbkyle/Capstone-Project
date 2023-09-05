@@ -5,7 +5,7 @@ server
 client
     Loginbox.js
     EditForm.js
-    SignForm.js
+    SignupForm.js
     RecipeBuilder.js
     RecipeEdit.js
     RecipePage.js
