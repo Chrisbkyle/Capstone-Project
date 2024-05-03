@@ -20,7 +20,7 @@ const sequelize = new Sequelize(
 // 
 //      DB Connect locally
 //
-// const sequelize = new Sequelize('office_chef', 'root', 'IOD-sw-221011', 
+// const sequelize = new Sequelize('office_chef', 'root', process.env.DB_LOCAL_DB, 
 //     {  
 //         host: 'localhost', 
 //         dialect: 'mysql',

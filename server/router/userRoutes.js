@@ -7,6 +7,7 @@ router.post('/login', (req, res) => {
 });
 
 router.post('/signup', (req, res) => {
+    console.log(req)
     controller.userController.addUser(req, res);
 });
 
